@@ -20,12 +20,12 @@
 @can('access_customers')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('rewards-customers-list.*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-            <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> Customers Network
+            <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> My Customers
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
             @can('access_customers')
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link {{ request()->routeIs('rewards-customers-list.*') ? 'c-active' : '' }}" href="{{ route('rewards-customers-list.show-customers', 3) }}">
+                    <a class="c-sidebar-nav-link {{ request()->routeIs('rewards-customers-list.*') ? 'c-active' : '' }}" href="{{ route('rewards-customers-list.show-customers') }}">
                         <i class="c-sidebar-nav-icon bi bi-person-vcard-fill" style="line-height: 1;"></i> All Customers
                     </a>
                 </li>
@@ -36,12 +36,12 @@
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('rewards-agents-list.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> Agents Network
+        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> My Agents
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('rewards-agents-list.*') ? 'c-active' : '' }}" href="{{ route('rewards-agents-list.show-agents', 3) }}">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('rewards-agents-list.*') ? 'c-active' : '' }}" href="{{ route('rewards-agents-list.show-agents') }}">
                     <i class="c-sidebar-nav-icon bi bi-person-badge-fill" style="line-height: 1;"></i> All Agents
                 </a>
             </li>
@@ -51,13 +51,13 @@
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('agent-payments.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon bi bi-cash-stack" style="line-height: 1;"></i> History Payment
+        <i class="c-sidebar-nav-icon bi bi-cash-stack" style="line-height: 1;"></i> History Payments
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('agent-payments.*') ? 'c-active' : '' }}" href="{{ route('agent-payments.index', 3) }}">
-                    <i class="c-sidebar-nav-icon bi bi-cash-stack" style="line-height: 1;"></i> All Payment
+                <a class="c-sidebar-nav-link {{ request()->routeIs('agent-payments.*') ? 'c-active' : '' }}" href="{{ route('agent-payments.index') }}">
+                    <i class="c-sidebar-nav-icon bi bi-cash-stack" style="line-height: 1;"></i> All Payments
                 </a>
             </li>
         {{-- @endcan --}}

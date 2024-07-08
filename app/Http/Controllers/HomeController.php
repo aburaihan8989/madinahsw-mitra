@@ -4,242 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Modules\People\Entities\Agent;
-use Modules\Saving\Entities\Saving;
 use Illuminate\Support\Facades\Http;
-use Modules\People\Entities\Customer;
-use Modules\Saving\Entities\HajjSaving;
-use Modules\Expense\Entities\HajjExpense;
-use Modules\Expense\Entities\UmrohExpense;
-use Modules\Saving\Entities\SavingPayment;
-use Modules\Saving\Entities\HajjSavingPayment;
-use Modules\Manifest\Entities\HajjManifestPayment;
-use Modules\Manifest\Entities\UmrohManifestPayment;
-use Modules\Manifest\Entities\UmrohManifestCustomer;
-use Modules\Package\DataTables\HajjPackageDataTable;
-use Modules\Package\DataTables\HomeHajjPackageDataTable;
-use Modules\Package\DataTables\HomeUmrohPackageDataTable;
 
 class HomeController extends Controller
 {
 
-    public function index(HomeUmrohPackageDataTable $dataTable) {
+    public function index() {
 
-        $getdata = Http::get('http://marhaban-travel.test/api/agent/3');
+        $getdata = Http::get('http://marhaban-travel.test/api/agent/' . auth()->user()->agent_id);
         $agent = $getdata->json();
 
-        $getdata = Http::get('http://marhaban-travel.test/api/count-agent-network/3');
+        $getdata = Http::get('http://marhaban-travel.test/api/count-agent-network/' . auth()->user()->agent_id);
         $agents_count = $getdata->json();
 
-        $getdata = Http::get('http://marhaban-travel.test/api/count-customer-network/3');
+        $getdata = Http::get('http://marhaban-travel.test/api/count-customer-network/' . auth()->user()->agent_id);
         $customers_count = $getdata->json();
 
+        $getdata = Http::get('http://marhaban-travel.test/api/umroh-package');
+        $umroh_package = $getdata->json();
 
-        // $total_reward = Agent::findOrFail(3)->total_reward;
-        // $paid_reward = Agent::findOrFail(3)->paid_reward;
-
-        // $agent_referal = Agent::findOrFail($agent['referal_id']);
-
-        // $customers_umroh_savings = Saving::count();
-        // $customers_hajj_savings = HajjSaving::count();
-
-        // $payment_umroh_savings = SavingPayment::where('status','Approval')->count();
-        // $payment_hajj_savings = HajjSavingPayment::where('status','Approval')->count();
-        // $payment_savings = $payment_umroh_savings + $payment_hajj_savings;
-        // $payment_umroh_packages = UmrohManifestPayment::where('status','Approval')->count();
-        // $payment_hajj_packages = HajjManifestPayment::where('status','Approval')->count();
-        // $payment_packages = $payment_umroh_packages + $payment_hajj_packages;
-
-        // $umroh_payment = UmrohManifestPayment::where('status','Verified')->sum('amount');
-        // $umroh_expense = UmrohExpense::sum('amount');
-        // $umroh_profit = $umroh_payment - $umroh_expense;
-
-        // $hajj_payment = HajjManifestPayment::where('status','Verified')->sum('amount');
-        // $hajj_expense = HajjExpense::sum('amount');
-        // $hajj_profit = $hajj_payment - $hajj_expense;
-
-        // $umroh_savings = SavingPayment::where('status','Verified')->sum('amount');
-        // $hajj_savings = HajjSavingPayment::where('status','Verified')->sum('amount');
-
-
-        return $dataTable->render('home', compact(
+        return view('home', compact(
             'agent',
             'agents_count',
             'customers_count',
+            'umroh_package'
             ));
-
-        }
-
-
-    public function currentMonthChart() {
-        abort_if(!request()->ajax(), 404);
-
-        $currentMonthSales = Sale::where('status', 'Completed')->whereMonth('date', date('m'))
-                ->whereYear('date', date('Y'))
-                ->sum('total_amount') / 100;
-        $currentMonthPurchases = Purchase::where('status', 'Completed')->whereMonth('date', date('m'))
-                ->whereYear('date', date('Y'))
-                ->sum('total_amount') / 100;
-        $currentMonthExpenses = Expense::whereMonth('date', date('m'))
-                ->whereYear('date', date('Y'))
-                ->sum('amount') / 100;
-
-        return response()->json([
-            'sales'     => $currentMonthSales,
-            'purchases' => $currentMonthPurchases,
-            'expenses'  => $currentMonthExpenses
-        ]);
-    }
-
-
-    public function salesPurchasesChart() {
-        abort_if(!request()->ajax(), 404);
-
-        $sales = $this->salesChartData();
-        $purchases = $this->purchasesChartData();
-
-        return response()->json(['sales' => $sales, 'purchases' => $purchases]);
-    }
-
-
-    public function paymentChart() {
-        abort_if(!request()->ajax(), 404);
-
-        $dates = collect();
-        foreach (range(-11, 0) as $i) {
-            $date = Carbon::now()->addMonths($i)->format('m-Y');
-            $dates->put($date, 0);
-        }
-
-        $date_range = Carbon::today()->subYear()->format('Y-m-d');
-
-        $sale_payments = SalePayment::where('date', '>=', $date_range)
-            ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
-                DB::raw("SUM(amount) as amount")
-            ])
-            ->groupBy('month')->orderBy('month')
-            ->get()->pluck('amount', 'month');
-
-        $sale_return_payments = SaleReturnPayment::where('date', '>=', $date_range)
-            ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
-                DB::raw("SUM(amount) as amount")
-            ])
-            ->groupBy('month')->orderBy('month')
-            ->get()->pluck('amount', 'month');
-
-        $purchase_payments = PurchasePayment::where('date', '>=', $date_range)
-            ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
-                DB::raw("SUM(amount) as amount")
-            ])
-            ->groupBy('month')->orderBy('month')
-            ->get()->pluck('amount', 'month');
-
-        $purchase_return_payments = PurchaseReturnPayment::where('date', '>=', $date_range)
-            ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
-                DB::raw("SUM(amount) as amount")
-            ])
-            ->groupBy('month')->orderBy('month')
-            ->get()->pluck('amount', 'month');
-
-        $expenses = Expense::where('date', '>=', $date_range)
-            ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
-                DB::raw("SUM(amount) as amount")
-            ])
-            ->groupBy('month')->orderBy('month')
-            ->get()->pluck('amount', 'month');
-
-        $payment_received = array_merge_numeric_values($sale_payments, $purchase_return_payments);
-        $payment_sent = array_merge_numeric_values($purchase_payments, $sale_return_payments, $expenses);
-
-        $dates_received = $dates->merge($payment_received);
-        $dates_sent = $dates->merge($payment_sent);
-
-        $received_payments = [];
-        $sent_payments = [];
-        $months = [];
-
-        foreach ($dates_received as $key => $value) {
-            $received_payments[] = $value;
-            $months[] = $key;
-        }
-
-        foreach ($dates_sent as $key => $value) {
-            $sent_payments[] = $value;
-        }
-
-        return response()->json([
-            'payment_sent' => $sent_payments,
-            'payment_received' => $received_payments,
-            'months' => $months,
-        ]);
-    }
-
-    public function salesChartData() {
-        $dates = collect();
-        foreach (range(-6, 0) as $i) {
-            $date = Carbon::now()->addDays($i)->format('d-m-y');
-            $dates->put($date, 0);
-        }
-
-        $date_range = Carbon::today()->subDays(6);
-
-        $sales = Sale::where('status', 'Completed')
-            ->where('date', '>=', $date_range)
-            ->groupBy(DB::raw("DATE_FORMAT(date,'%d-%m-%y')"))
-            ->orderBy('date')
-            ->get([
-                DB::raw(DB::raw("DATE_FORMAT(date,'%d-%m-%y') as date")),
-                DB::raw('SUM(total_amount) AS count'),
-            ])
-            ->pluck('count', 'date');
-
-        $dates = $dates->merge($sales);
-
-        $data = [];
-        $days = [];
-        foreach ($dates as $key => $value) {
-            $data[] = $value / 100;
-            $days[] = $key;
-        }
-
-        return response()->json(['data' => $data, 'days' => $days]);
-    }
-
-
-    public function purchasesChartData() {
-        $dates = collect();
-        foreach (range(-6, 0) as $i) {
-            $date = Carbon::now()->addDays($i)->format('d-m-y');
-            $dates->put($date, 0);
-        }
-
-        $date_range = Carbon::today()->subDays(6);
-
-        $purchases = Purchase::where('status', 'Completed')
-            ->where('date', '>=', $date_range)
-            ->groupBy(DB::raw("DATE_FORMAT(date,'%d-%m-%y')"))
-            ->orderBy('date')
-            ->get([
-                DB::raw(DB::raw("DATE_FORMAT(date,'%d-%m-%y') as date")),
-                DB::raw('SUM(total_amount) AS count'),
-            ])
-            ->pluck('count', 'date');
-
-        $dates = $dates->merge($purchases);
-
-        $data = [];
-        $days = [];
-        foreach ($dates as $key => $value) {
-            $data[] = $value / 100;
-            $days[] = $key;
-        }
-
-        return response()->json(['data' => $data, 'days' => $days]);
-
     }
 }
