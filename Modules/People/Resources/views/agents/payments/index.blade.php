@@ -26,58 +26,60 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-bordered table-striped text-center mb-0">
-                        <div wire:loading.flex class="col-12 position-absolute justify-content-center align-items-center" style="top:0;right:0;left:0;bottom:0;background-color: rgba(255,255,255,0.5);z-index: 99;">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="sr-only">Loading...</span>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped text-center mb-0">
+                            <div wire:loading.flex class="col-12 position-absolute justify-content-center align-items-center" style="top:0;right:0;left:0;bottom:0;background-color: rgba(255,255,255,0.5);z-index: 99;">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
                             </div>
-                        </div>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Transaction Date</th>
-                                <th>ID Reference</th>
-                                <th>Agent Name</th>
-                                <th>Phone Number</th>
-                                <th>Category</th>
-                                <th>Payment Amount</th>
-                                <th>Method</th>
-                                <th>Approval Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($agent_payment as $agent_payment)
+                            <thead>
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-
-                                    <td>{{ \Carbon\Carbon::parse($agent_payment['date'])->format('d-m-Y') }}</td>
-                                    <td>{{ $agent_payment['reference'] }}</td>
-                                    <td>{{ $agent_payment['agent_name'] }}</td>
-                                    <td>{{ $agent_payment['agent_phone'] }}</td>
-                                    <td>{{ $agent_payment['trx_type'] }}</td>
-                                    <td>{{ format_currency($agent_payment['amount']) }}</td>
-                                    <td>{{ $agent_payment['payment_method'] }}</td>
-                                    <td class="align-middle">
-                                        @if ($agent_payment['status'] == 'Verified')
-                                            <span class="badge badge-success" style="font-size: 14px;">
-                                                {{ $agent_payment['status'] }}
-                                            </span>
-                                        @else
-                                            <span class="badge badge-danger" style="font-size: 14px;">
-                                                {{ $agent_payment['status'] }}
-                                            </span>
-                                        @endif
-                                    </td>
-                            </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="7">
-                                        <span class="text-danger">No Data Available!</span>
-                                    </td>
+                                    <th>No</th>
+                                    <th>Transaction Date</th>
+                                    <th>ID Reference</th>
+                                    <th>Agent Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Category</th>
+                                    <th>Payment Amount</th>
+                                    <th>Method</th>
+                                    <th>Approval Status</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @forelse($agent_payment as $agent_payment)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+
+                                        <td>{{ \Carbon\Carbon::parse($agent_payment['date'])->format('d-m-Y') }}</td>
+                                        <td>{{ $agent_payment['reference'] }}</td>
+                                        <td>{{ $agent_payment['agent_name'] }}</td>
+                                        <td>{{ $agent_payment['agent_phone'] }}</td>
+                                        <td>{{ $agent_payment['trx_type'] }}</td>
+                                        <td>{{ format_currency($agent_payment['amount']) }}</td>
+                                        <td>{{ $agent_payment['payment_method'] }}</td>
+                                        <td class="align-middle">
+                                            @if ($agent_payment['status'] == 'Verified')
+                                                <span class="badge badge-success" style="font-size: 14px;">
+                                                    {{ $agent_payment['status'] }}
+                                                </span>
+                                            @else
+                                                <span class="badge badge-danger" style="font-size: 14px;">
+                                                    {{ $agent_payment['status'] }}
+                                                </span>
+                                            @endif
+                                        </td>
+                                </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="7">
+                                            <span class="text-danger">No Data Available!</span>
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                     {{-- <div @class(['mt-3' => $customer_network->hasPages()])>
                         {{ $customer_network->links() }}
                     </div> --}}

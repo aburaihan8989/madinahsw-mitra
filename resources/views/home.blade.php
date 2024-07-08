@@ -174,50 +174,52 @@
                         </div>
 
                         <div class="card-body">
-                            <table class="table table-bordered table-striped text-center mb-0">
-                                <div wire:loading.flex class="col-12 position-absolute justify-content-center align-items-center" style="top:0;right:0;left:0;bottom:0;background-color: rgba(255,255,255,0.5);z-index: 99;">
-                                    <div class="spinner-border text-primary" role="status">
-                                        <span class="sr-only">Loading...</span>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped text-center mb-0">
+                                    <div wire:loading.flex class="col-12 position-absolute justify-content-center align-items-center" style="top:0;right:0;left:0;bottom:0;background-color: rgba(255,255,255,0.5);z-index: 99;">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Package Code</th>
-                                        <th>Package Name</th>
-                                        <th>Departure Date</th>
-                                        <th>Departure Location</th>
-                                        <th>Flight Route</th>
-                                        <th>Days</th>
-                                        <th>Seat</th>
-                                        <th>Booked</th>
-                                        <th>Available</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse($umroh_package as $umroh_package)
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <th>No</th>
+                                            <th>Package Code</th>
+                                            <th>Package Name</th>
+                                            <th>Departure Date</th>
+                                            <th>Departure Location</th>
+                                            <th>Flight Route</th>
+                                            <th>Days</th>
+                                            <th>Seat</th>
+                                            <th>Booked</th>
+                                            <th>Available</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($umroh_package as $umroh_package)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
 
-                                            <td>{{ $umroh_package['package_code'] }}</td>
-                                            <td>{{ $umroh_package['package_name'] }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($umroh_package['package_date'])->format('d-m-Y') }}</td>
-                                            <td>{{ $umroh_package['package_departure'] }}</td>
-                                            <td>{{ $umroh_package['flight_route'] }}</td>
-                                            <td>{{ $umroh_package['package_days'] }} Days</td>
-                                            <td>{{ $umroh_package['package_capacity'] }} Pax</td>
-                                            <td>{{ $umroh_package['umroh_customer_count'] }} Pax</td>
-                                            <td>{{ $umroh_package['package_capacity'] - $umroh_package['umroh_customer_count'] }} Pax</td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="10">
-                                                <span class="text-danger">No Data Available!</span>
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                                                <td>{{ $umroh_package['package_code'] }}</td>
+                                                <td>{{ $umroh_package['package_name'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($umroh_package['package_date'])->format('d-m-Y') }}</td>
+                                                <td>{{ $umroh_package['package_departure'] }}</td>
+                                                <td>{{ $umroh_package['flight_route'] }}</td>
+                                                <td>{{ $umroh_package['package_days'] }} Days</td>
+                                                <td>{{ $umroh_package['package_capacity'] }} Pax</td>
+                                                <td>{{ $umroh_package['umroh_customer_count'] }} Pax</td>
+                                                <td>{{ $umroh_package['package_capacity'] - $umroh_package['umroh_customer_count'] }} Pax</td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="10">
+                                                    <span class="text-danger">No Data Available!</span>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                             {{-- <div @class(['mt-3' => $umroh_package->hasPages()])>
                                 {{ $umroh_package->links() }}
                             </div> --}}
