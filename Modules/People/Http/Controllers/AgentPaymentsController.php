@@ -18,7 +18,7 @@ class AgentPaymentsController extends Controller
 
     public function getAgentPayment() {
         // abort_if(Gate::denies('access_customers'), 403);
-        $getdata = Http::get('http://marhaban-travel.test/api/agent-payment/' . auth()->user()->agent_id);
+        $getdata = Http::get(settings()->api_url . 'api/agent-payment/' . auth()->user()->agent_id);
         $agent_payment = $getdata->json();
 
         return view('people::agents.payments.index', compact('agent_payment'));

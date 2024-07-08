@@ -11,16 +11,16 @@ class HomeController extends Controller
 
     public function index() {
 
-        $getdata = Http::get('http://marhaban-travel.test/api/agent/' . auth()->user()->agent_id);
+        $getdata = Http::get(settings()->api_url . 'api/agent/' . auth()->user()->agent_id);
         $agent = $getdata->json();
 
-        $getdata = Http::get('http://marhaban-travel.test/api/count-agent-network/' . auth()->user()->agent_id);
+        $getdata = Http::get(settings()->api_url . 'api/count-agent-network/' . auth()->user()->agent_id);
         $agents_count = $getdata->json();
 
-        $getdata = Http::get('http://marhaban-travel.test/api/count-customer-network/' . auth()->user()->agent_id);
+        $getdata = Http::get(settings()->api_url . 'api/count-customer-network/' . auth()->user()->agent_id);
         $customers_count = $getdata->json();
 
-        $getdata = Http::get('http://marhaban-travel.test/api/umroh-package');
+        $getdata = Http::get(settings()->api_url . 'api/umroh-package');
         $umroh_package = $getdata->json();
 
         return view('home', compact(
