@@ -36,14 +36,14 @@
 
                             <div class="form-group">
                                 <label for="name">Name <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="name" required readonly disabled value="{{ auth()->user()->name }}">
+                                <input class="form-control" type="text" name="name" readonly disabled value="{{ auth()->user()->name }}">
                                 @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Email <span class="text-danger">*</span></label>
-                                <input class="form-control" type="email" name="email" required readonly disabled value="{{ auth()->user()->email }}">
+                                <input class="form-control" type="email" name="email" readonly disabled value="{{ auth()->user()->email }}">
                                 @error('email')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
