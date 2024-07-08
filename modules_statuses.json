@@ -4,6 +4,5 @@
     "People": true,
     "Currency": true,
     "Setting": true,
-    "Package": true,
     "Manifest": true
 }
