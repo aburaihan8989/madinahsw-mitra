@@ -80,6 +80,10 @@ class UsersDataTable extends DataTable
             Column::make('email')
                 ->className('text-center align-middle'),
 
+            Column::computed('agent_id')
+                ->title('ID Agent')
+                ->className('text-center align-middle'),
+
             Column::computed('role')
                 ->className('text-center align-middle'),
 

@@ -3,6 +3,5 @@
     "User": true,
     "People": true,
     "Currency": true,
-    "Setting": true,
-    "Manifest": true
+    "Setting": true
 }

@@ -40,6 +40,7 @@ class UsersController extends Controller
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
+            'agent_id'    => $request->agent_id,
             'password' => Hash::make($request->password),
             'is_active' => $request->is_active
         ]);
@@ -81,6 +82,7 @@ class UsersController extends Controller
         $user->update([
             'name'     => $request->name,
             'email'    => $request->email,
+            'agent_id'    => $request->agent_id,
             'is_active' => $request->is_active
         ]);
 
