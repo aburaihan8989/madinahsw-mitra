@@ -85,7 +85,7 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-3 d-flex align-items-center">
                             <div class="bg-warning p-3 mfe-3 rounded">
-                                <i class="bi bi-wallet2 font-2xl"></i>
+                                <i class="bi bi-cash font-2xl"></i>
                             </div>
                             <div>
                                 <div class="text-value text-primary font-weight-bold" style="font-size:18px;">{{ format_currency($agent['paid_reward']) }}</div>
