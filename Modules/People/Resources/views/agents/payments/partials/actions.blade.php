@@ -1,21 +1,21 @@
 {{-- @can('access_sale_payments') --}}
-    <a href="{{ route('agent-payments.edit', [$data->agents->id, $data->id]) }}" class="btn btn-info btn-sm">
+    {{-- <a href="{{ route('agent-payments.edit', [$data->agents->id, $data->id]) }}" class="btn btn-info btn-sm">
         <i class="bi bi-pencil"></i>
-    </a>
+    </a> --}}
 {{-- @endcan
 {{-- @can('access_sale_payments') --}}
 @if ($data->status == 'Verified')
     <a href="{{ route('agent-payments.view', [$data->agents->id, $data->id]) }}" class="btn btn-primary btn-sm">
-        <i class="bi bi-eye"></i>
+        <i class="bi bi-printer"></i>
     </a>
 @else
     <a href="#" class="btn btn-secondary btn-sm">
-        <i class="bi bi-eye"></i>
+        <i class="bi bi-printer"></i>
     </a>
 @endif
 {{-- @endcan
 @can('access_sale_payments') --}}
-    <button id="delete" class="btn btn-danger btn-sm" onclick="
+    {{-- <button id="delete" class="btn btn-danger btn-sm" onclick="
         event.preventDefault();
         if (confirm('Are you sure? It will delete the data permanently!')) {
         document.getElementById('destroy{{ $data->id }}').submit()
@@ -26,5 +26,5 @@
             @csrf
             @method('delete')
         </form>
-    </button>
+    </button> --}}
 {{-- @endcan --}}

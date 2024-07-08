@@ -7,7 +7,7 @@
         <li class="breadcrumb-item active">Home</li>
     </ol>
 @endsection
-{{-- @dd($dataTable); --}}
+
 @section('content')
     <div class="container-fluid">
         @can('show_total_stats')
@@ -15,6 +15,59 @@
             <hr>
 
             <div class="row">
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <label for="agents">Photo Agent <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                            <br>
+                            <img src="{{ auth()->user()->getFirstMediaUrl('avatars') }}" alt="Photo Agent" class="img-fluid img-thumbnail mb-2" style="width:86%">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped mb-0">
+                                    <tr>
+                                        <th style="width:40%">Agent Code</th>
+                                        <td>{{ $agent['agent_code'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Agent Name</th>
+                                        <td>{{  $agent['agent_name'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone Number</th>
+                                        <td>{{ $agent['agent_phone'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>{{ $agent['agent_email'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Agent Level</th>
+                                        <td>{{ $agent['level_agent'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>City</th>
+                                        <td>{{ $agent['city'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Agent Referal</th>
+                                        <td>{{ $agent['referal_code'] . ' | ' . $agent['referal_name']}}</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
                 <div class="col-12 col-lg-4">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-3 d-flex align-items-center">
@@ -22,8 +75,8 @@
                                 <i class="bi bi-cash-stack font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-value text-primary">{{ format_currency($umroh_payment) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Umroh Transactions</div>
+                                <div class="text-value text-primary font-weight-bold" style="font-size:18px;">{{ format_currency($agent['total_reward']) }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Total Reward</div>
                             </div>
                         </div>
                     </div>
@@ -35,8 +88,8 @@
                                 <i class="bi bi-wallet2 font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-value text-primary">{{ format_currency($umroh_expense) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Umroh Expenses</div>
+                                <div class="text-value text-primary font-weight-bold" style="font-size:18px;">{{ format_currency($agent['paid_reward']) }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Paid Reward</div>
                             </div>
                         </div>
                     </div>
@@ -45,82 +98,11 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-3 d-flex align-items-center">
                             <div class="bg-success p-3 mfe-3 rounded">
-                                <i class="bi bi-trophy font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-value text-primary">{{ format_currency($umroh_profit) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Umroh Margin</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-lg-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-3 d-flex align-items-center">
-                            <div class="bg-primary p-3 mfe-3 rounded">
-                                <i class="bi bi-cash-stack font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-value text-primary">{{ format_currency($hajj_payment) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Hajj Transactions</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-3 d-flex align-items-center">
-                            <div class="bg-warning p-3 mfe-3 rounded">
                                 <i class="bi bi-wallet2 font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-value text-primary">{{ format_currency($hajj_expense) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Hajj Expenses</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-3 d-flex align-items-center">
-                            <div class="bg-success p-3 mfe-3 rounded">
-                                <i class="bi bi-trophy font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-value text-primary">{{ format_currency($hajj_profit) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Hajj Margin</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-lg-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-3 d-flex align-items-center">
-                            <div class="bg-primary p-3 mfe-3 rounded">
-                                <i class="bi bi-cash-stack font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-value text-primary">{{ format_currency($umroh_savings) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Umroh Savings</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-3 d-flex align-items-center">
-                            <div class="bg-primary p-3 mfe-3 rounded">
-                                <i class="bi bi-cash-stack font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-value text-primary">{{ format_currency($hajj_savings) }}</div>
-                                <div class="text-uppercase font-weight-bold small">Hajj Savings</div>
+                                <div class="text-value text-primary font-weight-bold" style="font-size:18px;">{{ format_currency($agent['total_reward'] - $agent['paid_reward']) }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Reward Balance</div>
                             </div>
                         </div>
                     </div>
@@ -128,8 +110,8 @@
             </div>
             <br>
 
-            <li class="breadcrumb-item active">Administration</li>
-            <hr>
+            {{-- <li class="breadcrumb-item active">Agent Network</li>
+            <hr> --}}
 
             <div class="row">
                 <div class="col-md-6 col-lg-4">
@@ -139,8 +121,8 @@
                                 <i class="bi bi-people font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-muted text-uppercase font-weight-bold small">Registered Customers</div>
-                                <div class="text-value text-primary">{{ $customers . ' Customers' }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Customers Network</div>
+                                <div class="text-value text-primary">{{ $customers_count . ' Customers' }}</div>
                             </div>
                         </div>
                     </div>
@@ -152,79 +134,25 @@
                                 <i class="bi bi-people font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-muted text-uppercase font-weight-bold small">Registered Agents</div>
-                                <div class="text-value text-primary">{{ $agents . ' Agents' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-people font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-muted text-uppercase font-weight-bold small">Umroh Savings Customers</div>
-                                <div class="text-value text-primary">{{ $customers_umroh_savings . ' Customers' }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Agents Network</div>
+                                <div class="text-value text-primary">{{ $agents_count . ' Agents' }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-people font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-muted text-uppercase font-weight-bold small">Hajj Savings Customers</div>
-                                <div class="text-value text-primary">{{ $customers_hajj_savings . ' Customers' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-warning p-4 mfe-3 rounded-left">
-                                <i class="bi bi-journal-check font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-muted text-uppercase font-weight-bold small">Approval Savings</div>
-                                <div class="text-value text-primary">{{ $payment_savings . ' Transactions' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-warning p-4 mfe-3 rounded-left">
-                                <i class="bi bi-journal-check font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-muted text-uppercase font-weight-bold small">Approval Payments</div>
-                                <div class="text-value text-primary">{{ $payment_packages . ' Transactions' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <br>
 
-            <li class="breadcrumb-item active">Management</li>
+            <li class="breadcrumb-item active">Available Package</li>
             <hr>
 
             <div class="row">
-                <div class="col-md-6 col-lg-6">
+                <div class="col-md-6 col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex flex-wrap align-items-center">
                             <div>
-                                Umroh Package : <strong>List Active Umroh Package</strong>
+                                List Package : <strong>Available List Active Umroh Package</strong>
                             </div>
                         </div>
                         <div class="card-body">
@@ -234,68 +162,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6">
-                    <div class="card">
-                        <div class="card-header d-flex flex-wrap align-items-center">
-                            <div>
-                                Hajj Package : <strong>List Active Hajj Package</strong>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                {!! $dataTable->table() !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         @endcan
-
-        {{-- @can('show_weekly_sales_purchases|show_month_overview')
-        <div class="row mb-4">
-            @can('show_weekly_sales_purchases')
-            <div class="col-lg-7">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header">
-                        Revenue & Expenses of Last 7 Days
-                    </div>
-                    <div class="card-body">
-                        <canvas id="salesPurchasesChart"></canvas>
-                    </div>
-                </div>
-            </div>
-            @endcan
-            @can('show_month_overview')
-            <div class="col-lg-5">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header">
-                        Overview of {{ now()->format('F, Y') }}
-                    </div>
-                    <div class="card-body d-flex justify-content-center">
-                        <div class="chart-container" style="position: relative; height:auto; width:280px">
-                            <canvas id="currentMonthChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endcan
-        </div>
-        @endcan
-
-        @can('show_monthly_cashflow')
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header">
-                        Monthly Cash Flow (Cash Sent & Received)
-                    </div>
-                    <div class="card-body">
-                        <canvas id="paymentChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endcan --}}
 
     </div>
 @endsection

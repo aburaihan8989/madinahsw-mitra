@@ -86,23 +86,32 @@ class HomeUmrohPackageDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('package_code')
-                ->title('Code')
+                ->title('Package Code')
                 ->className('text-center align-middle'),
 
             Column::make('package_name')
                 ->title('Package Name')
                 ->className('text-center align-middle'),
 
+            Column::computed('package_date')
+                ->title('Departure Date')
+                ->className('text-center align-middle'),
+
             Column::make('package_departure')
-                ->title('Departure')
+                ->title('Departure Location')
+                ->className('text-center align-middle'),
+
+
+            Column::make('flight_route')
+                ->title('Flight Route')
                 ->className('text-center align-middle'),
 
             Column::computed('package_days')
                 ->title('Days')
-                ->width(40)
+                ->width(50)
                 ->className('text-center align-middle'),
 
-                Column::computed('package_capacity')
+            Column::computed('package_capacity')
                 ->title('Seat')
                 ->width(50)
                 ->className('text-center align-middle'),

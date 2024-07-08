@@ -31,25 +31,25 @@
                             <div class="form-group">
                                 <label for="image">Profile Image <span class="text-danger">*</span></label>
                                 <img style="width: 100px;height: 100px;" class="d-block mx-auto img-thumbnail img-fluid rounded-circle mb-2" src="{{ auth()->user()->getFirstMediaUrl('avatars') }}" alt="Profile Image">
-                                <input id="image" type="file" name="image" data-max-file-size="500KB">
+                                {{-- <input id="image" type="file" name="image" data-max-file-size="500KB"> --}}
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Name <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="name" required value="{{ auth()->user()->name }}">
+                                <input class="form-control" type="text" name="name" required readonly disabled value="{{ auth()->user()->name }}">
                                 @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Email <span class="text-danger">*</span></label>
-                                <input class="form-control" type="email" name="email" required value="{{ auth()->user()->email }}">
+                                <input class="form-control" type="email" name="email" required readonly disabled value="{{ auth()->user()->email }}">
                                 @error('email')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Update Profile <i class="bi bi-check"></i></button>
+                                {{-- <button type="submit" class="btn btn-primary">Update Profile <i class="bi bi-check"></i></button> --}}
                             </div>
                         </form>
                     </div>
@@ -82,7 +82,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-4">
                                 <button type="submit" class="btn btn-primary">Update Password <i class="bi bi-check"></i></button>
                             </div>
                         </form>

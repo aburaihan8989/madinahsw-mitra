@@ -3,96 +3,72 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Carbon;
-use Modules\Sale\Entities\Sale;
 use Illuminate\Support\Facades\DB;
 use Modules\People\Entities\Agent;
 use Modules\Saving\Entities\Saving;
-use Modules\Expense\Entities\Expense;
+use Illuminate\Support\Facades\Http;
 use Modules\People\Entities\Customer;
-use Modules\Sale\Entities\SalePayment;
-use Modules\Purchase\Entities\Purchase;
 use Modules\Saving\Entities\HajjSaving;
 use Modules\Expense\Entities\HajjExpense;
 use Modules\Expense\Entities\UmrohExpense;
 use Modules\Saving\Entities\SavingPayment;
-use Modules\SalesReturn\Entities\SaleReturn;
-use Modules\Purchase\Entities\PurchasePayment;
 use Modules\Saving\Entities\HajjSavingPayment;
 use Modules\Manifest\Entities\HajjManifestPayment;
 use Modules\Manifest\Entities\UmrohManifestPayment;
-use Modules\SalesReturn\Entities\SaleReturnPayment;
+use Modules\Manifest\Entities\UmrohManifestCustomer;
 use Modules\Package\DataTables\HajjPackageDataTable;
-use Modules\PurchasesReturn\Entities\PurchaseReturn;
 use Modules\Package\DataTables\HomeHajjPackageDataTable;
 use Modules\Package\DataTables\HomeUmrohPackageDataTable;
-use Modules\PurchasesReturn\Entities\PurchaseReturnPayment;
 
 class HomeController extends Controller
 {
 
-    public function index(HomeUmrohPackageDataTable $dataTable, HomeHajjPackageDataTable $hajjdataTable) {
-        $customers = Customer::count();
-        $agents = Agent::count();
-        $customers_umroh_savings = Saving::count();
-        $customers_hajj_savings = HajjSaving::count();
+    public function index(HomeUmrohPackageDataTable $dataTable) {
 
-        $payment_umroh_savings = SavingPayment::where('status','Approval')->count();
-        $payment_hajj_savings = HajjSavingPayment::where('status','Approval')->count();
-        $payment_savings = $payment_umroh_savings + $payment_hajj_savings;
-        $payment_umroh_packages = UmrohManifestPayment::where('status','Approval')->count();
-        $payment_hajj_packages = HajjManifestPayment::where('status','Approval')->count();
-        $payment_packages = $payment_umroh_packages + $payment_hajj_packages;
+        $getdata = Http::get('http://marhaban-travel.test/api/agent/3');
+        $agent = $getdata->json();
 
-        $umroh_payment = UmrohManifestPayment::where('status','Verified')->sum('amount');
-        $umroh_expense = UmrohExpense::sum('amount');
-        $umroh_profit = $umroh_payment - $umroh_expense;
+        $getdata = Http::get('http://marhaban-travel.test/api/count-agent-network/3');
+        $agents_count = $getdata->json();
 
-        $hajj_payment = HajjManifestPayment::where('status','Verified')->sum('amount');
-        $hajj_expense = HajjExpense::sum('amount');
-        $hajj_profit = $hajj_payment - $hajj_expense;
+        $getdata = Http::get('http://marhaban-travel.test/api/count-customer-network/3');
+        $customers_count = $getdata->json();
 
-        $umroh_savings = SavingPayment::where('status','Verified')->sum('amount');
-        $hajj_savings = HajjSavingPayment::where('status','Verified')->sum('amount');
+
+        // $total_reward = Agent::findOrFail(3)->total_reward;
+        // $paid_reward = Agent::findOrFail(3)->paid_reward;
+
+        // $agent_referal = Agent::findOrFail($agent['referal_id']);
+
+        // $customers_umroh_savings = Saving::count();
+        // $customers_hajj_savings = HajjSaving::count();
+
+        // $payment_umroh_savings = SavingPayment::where('status','Approval')->count();
+        // $payment_hajj_savings = HajjSavingPayment::where('status','Approval')->count();
+        // $payment_savings = $payment_umroh_savings + $payment_hajj_savings;
+        // $payment_umroh_packages = UmrohManifestPayment::where('status','Approval')->count();
+        // $payment_hajj_packages = HajjManifestPayment::where('status','Approval')->count();
+        // $payment_packages = $payment_umroh_packages + $payment_hajj_packages;
+
+        // $umroh_payment = UmrohManifestPayment::where('status','Verified')->sum('amount');
+        // $umroh_expense = UmrohExpense::sum('amount');
+        // $umroh_profit = $umroh_payment - $umroh_expense;
+
+        // $hajj_payment = HajjManifestPayment::where('status','Verified')->sum('amount');
+        // $hajj_expense = HajjExpense::sum('amount');
+        // $hajj_profit = $hajj_payment - $hajj_expense;
+
+        // $umroh_savings = SavingPayment::where('status','Verified')->sum('amount');
+        // $hajj_savings = HajjSavingPayment::where('status','Verified')->sum('amount');
 
 
         return $dataTable->render('home', compact(
-            'customers',
-            'customers_umroh_savings',
-            'customers_hajj_savings',
-            'payment_savings',
-            'payment_packages',
-            'umroh_payment',
-            'umroh_expense',
-            'umroh_profit',
-            'hajj_payment',
-            'hajj_expense',
-            'hajj_profit',
-            'umroh_savings',
-            'hajj_savings',
-            'agents'));
-        // return view('home', compact('customers', 'umroh_savings', 'hajj_savings', 'agents', 'payment_savings', 'payment_packages'));
+            'agent',
+            'agents_count',
+            'customers_count',
+            ));
 
-        // $sales = Sale::completed()->sum('total_amount');
-        // $sale_returns = SaleReturn::completed()->sum('total_amount');
-        // $purchase_returns = PurchaseReturn::completed()->sum('total_amount');
-        // $product_costs = 0;
-
-        // foreach (Sale::completed()->with('saleDetails')->get() as $sale) {
-        //     foreach ($sale->saleDetails as $saleDetail) {
-        //         if (!is_null($saleDetail->product)) {
-        //             $product_costs += $saleDetail->product->product_cost * $saleDetail->quantity;
-        //         }
-        //     }
-        // }
-
-        // $revenue = ($sales - $sale_returns) / 100;
-        // $profit = $revenue - $product_costs;
-        // 'revenue'          => $revenue,
-        // 'sale_returns'     => $sale_returns / 100,
-        // 'purchase_returns' => $purchase_returns / 100,
-        // 'profit'           => $profit
-        // ]);
-    }
+        }
 
 
     public function currentMonthChart() {

@@ -81,7 +81,7 @@ class ShowCustomersReferalDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('reference')
-                ->title('Reference ID')
+                ->title('ID Reference')
                 ->className('text-center align-middle'),
 
             Column::make('customer_name')
@@ -106,7 +106,7 @@ class ShowCustomersReferalDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('referal_reward')
-                ->title('Referal Rewards')
+                ->title('Referal Reward')
                 ->className('text-center align-middle'),
 
             Column::make('created_at')
