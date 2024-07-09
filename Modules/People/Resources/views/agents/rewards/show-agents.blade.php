@@ -43,22 +43,37 @@
                                         <th>Agent Level</th>
                                         <th>Customer Count</th>
                                         <th>Referal Reward</th>
-                                        {{-- <th>Referal Level</th> --}}
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($agent_network as $agent_network)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="align-middle">{{ $loop->iteration }}</td>
 
-                                            <td>{{ $agent_network['agent_code'] }}</td>
-                                            <td>{{ $agent_network['agent_name'] }}</td>
-                                            <td>{{ $agent_network['agent_phone'] }}</td>
-                                            <td>{{ $agent_network['city'] }}</td>
-                                            <td>{{ $agent_network['level_agent'] }}</td>
-                                            <td>{{ $agent_network['customer_count'] }}</td>
-                                            <td>{{ format_currency($agent_network['total_reward']) }}</td>
-                                            {{-- <td>{{ $agent_network['level_agent'] }}</td> --}}
+                                            <td class="align-middle">{{ $agent_network['agent_code'] }}</td>
+                                            <td class="align-middle">{{ $agent_network['agent_name'] }}</td>
+                                            <td class="align-middle">{{ $agent_network['agent_phone'] }}</td>
+                                            <td class="align-middle">{{ $agent_network['city'] }}</td>
+                                            <td class="align-middle">{{ $agent_network['level_agent'] }}</td>
+                                            <td class="align-middle">{{ $agent_network['customer_count'] }}</td>
+                                            <td class="align-middle">{{ format_currency($agent_network['total_reward']) }}</td>
+                                            <td class="align-middle">
+                                                <div class="btn-group dropleft">
+                                                    <button type="button" class="btn btn-ghost-primary dropdown rounded" data-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        {{-- <a href="{{ route('rewards-customers-referal-list.show-customers', $data->id) }}" class="dropdown-item"> --}}
+                                                        <a href="#" class="dropdown-item text-secondary">
+                                                            <i class="bi bi-people-fill mr-2 text-secondary" style="line-height: 1;"></i> Show Customers
+                                                        </a>
+                                                        <a href="#" class="dropdown-item text-secondary">
+                                                            <i class="bi bi-eye mr-2 text-secondary" style="line-height: 1;"></i> Details
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>

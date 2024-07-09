@@ -121,7 +121,7 @@
                                 <i class="bi bi-people font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-uppercase font-weight-bold medium">Customers Network</div>
+                                <div class="text-uppercase font-weight-bold medium">My Customers Network</div>
                                 <div class="text-value text-primary">{{ $customers_count . ' Customers' }}</div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                                 <i class="bi bi-people font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-uppercase font-weight-bold medium">Agents Network</div>
+                                <div class="text-uppercase font-weight-bold medium">My Agents Network</div>
                                 <div class="text-value text-primary">{{ $agents_count . ' Agents' }}</div>
                             </div>
                         </div>

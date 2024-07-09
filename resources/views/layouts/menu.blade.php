@@ -20,7 +20,7 @@
 @can('access_customers')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('rewards-customers-list.*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-            <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> My Customers
+            <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> My Customers Network
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
             @can('access_customers')
@@ -36,7 +36,7 @@
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('rewards-agents-list.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> My Agents
+        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> My Agents Network
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
