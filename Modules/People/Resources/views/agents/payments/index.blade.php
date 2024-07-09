@@ -41,9 +41,9 @@
                                     <th>Agent Name</th>
                                     <th>Phone Number</th>
                                     <th>Category</th>
-                                    <th>Payment Amount</th>
-                                    <th>Method</th>
                                     <th>Approval Status</th>
+                                    <th>Method</th>
+                                    <th>Payment Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,8 +56,6 @@
                                         <td>{{ $agent_payment['agent_name'] }}</td>
                                         <td>{{ $agent_payment['agent_phone'] }}</td>
                                         <td>{{ $agent_payment['trx_type'] }}</td>
-                                        <td>{{ format_currency($agent_payment['amount']) }}</td>
-                                        <td>{{ $agent_payment['payment_method'] }}</td>
                                         <td class="align-middle">
                                             @if ($agent_payment['status'] == 'Verified')
                                                 <span class="badge badge-success" style="font-size: 14px;">
@@ -69,6 +67,8 @@
                                                 </span>
                                             @endif
                                         </td>
+                                        <td>{{ $agent_payment['payment_method'] }}</td>
+                                        <td>{{ format_currency($agent_payment['amount']) }}</td>
                                 </tr>
                                 @empty
                                     <tr>
