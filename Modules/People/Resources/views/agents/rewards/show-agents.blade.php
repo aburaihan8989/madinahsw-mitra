@@ -39,11 +39,11 @@
                                         <th>Agent Code</th>
                                         <th>Agent Name</th>
                                         <th>Phone Number</th>
+                                        <th>City</th>
                                         <th>Agent Level</th>
                                         <th>Customer Count</th>
-                                        <th>City</th>
-                                        {{-- <th>Referal Agent</th>
-                                        <th>Referal Level</th> --}}
+                                        <th>Referal Reward</th>
+                                        {{-- <th>Referal Level</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,11 +54,11 @@
                                             <td>{{ $agent_network['agent_code'] }}</td>
                                             <td>{{ $agent_network['agent_name'] }}</td>
                                             <td>{{ $agent_network['agent_phone'] }}</td>
-                                            <td>{{ $agent_network['level_agent'] }}</td>
-                                            <td>{{ $agent_network['umroh_customers_count'] }}</td>
                                             <td>{{ $agent_network['city'] }}</td>
-                                            {{-- <td>{{ $agent_network['level_agent'] }}</td>
-                                            <td>{{ $agent_network['level_agent'] }}</td> --}}
+                                            <td>{{ $agent_network['level_agent'] }}</td>
+                                            <td>{{ $agent_network['customer_count'] }}</td>
+                                            <td>{{ format_currency($agent_network['total_reward']) }}</td>
+                                            {{-- <td>{{ $agent_network['level_agent'] }}</td> --}}
                                         </tr>
                                     @empty
                                         <tr>
