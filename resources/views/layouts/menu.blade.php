@@ -94,15 +94,6 @@
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
             <i class="c-sidebar-nav-icon bi bi-gear" style="line-height: 1;"></i> Settings
         </a>
-        @can('access_units')
-            <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link {{ request()->routeIs('units.*') ? 'c-active' : '' }}" href="{{ route('units.index') }}">
-                        <i class="c-sidebar-nav-icon bi bi-calculator" style="line-height: 1;"></i> Units
-                    </a>
-                </li>
-            </ul>
-        @endcan
         @can('access_currencies')
         <ul class="c-sidebar-nav-dropdown-items">
             <li class="c-sidebar-nav-item">
