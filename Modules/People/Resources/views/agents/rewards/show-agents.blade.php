@@ -63,15 +63,15 @@
                                                     <button type="button" class="btn btn-ghost-primary dropdown rounded" data-toggle="dropdown" aria-expanded="false">
                                                         <i class="bi bi-three-dots-vertical"></i>
                                                     </button>
-                                                    <div class="dropdown-menu">
+                                                    {{-- <div class="dropdown-menu"> --}}
                                                         {{-- <a href="{{ route('rewards-customers-referal-list.show-customers', $data->id) }}" class="dropdown-item"> --}}
-                                                        <a href="#" class="dropdown-item text-secondary">
+                                                        {{-- <a href="#" class="dropdown-item text-secondary">
                                                             <i class="bi bi-people-fill mr-2 text-secondary" style="line-height: 1;"></i> Show Customers
-                                                        </a>
-                                                        <a href="#" class="dropdown-item text-secondary">
+                                                        </a> --}}
+                                                        {{-- <a href="#" class="dropdown-item text-secondary">
                                                             <i class="bi bi-eye mr-2 text-secondary" style="line-height: 1;"></i> Details
-                                                        </a>
-                                                    </div>
+                                                        </a> --}}
+                                                    {{-- </div> --}}
                                                 </div>
                                             </td>
                                         </tr>
