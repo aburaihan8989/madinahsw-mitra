@@ -33,4 +33,12 @@ class RewardsController extends Controller
     }
 
 
+    public function getCustomerReferalNetwork($agent_id) {
+        // abort_if(Gate::denies('access_customers'), 403);
+        $getdata = Http::get(settings()->api_url . 'api/customer-referal-network/' . $agent_id);
+        $customer_referal_network = $getdata->json();
+
+        return view('people::agents.rewards.show-customers-referal', compact('customer_referal_network'));
+    }
+
 }
