@@ -23,11 +23,15 @@ class HomeController extends Controller
         $getdata = Http::get(settings()->api_url . 'api/umroh-package');
         $umroh_package = $getdata->json();
 
+        $getdata = Http::get(settings()->api_url . 'api/hajj-package');
+        $hajj_package = $getdata->json();
+
         return view('home', compact(
             'agent',
             'agents_count',
             'customers_count',
-            'umroh_package'
+            'umroh_package',
+            'hajj_package'
             ));
     }
 }
