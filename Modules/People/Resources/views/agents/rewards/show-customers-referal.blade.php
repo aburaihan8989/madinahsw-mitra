@@ -44,6 +44,7 @@
                                         <th>Referal Code</th>
                                         <th>Referal Name</th>
                                         <th>Referal Rewards</th>
+                                        <th>Group</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,6 +60,7 @@
                                             <td>{{ $customer_referal_network['agent_name'] }}</td>
                                             <td>{{ $customer_referal_network['agent_phone'] }}</td>
                                             <td>{{ format_currency($customer_referal_network['referal_reward']) }}</td>
+                                            <td>{{ $customer_referal_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
                                         </tr>
                                     @empty
                                         <tr>

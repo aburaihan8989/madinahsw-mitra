@@ -44,6 +44,7 @@
                                         <th>Agent Code</th>
                                         <th>Agent Name</th>
                                         <th>Agent Rewards</th>
+                                        <th>Group</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,6 +60,7 @@
                                             <td>{{ $customer_network['agent_name'] }}</td>
                                             <td>{{ $customer_network['agent_phone'] }}</td>
                                             <td>{{ format_currency($customer_network['agent_reward']) }}</td>
+                                            <td>{{ $customer_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
                                         </tr>
                                     @empty
                                         <tr>
