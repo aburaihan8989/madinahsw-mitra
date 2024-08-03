@@ -140,6 +140,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0">
+                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
+                            <div class="bg-gradient-success p-4 mfe-3 rounded-left">
+                                <i class="bi bi-person-check font-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-uppercase font-weight-bold medium">My Potential Customers</div>
+                                <div class="text-value text-primary">{{ $customers_count . ' Potential Customers' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <br>

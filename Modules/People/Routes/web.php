@@ -24,4 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Prospek Customer
     Route::resource('customers', 'CustomersController');
 
+    // Potential Customer
+    Route::get('/potential/customers', 'RewardsController@getPotentialCustomer')->name('potential-customers-list.potential-customers');
+
 });

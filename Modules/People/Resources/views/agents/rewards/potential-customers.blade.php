@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'List My Customers Network')
+@section('title', 'List My Potential Customers')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">My Customers Network</li>
+        <li class="breadcrumb-item active">My Potential Customers</li>
     </ol>
 @endsection
 
@@ -21,7 +21,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-header d-flex flex-wrap align-items-center">
                         <div>
-                            Tabel : <strong>Data List My Customers Network | <i>{{ auth()->user()->name }}</i></strong>
+                            Tabel : <strong>Data List My Potential Customers | <i>{{ auth()->user()->name }}</i></strong>
                         </div>
                     </div>
 
@@ -41,14 +41,14 @@
                                         <th>Phone Number</th>
                                         <th>City</th>
                                         <th>Customer Package</th>
+                                        <th>Customer Rate Poin</th>
                                         <th>Agent Code</th>
                                         <th>Agent Name</th>
-                                        <th>Agent Rewards</th>
-                                        <th>Group</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($customer_network as $customer_network)
+                                    @forelse($potential_customer as $customer_network)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
 
@@ -57,10 +57,12 @@
                                             <td>{{ $customer_network['customer_phone'] }}</td>
                                             <td>{{ $customer_network['city'] }}</td>
                                             <td>{{ $customer_network['package_name'] }}</td>
+                                            <td></td>
                                             <td>{{ $customer_network['agent_code'] }}</td>
                                             <td>{{ $customer_network['agent_name'] }}</td>
-                                            <td>{{ format_currency($customer_network['agent_reward']) }}</td>
-                                            <td>{{ $customer_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary">Update</a>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>

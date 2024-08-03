@@ -57,8 +57,8 @@
                                             <td>{{ $customer_referal_network['customer_phone'] }}</td>
                                             <td>{{ $customer_referal_network['city'] }}</td>
                                             <td>{{ $customer_referal_network['package_name'] }}</td>
+                                            <td>{{ $customer_referal_network['agent_code'] }}</td>
                                             <td>{{ $customer_referal_network['agent_name'] }}</td>
-                                            <td>{{ $customer_referal_network['agent_phone'] }}</td>
                                             <td>{{ format_currency($customer_referal_network['referal_reward']) }}</td>
                                             <td>{{ $customer_referal_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
                                         </tr>
