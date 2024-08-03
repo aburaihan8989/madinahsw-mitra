@@ -21,4 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Rewards Payment
     Route::get('/agent-payments', 'AgentPaymentsController@getAgentPayment')->name('agent-payments.index');
 
+    // Prospek Customer
+    Route::resource('customers', 'CustomersController');
+
 });
