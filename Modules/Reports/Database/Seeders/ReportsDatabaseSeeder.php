@@ -5,7 +5,7 @@ namespace Modules\Reports\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class ReportsDatabaseSeeder extends Seeder
+class ActivityDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

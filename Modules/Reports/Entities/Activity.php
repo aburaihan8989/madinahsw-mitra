@@ -1,10 +1,11 @@
 <?php
 
-namespace Modules\Report\Entities;
+namespace Modules\Reports\Entities;
 
+use Illuminate\Support\Carbon;
+use Modules\Reports\Entities\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Carbon;
 
 class Activity extends Model
 {
@@ -12,17 +13,17 @@ class Activity extends Model
 
     protected $guarded = [];
 
-    // public static function boot() {
-    //     parent::boot();
+    public static function boot() {
+        parent::boot();
 
-    //     static::creating(function ($model) {
-    //         $number = UmrohExpense::max('id') + 1;
-    //         $model->reference = make_reference_id('UXP', $number);
-    //     });
-    // }
+        static::creating(function ($model) {
+            $number = Activity::max('id') + 1;
+            $model->reference = make_reference_id('RPT', $number);
+        });
+    }
 
-    // public function getDateAttribute($value) {
-    //     return Carbon::parse($value)->format('d-m-Y');
-    // }
+    public function getDateAttribute($value) {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 
 }
