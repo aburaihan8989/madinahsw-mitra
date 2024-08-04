@@ -19,6 +19,9 @@ class CustomersDataTable extends DataTable
             ->addColumn('gender', function ($data) {
                 return $data->gender == 'L' ? 'Male' : 'Female';
             })
+            ->addColumn('agent_name', function ($data) {
+                return $data->agent_code . ' | ' . $data->agent_name;
+            })
             ->addColumn('status', function ($data) {
                 return view('people::customers.partials.status', compact('data'));
             })
@@ -28,7 +31,7 @@ class CustomersDataTable extends DataTable
     }
 
     public function query(Customer $model) {
-        return $model->newQuery();
+        return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
     }
 
     public function html() {
@@ -79,6 +82,10 @@ class CustomersDataTable extends DataTable
 
             Column::make('city')
                 ->title('City')
+                ->className('text-center align-middle'),
+
+            Column::make('agent_name')
+                ->title('Agent Name')
                 ->className('text-center align-middle'),
 
             Column::make('status')

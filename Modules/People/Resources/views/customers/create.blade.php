@@ -71,6 +71,11 @@
                                         <input type="text" class="form-control" name="address">
                                     </div>
                                 </div>
+
+                                <input type="hidden" value="{{ $agent['id'] }}" name="agent_id">
+                                <input type="hidden" value="{{ $agent['agent_code'] }}" name="agent_code">
+                                <input type="hidden" value="{{ $agent['agent_name'] }}" name="agent_name">
+
                             </div>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ class ActivityDataTable extends DataTable
     }
 
     public function query(Activity $model) {
-        return $model->newQuery();
+        return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
     }
 
 

@@ -54,6 +54,7 @@
                                 <textarea class="form-control" rows="6" name="detail_activity">{{ $activity->detail_activity }}</textarea>
                             </div>
 
+                            <input type="hidden" value="{{ $agent['id'] }}" name="agent_id">
                             <input type="hidden" value="{{ $agent['agent_code'] }}" name="agent_code">
                             <input type="hidden" value="{{ $agent['agent_name'] }}" name="agent_name">
 

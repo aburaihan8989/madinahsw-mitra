@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Upload\Entities\Upload;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
 use Modules\People\Entities\Customer;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\Renderable;
@@ -24,8 +25,10 @@ class CustomersController extends Controller
 
     public function create() {
         // abort_if(Gate::denies('create_customers'), 403);
+        $getdata = Http::get(settings()->api_url . 'api/agent/' . auth()->user()->agent_id);
+        $agent = $getdata->json();
 
-        return view('people::customers.create');
+        return view('people::customers.create', compact('agent'));
     }
 
 
@@ -33,6 +36,9 @@ class CustomersController extends Controller
         // abort_if(Gate::denies('create_customers'), 403);
 
         $customer = Customer::create([
+            'agent_id'       => $request->agent_id,
+            'agent_code'     => $request->agent_code,
+            'agent_name'     => $request->agent_name,
             // 'nik_number'     => $request->nik_number,
             'customer_name'  => $request->customer_name,
             // 'date_birth'     => $request->date_birth,
@@ -64,8 +70,10 @@ class CustomersController extends Controller
 
     public function edit(Customer $customer) {
         // abort_if(Gate::denies('edit_customers'), 403);
+        $getdata = Http::get(settings()->api_url . 'api/agent/' . auth()->user()->agent_id);
+        $agent = $getdata->json();
 
-        return view('people::customers.edit', compact('customer'));
+        return view('people::customers.edit', compact('customer', 'agent'));
     }
 
 
@@ -73,6 +81,9 @@ class CustomersController extends Controller
         // abort_if(Gate::denies('update_customers'), 403);
 
         $customer->update([
+            'agent_id'       => $request->agent_id,
+            'agent_code'     => $request->agent_code,
+            'agent_name'     => $request->agent_name,
             // 'nik_number'     => $request->nik_number,
             'customer_name'  => $request->customer_name,
             // 'date_birth'     => $request->date_birth,
