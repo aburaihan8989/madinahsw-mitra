@@ -148,7 +148,7 @@
                             </div>
                             <div>
                                 <div class="text-uppercase font-weight-bold medium">My Potential Customers</div>
-                                <div class="text-value text-primary">{{ $customers_count . ' Potential Customers' }}</div>
+                                <div class="text-value text-primary">{{ $potential_customers_count . ' Potential Customers' }}</div>
                             </div>
                         </div>
                     </div>
