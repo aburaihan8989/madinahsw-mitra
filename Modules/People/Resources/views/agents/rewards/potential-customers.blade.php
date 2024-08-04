@@ -41,9 +41,9 @@
                                         <th>Phone Number</th>
                                         <th>City</th>
                                         <th>Customer Package</th>
-                                        <th>Customer Rate Poin</th>
-                                        <th>Agent Code</th>
                                         <th>Agent Name</th>
+                                        <th>Potential Poin</th>
+                                        {{-- <th>Agent Code</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -57,16 +57,30 @@
                                             <td>{{ $customer_network['customer_phone'] }}</td>
                                             <td>{{ $customer_network['city'] }}</td>
                                             <td>{{ $customer_network['package_name'] }}</td>
-                                            <td></td>
-                                            <td>{{ $customer_network['agent_code'] }}</td>
-                                            <td>{{ $customer_network['agent_name'] }}</td>
+                                            <td>{{ $customer_network['agent_code'] . ' | ' . $customer_network['agent_name'] }}</td>
+                                            {{-- <td><input id="poin" type="number" value="{{ $customer_network['rating'] }}"></input></td> --}}
+                                            <td>{{ $customer_network['rating'] }}</td>
+                                            {{-- <td>{{ $customer_network['agent_code'] }}</td> --}}
                                             <td>
-                                                <a href="#" class="btn btn-primary">Update</a>
+                                                {{-- <button id="poin" class="btn btn-primary ml-2" onclick="
+                                                    event.preventDefault();
+                                                    if (confirm('Are you sure? It will mark as potential customer!')) {
+                                                    document.getElementById('postPotentialPoin{{ $customer_network['id'] }}').submit()
+                                                    }
+                                                    ">Edit
+                                                    <form id="postPotentialPoin{{ $customer_network['id'] }}" class="d-none" action="{{ route('poin-customers.poin', $customer_network['id']) }}" method="POST">
+                                                        @csrf
+                                                        @method('post')
+                                                    </form>
+                                                </button> --}}
+                                                <a href="{{ route('edit-potential-customers.edit-potential-customers', $customer_network['id']) }}" class="btn btn-primary">
+                                                    Edit
+                                                </a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="9">
+                                            <td colspan="10">
                                                 <span class="text-danger">No Data Available!</span>
                                             </td>
                                         </tr>

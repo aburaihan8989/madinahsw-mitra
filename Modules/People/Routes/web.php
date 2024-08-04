@@ -25,6 +25,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('customers', 'CustomersController');
 
     // Potential Customer
+    Route::get('/potential/edit-customers/{customer_id}', 'RewardsController@editPotentialCustomer')->name('edit-potential-customers.edit-potential-customers');
     Route::get('/potential/customers', 'RewardsController@getPotentialCustomer')->name('potential-customers-list.potential-customers');
+
+
+    Route::post('/mark-customers/{customer_id}', 'RewardsController@markPotentialCustomer')->name('mark-customers.mark');
+    Route::post('/poin-customers/{customer_id}', 'RewardsController@postPotentialPoin')->name('poin-customers.poin');
 
 });

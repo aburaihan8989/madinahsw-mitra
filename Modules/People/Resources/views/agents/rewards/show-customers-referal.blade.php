@@ -64,7 +64,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="9">
+                                            <td colspan="10">
                                                 <span class="text-danger">No Data Available!</span>
                                             </td>
                                         </tr>

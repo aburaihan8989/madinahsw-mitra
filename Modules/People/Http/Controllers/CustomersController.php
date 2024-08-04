@@ -2,14 +2,15 @@
 
 namespace Modules\People\Http\Controllers;
 
-use Modules\People\DataTables\CustomersDataTable;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Modules\Upload\Entities\Upload;
 use Illuminate\Support\Facades\Gate;
 use Modules\People\Entities\Customer;
 use Illuminate\Support\Facades\Storage;
-use Modules\Upload\Entities\Upload;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\People\DataTables\CustomersDataTable;
 
 class CustomersController extends Controller
 {
@@ -116,4 +117,18 @@ class CustomersController extends Controller
 
         return redirect()->route('customers.index');
     }
+
+
+    public function markCustomer($customer_id) {
+        // abort_if(Gate::denies('update_customers'), 403);
+
+        DB::table('customers')
+            ->where('id', $customer_id)
+            ->update(['mark' => 1]);
+
+        toast('Mark As Potential Customer!', 'info');
+
+        return redirect()->route('rewards-customers-list.show-customers');
+    }
+
 }

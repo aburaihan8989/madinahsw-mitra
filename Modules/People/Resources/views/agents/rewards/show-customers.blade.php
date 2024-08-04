@@ -45,6 +45,8 @@
                                         <th>Agent Name</th>
                                         <th>Agent Rewards</th>
                                         <th>Group</th>
+                                        <th>Potential</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,10 +63,38 @@
                                             <td>{{ $customer_network['agent_name'] }}</td>
                                             <td>{{ format_currency($customer_network['agent_reward']) }}</td>
                                             <td>{{ $customer_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
+                                            <td>
+                                                @if($customer_network['mark'] == 1)
+                                                    <i class="bi bi-check-circle-fill" style="line-height:1;font-size:25px;color:green;"></i>
+                                                @else
+
+                                                @endif
+                                            </td>
+                                            <td class="align-middle">
+                                                <div class="btn-group dropleft">
+                                                    <button type="button" class="btn btn-ghost-primary dropdown rounded" data-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <button id="mark" class="btn btn-danger ml-2 btn-sm" onclick="
+                                                            event.preventDefault();
+                                                            if (confirm('Are you sure? It will mark as potential customer!')) {
+                                                            document.getElementById('markPotentialCustomer{{ $customer_network['id'] }}').submit()
+                                                            }
+                                                            ">
+                                                            <i class="bi bi-star-fill mr-2"></i> Mark As Potential
+                                                            <form id="markPotentialCustomer{{ $customer_network['id'] }}" class="d-none" action="{{ route('mark-customers.mark', $customer_network['id']) }}" method="POST">
+                                                                @csrf
+                                                                @method('post')
+                                                            </form>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="9">
+                                            <td colspan="12">
                                                 <span class="text-danger">No Data Available!</span>
                                             </td>
                                         </tr>
