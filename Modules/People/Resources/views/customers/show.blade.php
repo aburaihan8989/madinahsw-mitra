@@ -75,6 +75,15 @@
                                     </td>
 
                                 </tr>
+                                <tr>
+                                    <th>Prospek Poin</th>
+                                    <td>{{ $customer->rating }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prospek Follow Up Details</th>
+                                    <td>{{ $customer->fu_notes }}</td>
+                                </tr>
+
                             </table>
                         </div>
                     </div>

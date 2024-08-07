@@ -70,11 +70,13 @@ class RewardsController extends Controller
 
     public function postPotentialPoin($customer_id, Request $request) {
         // abort_if(Gate::denies('update_customers'), 403);
-        $customer_poin = $request->rating;
-        $notes = $request->fu_notes;
+        // $customer_poin = $request->rating;
+        // $notes = $request->fu_notes;
 
-        $postdata = Http::post(settings()->api_url . 'api/poin-customers/' . $customer_id . '/' . $customer_poin . '/' . $notes);
+        // $postdata = Http::post(settings()->api_url . 'api/poin-customers/' . $customer_id . '/' . $customer_poin . '/' . $notes);
+        $postdata = Http::post(settings()->api_url . 'api/poin-customers/' . $customer_id, $request->input());
 
+        // @dd($postdata);
         toast('Potential Poin Customer Updated!', 'info');
 
         return redirect()->route('potential-customers-list.potential-customers');

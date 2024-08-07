@@ -46,6 +46,8 @@ class CustomersController extends Controller
             'customer_email' => $request->customer_email,
             'gender'         => $request->gender,
             'city'           => $request->city,
+            'rating'         => $request->rating,
+            'fu_notes'       => $request->fu_notes,
             'address'        => $request->address
         ]);
 
@@ -91,6 +93,8 @@ class CustomersController extends Controller
             'customer_email' => $request->customer_email,
             'gender'         => $request->gender,
             'city'           => $request->city,
+            'rating'         => $request->rating,
+            'fu_notes'       => $request->fu_notes,
             'status'         => $request->status,
             'address'        => $request->address
         ]);

@@ -90,6 +90,22 @@
                                 <input type="hidden" value="{{ $agent['agent_name'] }}" name="agent_name">
 
                             </div>
+
+                            <div class="form-row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="rating">Prospek Poin <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="rating" required value="{{ $customer['rating'] }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fu_notes">Prospek Follow Up Details </label>
+                                <textarea class="form-control" rows="6" name="fu_notes">{{ $customer['fu_notes'] }}</textarea>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

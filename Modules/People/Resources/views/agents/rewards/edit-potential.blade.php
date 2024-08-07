@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="fu_notes">Follow Up Details</label>
+                                <label for="fu_notes">Potential Follow Up Details</label>
                                 <textarea class="form-control" rows="6" name="fu_notes">{{ $customer['fu_notes'] }}</textarea>
                             </div>
 

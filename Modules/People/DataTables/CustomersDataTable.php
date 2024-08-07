@@ -88,6 +88,10 @@ class CustomersDataTable extends DataTable
                 ->title('Agent Name')
                 ->className('text-center align-middle'),
 
+            Column::make('rating')
+                ->title('Prospek Poin')
+                ->className('text-center align-middle'),
+
             Column::make('status')
                 ->title('Follow Up')
                 ->className('text-center align-middle'),
