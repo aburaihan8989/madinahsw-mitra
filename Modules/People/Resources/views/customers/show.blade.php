@@ -63,6 +63,10 @@
                                     <td>{{ $customer->address }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Agent Name</th>
+                                    <td>{{ $agent['agent_code'] . ' | ' . $agent['agent_name'] }}</td>
+                                </tr>
+                                <tr>
                                     <th>Status</th>
                                     <td class="align-middle">
                                         @if ($customer->status == 'FU')

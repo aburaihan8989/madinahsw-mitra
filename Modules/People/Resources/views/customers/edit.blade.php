@@ -63,6 +63,12 @@
                                         <input type="text" class="form-control" name="city" required value="{{ $customer->city }}">
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="agent">Agent Name <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" value="{{ $agent['agent_code'] . ' | ' . $agent['agent_name'] }}" readonly>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-row">

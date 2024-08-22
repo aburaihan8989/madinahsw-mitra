@@ -77,7 +77,7 @@ class RewardsController extends Controller
         $postdata = Http::post(settings()->api_url . 'api/poin-customers/' . $customer_id, $request->input());
 
         // @dd($postdata);
-        toast('Potential Poin Customer Updated!', 'info');
+        toast('Potential Customer Updated!', 'info');
 
         return redirect()->route('potential-customers-list.potential-customers');
     }

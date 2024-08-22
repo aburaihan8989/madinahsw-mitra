@@ -57,7 +57,7 @@ class CustomersController extends Controller
             }
         }
 
-        toast('Customer Created!', 'success');
+        toast('Prospek Customer Created!', 'success');
 
         return redirect()->route('customers.index');
     }
@@ -65,8 +65,10 @@ class CustomersController extends Controller
 
     public function show(Customer $customer) {
         // abort_if(Gate::denies('show_customers'), 403);
+        $getdata = Http::get(settings()->api_url . 'api/agent/' . auth()->user()->agent_id);
+        $agent = $getdata->json();
 
-        return view('people::customers.show', compact('customer'));
+        return view('people::customers.show', compact('customer', 'agent'));
     }
 
 
@@ -117,7 +119,7 @@ class CustomersController extends Controller
             }
         }
 
-        toast('Customer Updated!', 'info');
+        toast('Prospek Customer Updated!', 'info');
 
         return redirect()->route('customers.index');
     }
@@ -128,7 +130,7 @@ class CustomersController extends Controller
 
         $customer->delete();
 
-        toast('Customer Deleted!', 'warning');
+        toast('Prospek Customer Deleted!', 'warning');
 
         return redirect()->route('customers.index');
     }
@@ -145,5 +147,32 @@ class CustomersController extends Controller
 
         return redirect()->route('rewards-customers-list.show-customers');
     }
+
+
+    public function getCustomerProspek() {
+        // abort_if(Gate::denies('show_customers'), 403);
+        $data = Customer::all();
+
+        return $data;
+    }
+
+
+    public function getCustomer($customer_id) {
+        // abort_if(Gate::denies('show_customers'), 403);
+        $data = Customer::findOrFail($customer_id);
+
+        return $data;
+    }
+
+
+    public function updateCustomer($customer_id, Request $request) {
+        // abort_if(Gate::denies('update_customers'), 403);
+        // @dd($request);
+        $data = DB::table('customers')
+                ->where('id', $customer_id)
+                ->update(['rating' => $request->rating, 'fu_notes' => $request->fu_notes, 'status' => $request->status]);
+    }
+
+
 
 }
