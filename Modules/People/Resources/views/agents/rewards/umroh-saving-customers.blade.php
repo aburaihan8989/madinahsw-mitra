@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'List My Hajj Customers Network')
+@section('title', 'List My Umroh Saving Customers')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">List My Hajj Customers Network</li>
+        <li class="breadcrumb-item active">List My Umroh Saving Customers</li>
     </ol>
 @endsection
 
@@ -21,7 +21,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-header d-flex flex-wrap align-items-center">
                         <div>
-                            Tabel : <strong>Data List My Hajj Customers Network | <i>{{ auth()->user()->name }}</i></strong>
+                            Tabel : <strong>Data List My Umroh Saving Customers</i></strong>
                         </div>
                     </div>
 
@@ -36,16 +36,15 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Register Date</th>
                                         <th>ID Reference</th>
                                         <th>Customer Name</th>
                                         <th>Phone Number</th>
-                                        <th>City</th>
-                                        <th>Customer Package</th>
+                                        <th>Status</th>
+                                        <th>Savings Balance</th>
+                                        <th>Savings Account</th>
+                                        <th>Account Number</th>
                                         <th>Agent Name</th>
-                                        <th>Agent Rewards</th>
-                                        <th>Group</th>
-                                        <th>Potential</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,46 +52,29 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
 
+                                            <td>{{ $customer_network['register_date'] }}</td>
                                             <td>{{ $customer_network['reference'] }}</td>
                                             <td>{{ $customer_network['customer_name'] }}</td>
                                             <td>{{ $customer_network['customer_phone'] }}</td>
-                                            <td>{{ $customer_network['city'] }}</td>
-                                            <td>{{ $customer_network['package_name'] }}</td>
-                                            <td>{{ $customer_network['agent_code'] . ' | ' . $customer_network['agent_name'] }}</td>
-                                            <td>{{ format_currency($customer_network['agent_reward']) }}</td>
-                                            <td>{{ $customer_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
                                             <td>
-                                                @if($customer_network['mark'] == 1)
-                                                    <i class="bi bi-check-circle-fill" style="line-height:1;font-size:25px;color:green;"></i>
+                                                @if ($customer_network['status'] == 'Active')
+                                                    <span class="badge badge-success" style="font-size: 14px;">
+                                                        {{ $customer_network['status'] }}
+                                                    </span>
                                                 @else
-
+                                                    <span class="badge badge-secondary" style="font-size: 14px;">
+                                                        {{ $customer_network['status'] }}
+                                                    </span>
                                                 @endif
                                             </td>
-                                            <td class="align-middle">
-                                                <div class="btn-group dropleft">
-                                                    <button type="button" class="btn btn-ghost-primary dropdown rounded" data-toggle="dropdown" aria-expanded="false">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <button id="mark" class="btn btn-danger ml-2 btn-sm" onclick="
-                                                            event.preventDefault();
-                                                            if (confirm('Are you sure? It will mark as potential customer!')) {
-                                                            document.getElementById('markHajjCustomer{{ $customer_network['id'] }}').submit()
-                                                            }
-                                                            ">
-                                                            <i class="bi bi-star-fill mr-2"></i> Mark As Potential
-                                                            <form id="markHajjCustomer{{ $customer_network['id'] }}" class="d-none" action="{{ route('mark-hajj-customer.update', $customer_network['id']) }}" method="POST">
-                                                                @csrf
-                                                                @method('post')
-                                                            </form>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td>{{ format_currency($customer_network['total_saving']) }}</td>
+                                            <td>{{ $customer_network['customer_bank'] }}</td>
+                                            <td>{{ $customer_network['bank_account'] }}</td>
+                                            <td>{{ $customer_network['agent_code'] . ' | ' . $customer_network['agent_name'] }}</td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="12">
+                                            <td colspan="10">
                                                 <span class="text-danger">No Data Available!</span>
                                             </td>
                                         </tr>

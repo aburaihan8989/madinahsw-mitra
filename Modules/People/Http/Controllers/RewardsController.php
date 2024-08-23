@@ -31,6 +31,23 @@ class RewardsController extends Controller
         return view('people::agents.rewards.hajj-customers', compact('customer_network'));
     }
 
+    public function getUmrohSavingCustomers() {
+        // abort_if(Gate::denies('access_customers'), 403);
+        $getdata = Http::get(settings()->api_url . 'api/umroh-savings/' . auth()->user()->agent_id);
+        $customer_network = $getdata->json();
+
+        return view('people::agents.rewards.umroh-saving-customers', compact('customer_network'));
+    }
+
+    public function getHajjSavingCustomers() {
+        // abort_if(Gate::denies('access_customers'), 403);
+        $getdata = Http::get(settings()->api_url . 'api/hajj-savings/' . auth()->user()->agent_id);
+        $customer_network = $getdata->json();
+
+        return view('people::agents.rewards.hajj-saving-customers', compact('customer_network'));
+    }
+
+
     public function markUmrohCustomer($customer_id) {
         // abort_if(Gate::denies('update_customers'), 403);
 
@@ -46,9 +63,9 @@ class RewardsController extends Controller
 
         $postdata = Http::post(settings()->api_url . 'api/mark-hajj-customer/' . $customer_id);
 
-        toast('Mark As Potential Umroh Customer!', 'info');
+        toast('Mark As Potential Hajj Customer!', 'info');
 
-        return redirect()->route('umroh-customers.data');
+        return redirect()->route('hajj-customers.data');
     }
 
     public function getPotentialUmrohCustomers() {
