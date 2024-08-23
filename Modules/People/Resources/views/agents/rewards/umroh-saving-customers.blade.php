@@ -21,7 +21,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-header d-flex flex-wrap align-items-center">
                         <div>
-                            Tabel : <strong>Data List My Umroh Saving Customers</i></strong>
+                            Tabel : <strong>Data List My Umroh Saving Customers | <i>{{ auth()->user()->name }}</i></strong>
                         </div>
                     </div>
 
