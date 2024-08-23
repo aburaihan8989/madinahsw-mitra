@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'List My Customers Network')
+@section('title', 'List My Hajj Customers Network')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">My Customers Network</li>
+        <li class="breadcrumb-item active">My Hajj Customers Network</li>
     </ol>
 @endsection
 
@@ -21,7 +21,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-header d-flex flex-wrap align-items-center">
                         <div>
-                            Tabel : <strong>Data List My Customers Network | <i>{{ auth()->user()->name }}</i></strong>
+                            Tabel : <strong>Data List My Hajj Customers Network | <i>{{ auth()->user()->name }}</i></strong>
                         </div>
                     </div>
 
@@ -41,7 +41,6 @@
                                         <th>Phone Number</th>
                                         <th>City</th>
                                         <th>Customer Package</th>
-                                        <th>Agent Code</th>
                                         <th>Agent Name</th>
                                         <th>Agent Rewards</th>
                                         <th>Group</th>
@@ -59,8 +58,7 @@
                                             <td>{{ $customer_network['customer_phone'] }}</td>
                                             <td>{{ $customer_network['city'] }}</td>
                                             <td>{{ $customer_network['package_name'] }}</td>
-                                            <td>{{ $customer_network['agent_code'] }}</td>
-                                            <td>{{ $customer_network['agent_name'] }}</td>
+                                            <td>{{ $customer_network['agent_code'] . ' | ' . $customer_network['agent_name'] }}</td>
                                             <td>{{ format_currency($customer_network['agent_reward']) }}</td>
                                             <td>{{ $customer_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
                                             <td>
@@ -79,11 +77,11 @@
                                                         <button id="mark" class="btn btn-danger ml-2 btn-sm" onclick="
                                                             event.preventDefault();
                                                             if (confirm('Are you sure? It will mark as potential customer!')) {
-                                                            document.getElementById('markPotentialCustomer{{ $customer_network['id'] }}').submit()
+                                                            document.getElementById('markHajjCustomer{{ $customer_network['id'] }}').submit()
                                                             }
                                                             ">
                                                             <i class="bi bi-star-fill mr-2"></i> Mark As Potential
-                                                            <form id="markPotentialCustomer{{ $customer_network['id'] }}" class="d-none" action="{{ route('mark-customers.mark', $customer_network['id']) }}" method="POST">
+                                                            <form id="markHajjCustomer{{ $customer_network['id'] }}" class="d-none" action="{{ route('mark-hajj-customer.update', $customer_network['id']) }}" method="POST">
                                                                 @csrf
                                                                 @method('post')
                                                             </form>

@@ -77,12 +77,14 @@ class UsersController extends Controller
         $request->validate([
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|max:255|unique:users,email,'.$user->id,
+            'password' => 'required|string|min:8|max:255|confirmed'
         ]);
 
         $user->update([
             'name'     => $request->name,
             'email'    => $request->email,
             'agent_id'    => $request->agent_id,
+            'password' => Hash::make($request->password),
             'is_active' => $request->is_active
         ]);
 

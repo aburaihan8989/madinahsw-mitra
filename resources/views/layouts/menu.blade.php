@@ -17,19 +17,40 @@
     <a class="c-sidebar-brand-minimized" style="font-size:15px;"><strong><i></i></strong></a>
 </div>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('rewards-customers-list.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('umroh-customers.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
         <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> My Customers Network
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('rewards-customers-list.*') ? 'c-active' : '' }}" href="{{ route('rewards-customers-list.show-customers') }}">
-                    <i class="c-sidebar-nav-icon bi bi-person-vcard-fill" style="line-height: 1;"></i> All Customers
+                <a class="c-sidebar-nav-link {{ request()->routeIs('umroh-customers.*') ? 'c-active' : '' }}" href="{{ route('umroh-customers.data') }}">
+                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Umroh Customers
                 </a>
             </li>
         {{-- @endcan --}}
-    </ul>
+        {{-- @can('access_customers') --}}
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link {{ request()->routeIs('hajj-customers.*') ? 'c-active' : '' }}" href="{{ route('hajj-customers.data') }}">
+                <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Hajj Customers
+            </a>
+        </li>
+        {{-- @endcan --}}
+                {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('umroh-saving-customers.*') ? 'c-active' : '' }}" href="{{ route('umroh-saving-customers.data') }}">
+                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Umroh Saving Customers
+                </a>
+            </li>
+        {{-- @endcan --}}
+                {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('hajj-saving-customers.*') ? 'c-active' : '' }}" href="{{ route('hajj-saving-customers.data') }}">
+                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Hajj Saving Customers
+                </a>
+            </li>
+        {{-- @endcan --}}
+</ul>
 </li>
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('customers.*') || request()->routeIs('potential-customers-list.*') ? 'c-show' : '' }} ">
@@ -39,8 +60,8 @@
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('potential-customers-list.*') ? 'c-active' : '' }}" href="{{ route('potential-customers-list.potential-customers') }}">
-                    <i class="c-sidebar-nav-icon bi bi-person-check" style="line-height: 1;"></i> Potential Customers
+                <a class="c-sidebar-nav-link {{ request()->routeIs('potential-umroh-customers.*') ? 'c-active' : '' }}" href="{{ route('potential-umroh-customers.data') }}">
+                    <i class="c-sidebar-nav-icon bi bi-person-check" style="line-height: 1;"></i> Potential Umroh Customers
                 </a>
             </li>
         {{-- @endcan --}}

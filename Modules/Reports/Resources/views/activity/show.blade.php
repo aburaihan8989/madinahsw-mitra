@@ -19,7 +19,7 @@
                             <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="reference">Reference ID <span class="text-danger">*</span></label>
+                                        <label for="reference">ID Reference <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="reference" required value="{{ $activity->reference }}" disabled>
                                     </div>
                                 </div>

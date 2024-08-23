@@ -64,7 +64,7 @@ class ActivityDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('reference')
-                ->title('Reference ID')
+                ->title('ID Reference')
                 ->className('text-center align-middle'),
 
             Column::make('date_activity')

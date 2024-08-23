@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'List My Potential Customers')
+@section('title', 'List My Potential Umroh Customers')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">My Potential Customers</li>
+        <li class="breadcrumb-item active">My Potential Umroh Customers</li>
     </ol>
 @endsection
 
@@ -21,7 +21,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-header d-flex flex-wrap align-items-center">
                         <div>
-                            Tabel : <strong>Data List My Potential Customers | <i>{{ auth()->user()->name }}</i></strong>
+                            Tabel : <strong>Data List My Potential Umroh Customers | <i>{{ auth()->user()->name }}</i></strong>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                                                         @method('post')
                                                     </form>
                                                 </button> --}}
-                                                <a href="{{ route('edit-potential-customers.edit-potential-customers', $customer_network['id']) }}" class="btn btn-primary">
+                                                <a href="{{ route('edit-potential-umroh-customer.edit', $customer_network['id']) }}" class="btn btn-primary">
                                                     Edit
                                                 </a>
                                             </td>

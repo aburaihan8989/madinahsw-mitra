@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/reports', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/activity-agent', 'ActivityController@getActivity');
+Route::get('/activity-agent/{activity_id}', 'ActivityController@getActivityAgent');
+Route::post('/activity-agent/{activity_id}', 'ActivityController@updateActivityAgent');

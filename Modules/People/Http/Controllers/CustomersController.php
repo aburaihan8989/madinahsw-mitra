@@ -173,6 +173,4 @@ class CustomersController extends Controller
                 ->update(['rating' => $request->rating, 'fu_notes' => $request->fu_notes, 'status' => $request->status]);
     }
 
-
-
 }

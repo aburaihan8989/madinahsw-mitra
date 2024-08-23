@@ -4,6 +4,7 @@ namespace Modules\Reports\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
 use Modules\Reports\Entities\Activity;
@@ -89,4 +90,31 @@ class ActivityController extends Controller
 
         return redirect()->route('activity.index');
     }
+
+
+    public function getActivity() {
+        // abort_if(Gate::denies('show_customers'), 403);
+        $data = Activity::all();
+
+        return $data;
+    }
+
+
+    public function getActivityAgent($activity_id) {
+        // abort_if(Gate::denies('show_customers'), 403);
+        $data = Activity::findOrFail($activity_id);
+
+        return $data;
+    }
+
+
+    public function updateActivityAgent($activity_id, Request $request) {
+        // abort_if(Gate::denies('update_customers'), 403);
+        // @dd($request);
+        $data = DB::table('activities')
+                ->where('id', $activity_id)
+                ->update(['detail_activity' => $request->detail_activity]);
+    }
+
+
 }

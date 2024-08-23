@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Potential Customer')
+@section('title', 'Edit Potential Umroh Customer')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('potential-customers-list.potential-customers') }}">My Potential Customers</a></li>
-        <li class="breadcrumb-item active">Edit Potential Customer</li>
+        <li class="breadcrumb-item"><a href="{{ route('potential-umroh-customers.data') }}">My Potential Umroh Customers</a></li>
+        <li class="breadcrumb-item active">Edit Potential Umroh Customer</li>
     </ol>
 @endsection
 
 @section('content')
     <div class="container-fluid">
-        <form id="edit-potential-form" action="{{ route('poin-customers.poin', $customer['id']) }}" method="POST">
+        <form id="edit-potential-form" action="{{ route('umroh-customer.update', $customer['id']) }}" method="POST">
             @csrf
             @method('post')
             <div class="row">

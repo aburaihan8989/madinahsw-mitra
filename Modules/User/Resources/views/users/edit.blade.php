@@ -48,6 +48,22 @@
                             <div class="form-row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label for="password">Password <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="password" name="password" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="password_confirmation">Confirm Password <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="password" name="password_confirmation"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
                                         <label for="agent_id">ID Agent <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" name="agent_id" required value="{{ $user->agent_id }}">
                                     </div>
