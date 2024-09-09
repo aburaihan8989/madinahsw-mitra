@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Modules\Reports\Entities\Activity;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Reports\DataTables\ActivityDataTable;
+use Modules\Reports\DataTables\ScheduleDataTable;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
 
 class ActivityController extends Controller
@@ -19,6 +20,13 @@ class ActivityController extends Controller
         // abort_if(Gate::denies('access_report'), 403);
 
         return $dataTable->render('reports::activity.index');
+    }
+
+
+    public function schedule(ScheduleDataTable $dataTable) {
+        // abort_if(Gate::denies('access_report'), 403);
+
+        return $dataTable->render('reports::activity.schedule');
     }
 
 

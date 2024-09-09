@@ -14,4 +14,6 @@
 Route::group(['middleware' => 'auth'], function () {
     //Activity Report
     Route::resource('activity', 'ActivityController');
+    Route::get('/schedule', 'ActivityController@schedule')->name('activity.schedule');
+
 });
