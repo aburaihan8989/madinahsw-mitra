@@ -60,7 +60,7 @@
                                             <td>{{ $customer_network['package_name'] }}</td>
                                             <td>{{ $customer_network['agent_code'] . ' | ' . $customer_network['agent_name'] }}</td>
                                             <td>{{ format_currency($customer_network['agent_reward']) }}</td>
-                                            <td>{{ $customer_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
+                                            <td>{{ $customer_network['promo'] == 1 ? 'Full Promo' : ($customer_network['promo2'] == 1 ? 'Limited Promo' : 'Reguler') }}</td>
                                             <td>
                                                 @if($customer_network['mark'] == 1)
                                                     <i class="bi bi-check-circle-fill" style="line-height:1;font-size:25px;color:green;"></i>

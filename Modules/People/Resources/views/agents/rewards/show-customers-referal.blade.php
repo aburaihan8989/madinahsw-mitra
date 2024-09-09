@@ -60,7 +60,7 @@
                                             <td>{{ $customer_referal_network['agent_code'] }}</td>
                                             <td>{{ $customer_referal_network['agent_name'] }}</td>
                                             <td>{{ format_currency($customer_referal_network['referal_reward']) }}</td>
-                                            <td>{{ $customer_referal_network['promo'] == 1 ? 'Promo' : 'Reguler' }}</td>
+                                            <td>{{ $customer_referal_network['promo'] == 1 ? 'Full Promo' : ($customer_referal_network['promo2'] == 1 ? 'Limited Promo' : 'Reguler') }}</td>
                                         </tr>
                                     @empty
                                         <tr>
