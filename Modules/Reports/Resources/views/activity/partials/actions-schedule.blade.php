@@ -4,7 +4,7 @@
 </a> --}}
 {{-- @endcan --}}
 {{-- @can('show_customers') --}}
-    <a href="{{ route('activity.show', $data->id) }}" class="btn btn-primary btn-sm">
+    <a href="{{ route('activity.show-schedule', $data->id) }}" class="btn btn-primary btn-sm">
         <i class="bi bi-eye"></i>
     </a>
 {{-- @endcan --}}

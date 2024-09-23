@@ -89,6 +89,13 @@ class ActivityController extends Controller
     }
 
 
+    public function show_schedule(Activity $id_activity) {
+        // abort_if(Gate::denies('show_report'), 403);
+
+        return view('reports::activity.show-schedule', compact('id_activity'));
+    }
+
+
     public function destroy(Activity $activity) {
         // abort_if(Gate::denies('delete_report'), 403);
 

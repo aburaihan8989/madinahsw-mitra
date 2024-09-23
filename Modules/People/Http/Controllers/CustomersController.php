@@ -35,6 +35,10 @@ class CustomersController extends Controller
     public function store(Request $request) {
         // abort_if(Gate::denies('create_customers'), 403);
 
+        $request->validate([
+            'rating'     => 'nullable|integer|between:0,100'
+        ]);
+
         $customer = Customer::create([
             'agent_id'       => $request->agent_id,
             'agent_code'     => $request->agent_code,
@@ -83,6 +87,10 @@ class CustomersController extends Controller
 
     public function update(Request $request, Customer $customer) {
         // abort_if(Gate::denies('update_customers'), 403);
+
+        $request->validate([
+            'rating'     => 'nullable|integer|between:0,100'
+        ]);
 
         $customer->update([
             'agent_id'       => $request->agent_id,

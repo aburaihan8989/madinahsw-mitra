@@ -10,14 +10,14 @@
     </a>
 </li>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('activity.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('activity.schedule') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
         <i class="c-sidebar-nav-icon bi bi-calendar-check" style="line-height: 1;"></i> Head Office Schedule
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('activity.*') ? 'c-active' : '' }}" href="{{ route('activity.schedule') }}">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('activity.schedule') ? 'c-active' : '' }}" href="{{ route('activity.schedule') }}">
                     <i class="c-sidebar-nav-icon bi bi-calendar-check-fill" style="line-height: 1;"></i> All Schedule
                 </a>
             </li>
@@ -109,14 +109,14 @@
     </ul>
 </li>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('activity.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('activity.index') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
         <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> My Activity Report
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('activity.*') ? 'c-active' : '' }}" href="{{ route('activity.index') }}">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('activity.index') ? 'c-active' : '' }}" href="{{ route('activity.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> All Activity
                 </a>
             </li>

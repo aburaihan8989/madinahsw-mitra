@@ -59,8 +59,8 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="city">City <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="city" required value="{{ $customer->city }}">
+                                        <label for="city">City <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" name="city" value="{{ $customer->city }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -100,8 +100,8 @@
                             <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="rating">Prospek Poin <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="rating" required value="{{ $customer['rating'] }}">
+                                        <label for="rating">Prospek Poin <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" name="rating" value="{{ $customer['rating'] }}">
                                     </div>
                                 </div>
                             </div>
