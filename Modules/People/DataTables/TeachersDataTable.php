@@ -5,38 +5,35 @@ namespace Modules\People\DataTables;
 
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Modules\People\Entities\Customer;
+use Modules\People\Entities\Teacher;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CustomersDataTable extends DataTable
+class TeachersDataTable extends DataTable
 {
 
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->addColumn('gender', function ($data) {
-                return $data->gender == 'L' ? 'Male' : 'Female';
+            ->addColumn('teacher_gender', function ($data) {
+                return $data->gender == 'L' ? 'Laki-Laki' : 'Perempuan';
             })
-            ->addColumn('agent_name', function ($data) {
-                return $data->agent_code . ' | ' . $data->agent_name;
-            })
-            ->addColumn('status', function ($data) {
-                return view('people::customers.partials.status', compact('data'));
+            ->addColumn('teacher_active', function ($data) {
+                return view('people::teachers.partials.status', compact('data'));
             })
             ->addColumn('action', function ($data) {
-                return view('people::customers.partials.actions', compact('data'));
+                return view('people::teachers.partials.actions', compact('data'));
             });
     }
 
-    public function query(Customer $model) {
-        return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
+    public function query(Teacher $model) {
+        return $model->newQuery();
     }
 
     public function html() {
         return $this->builder()
-            ->setTableId('customers-table')
+            ->setTableId('teachers-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
@@ -68,32 +65,28 @@ class CustomersDataTable extends DataTable
                 ->searchable(false)
                 ->className('text-center align-middle'),
 
-            Column::make('customer_name')
-                // ->title('User Name')
+            Column::make('teacher_nip')
+                ->title('Kode Pengajar')
                 ->className('text-center align-middle'),
 
-            Column::make('customer_phone')
-                ->title('Phone Number')
+            Column::make('teacher_name')
+                ->title('Nama Pengajar')
                 ->className('text-center align-middle'),
 
-            Column::make('gender')
-                ->title('Gender')
+            Column::make('teacher_phone')
+                ->title('Kontak Pengajar')
                 ->className('text-center align-middle'),
 
-            Column::make('city')
-                ->title('City')
+            Column::make('teacher_gender')
+                ->title('Group')
                 ->className('text-center align-middle'),
 
-            Column::make('agent_name')
-                ->title('Agent Name')
+            Column::make('teacher_city')
+                ->title('Kota / Kabupaten')
                 ->className('text-center align-middle'),
 
-            Column::make('rating')
-                ->title('Prospek Poin')
-                ->className('text-center align-middle'),
-
-            Column::make('status')
-                ->title('Follow Up')
+            Column::make('teacher_active')
+                ->title('Status')
                 ->className('text-center align-middle'),
 
             Column::computed('action')
@@ -107,6 +100,6 @@ class CustomersDataTable extends DataTable
     }
 
     protected function filename(): string {
-        return 'Customers_' . date('YmdHis');
+        return 'Teachers_' . date('YmdHis');
     }
 }

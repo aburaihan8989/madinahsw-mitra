@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
-class Customer extends Model implements HasMedia
+class Teacher extends Model implements HasMedia
 {
 
     use HasFactory, InteractsWithMedia;
@@ -19,7 +19,7 @@ class Customer extends Model implements HasMedia
     protected $with = ['media'];
 
     public function registerMediaCollections(): void {
-        $this->addMediaCollection('photos')
+        $this->addMediaCollection('teachers')
             ->useFallbackUrl('/images/fallback_profile_image.png');
     }
 

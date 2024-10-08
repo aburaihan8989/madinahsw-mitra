@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row mb-5">
         <div class="col-12 d-flex justify-content-center">
-            <img width="320" src="{{ asset('images/logo-dark.png') }}" alt="Logo">
+            <img width="400" src="{{ asset('images/logo-dark.png') }}" alt="Logo">
         </div>
     </div>
     <div class="row justify-content-center">
@@ -83,10 +83,10 @@
             </div>
 
             <p class="text-center font-weight-bold mt-5 lead" style="font-size: 15px;color:#3f3f3f">
-                <i>Website Agent Management System ® {{ date('Y') }}</i>
+                <i>Cahaya Quran Academy System ® {{ date('Y') }}</i>
             </p>
             <p class="text-center mt-2 lead">
-                <a href="#" class="font-weight-bold text-primary"><i>Marhaban Makkah Madinah © Hajj & Umroh Service</i></a>
+                <a href="#" class="font-weight-bold text-primary"><i>Cahaya Quran Academy © Report Management System</i></a>
             </p>
         </div>
     </div>
