@@ -38,15 +38,17 @@ class TeachersController extends Controller
             // 'teacher_nips'       => 'required|max:255',
             // 'teacher_nik'        => 'required|max:255',
             // 'teacher_name'       => 'required|max:255',
+            // 'teacher_gender'     => 'required',
             // 'teacher_place'      => 'required|max:255',
             // 'teacher_birth'      => 'required',
-            // 'teacher_gender'     => 'required',
             // 'teacher_join'       => 'required',
             // 'teacher_level'      => 'required',
             // 'teacher_phone'      => 'required',
             // 'teacher_email'      => 'required|email|max:255',
             // 'teacher_city'       => 'required|max:255',
             // 'teacher_address'    => 'required',
+            // 'teacher_family'     => 'required',
+            // 'teacher_anak'       => 'required|max:255',
             // 'teacher_active'     => 'required',
         ]);
 
@@ -55,21 +57,23 @@ class TeachersController extends Controller
             'teacher_nips'    => $request->teacher_nips,
             'teacher_nik'     => $request->teacher_nik,
             'teacher_name'    => $request->teacher_name,
+            'teacher_gender'  => $request->teacher_gender,
             'teacher_place'   => $request->teacher_place,
             'teacher_birth'   => $request->teacher_birth,
-            'teacher_gender'  => $request->teacher_gender,
             'teacher_join'    => $request->teacher_join,
             'teacher_level'   => $request->teacher_level,
             'teacher_phone'   => $request->teacher_phone,
             'teacher_email'   => $request->teacher_email,
             'teacher_city'    => $request->teacher_city,
             'teacher_address' => $request->teacher_address,
+            'teacher_family'  => $request->teacher_family,
+            'teacher_anak'    => $request->teacher_anak,
             'teacher_active'  => $request->teacher_active
         ]);
 
         if ($request->has('document')) {
             foreach ($request->input('document') as $file) {
-                $customer->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('teachers');
+                $teacher->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('teachers');
             }
         }
 
@@ -101,32 +105,36 @@ class TeachersController extends Controller
             // 'teacher_nips'       => 'required|max:255',
             // 'teacher_nik'        => 'required|max:255',
             // 'teacher_name'       => 'required|max:255',
+            // 'teacher_gender'     => 'required',
             // 'teacher_place'      => 'required|max:255',
             // 'teacher_birth'      => 'required',
-            // 'teacher_gender'     => 'required',
             // 'teacher_join'       => 'required',
             // 'teacher_level'      => 'required',
             // 'teacher_phone'      => 'required',
             // 'teacher_email'      => 'required|email|max:255',
             // 'teacher_city'       => 'required|max:255',
             // 'teacher_address'    => 'required',
+            // 'teacher_family'     => 'required',
+            // 'teacher_anak'       => 'required|max:255',
             // 'teacher_active'     => 'required',
         ]);
 
-        $teacher = Teacher::create([
+        $teacher->update([
             'teacher_nip'     => $request->teacher_nip,
             'teacher_nips'    => $request->teacher_nips,
             'teacher_nik'     => $request->teacher_nik,
             'teacher_name'    => $request->teacher_name,
+            'teacher_gender'  => $request->teacher_gender,
             'teacher_place'   => $request->teacher_place,
             'teacher_birth'   => $request->teacher_birth,
-            'teacher_gender'  => $request->teacher_gender,
             'teacher_join'    => $request->teacher_join,
             'teacher_level'   => $request->teacher_level,
             'teacher_phone'   => $request->teacher_phone,
             'teacher_email'   => $request->teacher_email,
             'teacher_city'    => $request->teacher_city,
             'teacher_address' => $request->teacher_address,
+            'teacher_family'  => $request->teacher_family,
+            'teacher_anak'    => $request->teacher_anak,
             'teacher_active'  => $request->teacher_active
         ]);
 

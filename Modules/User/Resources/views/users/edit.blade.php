@@ -61,15 +61,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="agent_id">ID Agent <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="agent_id" required value="{{ $user->agent_id }}">
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label for="role">Role <span class="text-danger">*</span></label>
                                 <select class="form-control" name="role" id="role" required>

@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
-class Teacher extends Model implements HasMedia
+class Student extends Model implements HasMedia
 {
 
     use HasFactory, InteractsWithMedia;
@@ -22,13 +22,13 @@ class Teacher extends Model implements HasMedia
         parent::boot();
 
         static::creating(function ($model) {
-            $number = Teacher::max('id') + 1;
-            $model->teacher_kode = make_reference_id('G', $number);
+            $number = Student::max('id') + 1;
+            $model->student_kode = make_reference_id('S', $number);
         });
     }
 
     public function registerMediaCollections(): void {
-        $this->addMediaCollection('teachers')
+        $this->addMediaCollection('students')
             ->useFallbackUrl('/images/fallback_profile_image.png');
     }
 

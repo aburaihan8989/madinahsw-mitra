@@ -13,13 +13,13 @@
 <hr class="sidebar-divider" style="color:white">
 
 <div class="mb-2 ml-3" style="font-size:15px;">
-    <a class="c-sidebar-brand-full" style="font-size:15px;"><strong><i>Menu Database</i></strong></a>
+    <a class="c-sidebar-brand-full" style="font-size:15px;"><strong><i>Menu Management</i></strong></a>
     <a class="c-sidebar-brand-minimized" style="font-size:15px;"><strong><i></i></strong></a>
 </div>
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('teachers.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> Database Pengajar
+        <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> Data Pengajar
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
@@ -32,15 +32,48 @@
     </ul>
 </li>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('activity.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('students.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Database Activity
+        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> Data Siswa
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('activity.*') ? 'c-active' : '' }}" href="{{ route('activity.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Data Activity
+                <a class="c-sidebar-nav-link {{ request()->routeIs('students.*') ? 'c-active' : '' }}" href="{{ route('students.index') }}">
+                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Data Siswa
+                </a>
+            </li>
+        {{-- @endcan --}}
+    </ul>
+</li>
+
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+        <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Data Kegiatan
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="#">
+                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Anak TK
+                </a>
+            </li>
+        {{-- @endcan --}}
+    </ul>
+    <ul class="c-sidebar-nav-dropdown-items">
+        {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="#">
+                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Anak SD
+                </a>
+            </li>
+        {{-- @endcan --}}
+    </ul>
+    <ul class="c-sidebar-nav-dropdown-items">
+        {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="#">
+                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Al Quran
                 </a>
             </li>
         {{-- @endcan --}}
