@@ -2,6 +2,7 @@
     "Upload": true,
     "User": true,
     "People": true,
+    "Study": true,
     "Report": true,
     "Currency": true,
     "Setting": true
