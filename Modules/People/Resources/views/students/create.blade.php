@@ -34,6 +34,12 @@
                                         <input type="text" class="form-control" name="student_nis" required>
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="student_nisn">NISN Siswa <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="student_nisn" required>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-row">

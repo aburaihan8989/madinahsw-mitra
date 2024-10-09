@@ -38,6 +38,12 @@
                                     <input type="text" class="form-control" name="student_nis" required value="{{ $student->student_nis }}" readonly disabled>
                                 </div>
                             </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="student_nisn">NISN Siswa <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="student_nisn" required value="{{ $student->student_nisn }}" readonly disabled>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-row">
