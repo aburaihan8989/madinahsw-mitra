@@ -14,4 +14,6 @@
 Route::group(['middleware' => 'auth'], function () {
     //Activity Report
     Route::resource('report1', 'Report1TasksController');
+    Route::resource('report1result', 'Report1ResultsController');
+
 });

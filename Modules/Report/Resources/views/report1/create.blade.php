@@ -85,7 +85,8 @@
                                         <select class="form-control" name="report1task_active" id="report1task_active" required>
                                             <option value="" selected >Pilih Status</option>
                                             <option value="1">Active</option>
-                                            <option value="2">Non Active</option>
+                                            <option value="2">Completed</option>
+                                            <option value="3">Non Active</option>
                                         </select>
                                     </div>
                                 </div>

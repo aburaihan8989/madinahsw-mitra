@@ -92,7 +92,8 @@
                                         <select class="form-control" name="report1task_active" id="report1task_active" required>
                                             <option value="" selected>Pilih Status</option>
                                             <option {{ $report1->report1task_active == '1' ? 'selected' : '' }} value="1">Active</option>
-                                            <option {{ $report1->report1task_active == '2' ? 'selected' : '' }} value="2">Non Active</option>
+                                            <option {{ $report1->report1task_active == '2' ? 'selected' : '' }} value="2">Completed</option>
+                                            <option {{ $report1->report1task_active == '3' ? 'selected' : '' }} value="3">Non Active</option>
                                         </select>
                                     </div>
                                 </div>
