@@ -49,6 +49,21 @@
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+        <i class="c-sidebar-nav-icon bi bi-book" style="line-height: 1;"></i> Data Pelajaran
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="#">
+                    <i class="c-sidebar-nav-icon bi bi-journal-text" style="line-height: 1;"></i> Data Pelajaran
+                </a>
+            </li>
+        {{-- @endcan --}}
+    </ul>
+</li>
+
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
         <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Data Kegiatan
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
