@@ -1,11 +1,11 @@
 {
-    "name": "Reports",
-    "alias": "reports",
+    "name": "Report",
+    "alias": "report",
     "description": "",
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\Reports\\Providers\\ReportsServiceProvider"
+        "Modules\\Report\\Providers\\ReportServiceProvider"
     ],
     "aliases": {},
     "files": [],

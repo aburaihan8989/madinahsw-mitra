@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Reports\Entities;
+namespace Modules\Report\Entities;
 
 use Illuminate\Support\Carbon;
-use Modules\Reports\Entities\Activity;
+use Modules\Report\Entities\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Reports\DataTables;
+namespace Modules\Report\DataTables;
 
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Modules\Reports\Entities\Activity;
+use Modules\Report\Entities\Activity;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;

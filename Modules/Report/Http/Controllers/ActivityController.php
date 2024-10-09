@@ -1,16 +1,16 @@
 <?php
 
-namespace Modules\Reports\Http\Controllers;
+namespace Modules\Report\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
-use Modules\Reports\Entities\Activity;
+use Modules\Report\Entities\Activity;
 use Illuminate\Contracts\Support\Renderable;
-use Modules\Reports\DataTables\ActivityDataTable;
-use Modules\Reports\DataTables\ScheduleDataTable;
+use Modules\Report\DataTables\ActivityDataTable;
+use Modules\Report\DataTables\ScheduleDataTable;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
 
 class ActivityController extends Controller

@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\Reports\Providers;
+namespace Modules\Report\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class ReportsServiceProvider extends ServiceProvider
+class ReportServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Reports';
+    protected $moduleName = 'Report';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'reports';
+    protected $moduleNameLower = 'report';
 
     /**
      * Boot the application events.
