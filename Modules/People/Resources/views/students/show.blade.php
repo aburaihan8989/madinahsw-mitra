@@ -17,7 +17,7 @@
             <div class="col-lg-12">
                 {{-- @include('utils.alerts') --}}
                 <div class="form-group">
-                    <a class="btn btn-primary bi bi-arrow-return-left mr-2" href="{{ route('students.index') }}"> Kembali</a>
+                    <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('students.index') }}"> Kembali</a>
                 </div>
             </div>
 

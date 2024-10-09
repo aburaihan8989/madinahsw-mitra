@@ -54,9 +54,6 @@ class StudentsDataTable extends DataTable
 
     protected function getColumns() {
         return [
-            Column::make('id')
-                ->visible(false),
-
             Column::make('row_number')
                 ->title('No')
                 ->render('meta.row + meta.settings._iDisplayStart + 1;')

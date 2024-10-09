@@ -1,44 +1,58 @@
 <?php
 
-namespace Modules\People\DataTables;
-
+namespace Modules\Report\DataTables;
 
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use Modules\Study\Entities\Studie;
+use Modules\People\Entities\Student;
 use Modules\People\Entities\Teacher;
+use Modules\Report\Entities\Report1Task;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TeachersDataTable extends DataTable
+class Report1TasksDataTable extends DataTable
 {
 
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->addColumn('teacher_gender', function ($data) {
-                return $data->teacher_gender == 'L' ? 'Laki-Laki' : 'Perempuan';
+            ->editColumn('report1task_date', function($model){
+                $formatDate = date('d-m-Y',strtotime($model->report1task_date));
+                return $formatDate;
             })
-            ->addColumn('teacher_active', function ($data) {
-                return view('people::teachers.partials.status', compact('data'));
+            ->addColumn('report1task_student_id', function ($data) {
+                return Student::findOrFail($data->report1task_student_id)->student_kode . ' | ' . Student::findOrFail($data->report1task_student_id)->student_name;
+            })
+            ->addColumn('report1task_teacher_id', function ($data) {
+                return Teacher::findOrFail($data->report1task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($data->report1task_teacher_id)->teacher_name;
+            })
+            ->addColumn('report1task_studi_id', function ($data) {
+                return Studie::findOrFail($data->report1task_studi_id)->studi_code . ' | ' . Studie::findOrFail($data->report1task_studi_id)->studi_name;
+            })
+            ->addColumn('report1task_active', function ($data) {
+                return view('report::report1.partials.status', compact('data'));
             })
             ->addColumn('action', function ($data) {
-                return view('people::teachers.partials.actions', compact('data'));
+                return view('report::report1.partials.actions', compact('data'));
             });
     }
 
-    public function query(Teacher $model) {
+    public function query(Report1Task $model) {
         return $model->newQuery();
+        // return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
     }
+
 
     public function html() {
         return $this->builder()
-            ->setTableId('teachers-table')
+            ->setTableId('report1-tasks-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
-                                       'tr' .
-                                 <'row'<'col-md-5'i><'col-md-7 mt-2'p>>")
+                                'tr' .
+                                <'row'<'col-md-5'i><'col-md-7 mt-2'p>>")
             ->orderBy(0)
             ->buttons(
                 Button::make('excel')
@@ -62,31 +76,27 @@ class TeachersDataTable extends DataTable
                 ->searchable(false)
                 ->className('text-center align-middle'),
 
-            Column::make('teacher_kode')
-                ->title('Kode Pengajar')
+            Column::make('report1task_code')
+                ->title('Kode Daftar')
                 ->className('text-center align-middle'),
 
-            Column::make('teacher_nip')
-                ->title('NIP Pengajar')
+            Column::make('report1task_date')
+                ->title('Tanggal Terdaftar')
                 ->className('text-center align-middle'),
 
-            Column::make('teacher_name')
+            Column::computed('report1task_student_id')
+                ->title('Nama Siswa')
+                ->className('text-center align-middle'),
+
+            Column::make('report1task_studi_id')
+                ->title('Nama Pelajaran')
+                ->className('text-center align-middle'),
+
+            Column::make('report1task_teacher_id')
                 ->title('Nama Pengajar')
                 ->className('text-center align-middle'),
 
-            Column::make('teacher_phone')
-                ->title('Kontak Pengajar')
-                ->className('text-center align-middle'),
-
-            Column::make('teacher_gender')
-                ->title('Gender')
-                ->className('text-center align-middle'),
-
-            Column::make('teacher_city')
-                ->title('Kota / Kabupaten')
-                ->className('text-center align-middle'),
-
-            Column::make('teacher_active')
+            Column::make('report1task_active')
                 ->title('Status')
                 ->className('text-center align-middle'),
 
@@ -101,6 +111,6 @@ class TeachersDataTable extends DataTable
     }
 
     protected function filename(): string {
-        return 'Teachers_' . date('YmdHis');
+        return 'Report1Tasks_' . date('YmdHis');
     }
 }
