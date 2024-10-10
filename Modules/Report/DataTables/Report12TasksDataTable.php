@@ -37,8 +37,8 @@ class Report12TasksDataTable extends DataTable
             ->addColumn('input_pagi', function ($data) {
                 return view('report::report1.partials.actions-pagi', compact('data'));
             })
-            ->addColumn('input_sore', function ($data) {
-                return view('report::report1.partials.actions-sore', compact('data'));
+            ->addColumn('input_siang', function ($data) {
+                return view('report::report1.partials.actions-siang', compact('data'));
             })
             ->addColumn('action', function ($data) {
                 return view('report::report1.partials.actions-riwayat', compact('data'));
@@ -106,8 +106,8 @@ class Report12TasksDataTable extends DataTable
                 ->title('Nilai Pagi')
                 ->className('text-center align-middle'),
 
-            Column::make('input_sore')
-                ->title('Nilai Sore')
+            Column::make('input_siang')
+                ->title('Nilai Siang')
                 ->className('text-center align-middle'),
 
             Column::make('report1task_active')

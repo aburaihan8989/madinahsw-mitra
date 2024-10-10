@@ -105,13 +105,13 @@ class Report1ResultsDataTable extends DataTable
                 ->title('Nilai Pagi')
                 ->className('text-center align-middle'),
 
-            // Column::make('report1_value2')
-            //     ->title('Nilai Siang')
-            //     ->className('text-center align-middle'),
-
-            Column::make('report1_value3')
-                ->title('Nilai Sore')
+            Column::make('report1_value2')
+                ->title('Nilai Siang')
                 ->className('text-center align-middle'),
+
+            // Column::make('report1_value3')
+            //     ->title('Nilai Sore')
+            //     ->className('text-center align-middle'),
 
             Column::computed('action')
                 ->exportable(false)

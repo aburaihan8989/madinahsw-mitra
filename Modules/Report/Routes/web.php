@@ -21,8 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/result1-pagi/{id}', 'Report1ResultsController@pagi_create')->name('report1result.pagi_create');
     Route::post('/result1-pagi/{id}', 'Report1ResultsController@pagi_store')->name('report1result.pagi_store');
 
-    Route::get('/result1-sore/{id}', 'Report1ResultsController@sore_create')->name('report1result.sore_create');
-    Route::post('/result1-sore/{id}', 'Report1ResultsController@sore_store')->name('report1result.sore_store');
+    Route::get('/result1-siang/{id}', 'Report1ResultsController@siang_create')->name('report1result.siang_create');
+    Route::post('/result1-siang/{id}', 'Report1ResultsController@siang_store')->name('report1result.siang_store');
 
 
 });

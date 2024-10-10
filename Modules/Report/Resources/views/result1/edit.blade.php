@@ -3,7 +3,7 @@
 @if ($report1result->report1_waktu == 1)
     @section('title', 'Edit Nilai Pagi Siswa Kelas Mengaji Anak TK')
 @else
-    @section('title', 'Edit Nilai Sore Siswa Kelas Mengaji Anak TK')
+    @section('title', 'Edit Nilai Siang Siswa Kelas Mengaji Anak TK')
 @endif
 
 @section('breadcrumb')
@@ -27,7 +27,7 @@
                         @if ($report1result->report1_waktu == 1)
                             <button class="btn btn-primary">Update Nilai Pagi Siswa <i class="bi bi-floppy ml-1"></i></button>
                         @else
-                            <button class="btn btn-primary">Update Nilai Sore Siswa <i class="bi bi-floppy ml-1"></i></button>
+                            <button class="btn btn-primary">Update Nilai Siang Siswa <i class="bi bi-floppy ml-1"></i></button>
                         @endif
                     </div>
                 </div>
@@ -121,8 +121,8 @@
                                 @else
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="report1_value3">Nilai Sore <span class="text-danger"></span></label>
-                                            <input type="text" class="form-control" name="report1_value3" value="{{ $report1result->report1_value3 }}">
+                                            <label for="report1_value2">Nilai Siang <span class="text-danger"></span></label>
+                                            <input type="text" class="form-control" name="report1_value2" value="{{ $report1result->report1_value2 }}">
                                         </div>
                                     </div>
                                 @endif

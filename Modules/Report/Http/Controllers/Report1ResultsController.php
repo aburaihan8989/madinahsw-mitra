@@ -81,15 +81,15 @@ class Report1ResultsController extends Controller
     }
 
 
-    public function sore_create($id) {
+    public function siang_create($id) {
         // abort_if(Gate::denies('create_report'), 403);
         $report1task = Report1Task::findOrFail($id);
 
-        return view('report::result1.sore-create', compact('report1task'));
+        return view('report::result1.siang-create', compact('report1task'));
     }
 
 
-    public function sore_store(Request $request) {
+    public function siang_store(Request $request) {
         // abort_if(Gate::denies('create_report'), 403);
 
         $request->validate([
@@ -125,12 +125,12 @@ class Report1ResultsController extends Controller
             'report1_class_id'      => $request->report1_class_id,
             'report1_book1'         => $request->report1_book1,
             'report1_book2'         => $request->report1_book2,
-            'report1_value1'        => $request->report1_value1,
+            'report1_value2'        => $request->report1_value2,
             'report1_waktu'         => $request->report1_waktu,
             'report1_note'          => $request->report1_note
         ]);
 
-        toast('Input Nilai Sore Siswa Created!', 'success');
+        toast('Input Nilai Siang Siswa Created!', 'success');
 
         return redirect()->route('report1.index');
     }

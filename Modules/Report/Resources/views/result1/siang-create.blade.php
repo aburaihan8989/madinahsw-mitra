@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Input Nilai Sore Siswa Kelas Mengaji Anak TK')
+@section('title', 'Input Nilai Siang Siswa Kelas Mengaji Anak TK')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('report1.index') }}">Kelas Mengaji Anak TK</a></li>
-        <li class="breadcrumb-item active">Input Nilai Sore Siswa Kelas Mengaji Anak TK</li>
+        <li class="breadcrumb-item active">Input Nilai Siang Siswa Kelas Mengaji Anak TK</li>
     </ol>
 @endsection
 
@@ -104,8 +104,8 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="report1_value3">Nilai Sore <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="report1_value3">
+                                        <label for="report1_value2">Nilai Siang <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" name="report1_value2">
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
 
                             <input type="hidden" value="{{ $report1task->id }}" name="report1_id">
                             <input type="hidden" value="{{ $report1task->report1task_class_id }}" name="report1_class_id">
-                            <input type="hidden" value="3" name="report1_waktu">
+                            <input type="hidden" value="2" name="report1_waktu">
 
                         </div>
                     </div>
