@@ -1,16 +1,20 @@
 @extends('layouts.app')
 
 @if ($report1result->report1_waktu == 1)
-    @section('title', 'Edit Nilai Pagi Siswa Kelas Mengaji Anak TK')
+    @section('title', 'View Nilai Pagi Siswa Kelas Mengaji Anak TK')
 @else
-    @section('title', 'Edit Nilai Siang Siswa Kelas Mengaji Anak TK')
+    @section('title', 'View Nilai Siang Siswa Kelas Mengaji Anak TK')
 @endif
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('report1result.index') }}">Laporan Kelas Mengaji Anak TK</a></li>
-        <li class="breadcrumb-item active">Edit Nilai Pagi Siswa Kelas Mengaji Anak TK</li>
+        @if ($report1result->report1_waktu == 1)
+            <li class="breadcrumb-item active">View Nilai Pagi Siswa Kelas Mengaji Anak TK</li>
+        @else
+            <li class="breadcrumb-item active">View Nilai Siang Siswa Kelas Mengaji Anak TK</li>
+        @endif
     </ol>
 @endsection
 
