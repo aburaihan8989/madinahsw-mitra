@@ -128,6 +128,30 @@
     </ul>
 </li>
 
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
+        <i class="c-sidebar-nav-icon bi bi-printer" style="line-height: 1;"></i> Cetak Laporan
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" style="color:gray;">
+                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Cetak By Siswa
+                </a>
+            </li>
+        {{-- @endcan --}}
+    </ul>
+    <ul class="c-sidebar-nav-dropdown-items">
+        {{-- @can('access_customers') --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" style="color:gray;">
+                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Cetak By Kelas
+                </a>
+            </li>
+        {{-- @endcan --}}
+    </ul>
+</li>
+
 @can('access_user_management')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('roles*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">

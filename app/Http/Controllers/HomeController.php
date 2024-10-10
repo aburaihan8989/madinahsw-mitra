@@ -17,7 +17,7 @@ class HomeController extends Controller
         $teachers = Teacher::count();
         $students = Student::count();
         $studies = Studie::count();
-        $kegiatan = Teacher::count();
+        $kegiatan = 1;
 
         return view('home', compact(
             'teachers',

@@ -64,7 +64,7 @@
                                 <i class="bi bi-journal-check font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-uppercase font-weight-bold medium">Data Kegiatan</div>
+                                <div class="text-uppercase font-weight-bold medium">Data Aktifitas</div>
                                 <div class="text-value text-primary">{{ $kegiatan . ' Kegiatan' }}</div>
                             </div>
                         </div>
