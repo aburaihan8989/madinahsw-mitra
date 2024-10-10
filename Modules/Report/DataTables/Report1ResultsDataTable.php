@@ -7,45 +7,36 @@ use Yajra\DataTables\Html\Column;
 use Modules\Study\Entities\Studie;
 use Modules\People\Entities\Student;
 use Modules\People\Entities\Teacher;
-use Modules\Report\Entities\Report1Task;
+use Modules\Report\Entities\Report1Result;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class Report1TasksDataTable extends DataTable
+class Report1ResultsDataTable extends DataTable
 {
 
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->editColumn('report1task_date', function($model){
-                $formatDate = date('d-m-Y',strtotime($model->report1task_date));
+            ->editColumn('report1_date', function($model){
+                $formatDate = date('d-m-Y',strtotime($model->report1_date));
                 return $formatDate;
             })
-            ->addColumn('report1task_student_id', function ($data) {
-                return Student::findOrFail($data->report1task_student_id)->student_kode . ' | ' . Student::findOrFail($data->report1task_student_id)->student_name;
+            ->addColumn('report1_student_id', function ($data) {
+                return Student::findOrFail($data->report1_student_id)->student_kode . ' | ' . Student::findOrFail($data->report1_student_id)->student_name;
             })
-            ->addColumn('report1task_teacher_id', function ($data) {
-                return Teacher::findOrFail($data->report1task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($data->report1task_teacher_id)->teacher_name;
+            ->addColumn('report1_teacher_id', function ($data) {
+                return Teacher::findOrFail($data->report1_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($data->report1_teacher_id)->teacher_name;
             })
-            ->addColumn('report1task_studi_id', function ($data) {
-                return Studie::findOrFail($data->report1task_studi_id)->studi_code . ' | ' . Studie::findOrFail($data->report1task_studi_id)->studi_name;
-            })
-            ->addColumn('report1task_active', function ($data) {
-                return view('report::report1.partials.status', compact('data'));
-            })
-            ->addColumn('input_pagi', function ($data) {
-                return view('report::report1.partials.actions-pagi', compact('data'));
-            })
-            ->addColumn('input_sore', function ($data) {
-                return view('report::report1.partials.actions-sore', compact('data'));
+            ->addColumn('report1_studi_id', function ($data) {
+                return Studie::findOrFail($data->report1_studi_id)->studi_code . ' | ' . Studie::findOrFail($data->report1_studi_id)->studi_name;
             })
             ->addColumn('action', function ($data) {
-                return view('report::report1.partials.actions', compact('data'));
+                return view('report::result1.partials.actions', compact('data'));
             });
     }
 
-    public function query(Report1Task $model) {
+    public function query(Report1Result $model) {
         return $model->newQuery();
         // return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
     }
@@ -53,7 +44,7 @@ class Report1TasksDataTable extends DataTable
 
     public function html() {
         return $this->builder()
-            ->setTableId('report1-tasks-table')
+            ->setTableId('report1-results-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
@@ -82,42 +73,50 @@ class Report1TasksDataTable extends DataTable
                 ->searchable(false)
                 ->className('text-center align-middle'),
 
-            Column::make('report1task_code')
-                ->title('Kode Daftar')
+            Column::make('report1_code')
+                ->title('Kode Result')
                 ->className('text-center align-middle'),
 
-            Column::make('report1task_date')
-                ->title('Tanggal Terdaftar')
+            Column::make('report1_date')
+                ->title('Tanggal Result')
                 ->className('text-center align-middle'),
 
-            Column::computed('report1task_student_id')
+            Column::computed('report1_student_id')
                 ->title('Nama Siswa')
                 ->className('text-center align-middle'),
 
-            Column::make('report1task_studi_id')
+            Column::make('report1_studi_id')
                 ->title('Nama Pelajaran')
                 ->className('text-center align-middle'),
 
-            Column::make('report1task_teacher_id')
+            Column::make('report1_teacher_id')
                 ->title('Nama Pengajar')
                 ->className('text-center align-middle'),
 
-            Column::make('input_pagi')
+            Column::make('report1_book1')
+                ->title('Materi')
+                ->className('text-center align-middle'),
+
+            Column::make('report1_book2')
+                ->title('Halaman')
+                ->className('text-center align-middle'),
+
+            Column::make('report1_value1')
                 ->title('Nilai Pagi')
                 ->className('text-center align-middle'),
 
-            Column::make('input_sore')
+            Column::make('report1_value2')
+                ->title('Nilai Siang')
+                ->className('text-center align-middle'),
+
+            Column::make('report1_value3')
                 ->title('Nilai Sore')
                 ->className('text-center align-middle'),
 
-            Column::make('report1task_active')
-                ->title('Status')
-                ->className('text-center align-middle'),
-
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->className('text-center align-middle'),
+            // Column::computed('action')
+            //     ->exportable(false)
+            //     ->printable(false)
+            //     ->className('text-center align-middle'),
 
             Column::make('created_at')
                 ->visible(false)
@@ -125,6 +124,6 @@ class Report1TasksDataTable extends DataTable
     }
 
     protected function filename(): string {
-        return 'Report1Tasks_' . date('YmdHis');
+        return 'Report1Results_' . date('YmdHis');
     }
 }
