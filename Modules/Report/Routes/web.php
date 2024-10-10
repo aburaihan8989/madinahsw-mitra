@@ -24,12 +24,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/result1-sore/{id}', 'Report1ResultsController@sore_create')->name('report1result.sore_create');
     Route::post('/result1-sore/{id}', 'Report1ResultsController@sore_store')->name('report1result.sore_store');
 
-    // Route::get('/umroh-manifest-customers/{umroh_manifest_id}/create', 'UmrohManifestCustomerController@create')->name('umroh-manifest-customers.create');
-    // Route::post('/umroh-manifest-customers/store/{umroh_manifest_id}', 'UmrohManifestCustomerController@store')->name('umroh-manifest-customers.store');
-    // Route::delete('/umroh-manifest-customers/destroy/{umroh_manifest_customer_id}', 'UmrohManifestCustomerController@destroy')->name('umroh-manifest-customers.destroy');
-    // Route::get('/umroh-manifest-customers/{umroh_manifest_customer_id}/edit', 'UmrohManifestCustomerController@edit')->name('umroh-manifest-customers.edit');
-    // Route::patch('/umroh-manifest-customers/update/{umroh_manifest_customer_id}', 'UmrohManifestCustomerController@update')->name('umroh-manifest-customers.update');
-    // Route::get('/umroh-manifest-customers/{umroh_manifest_customer_id}', 'UmrohManifestCustomerController@show')->name('umroh-manifest-customers.show');
-
 
 });
