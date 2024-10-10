@@ -1,26 +1,34 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Daftar Siswa Kelas Mengaji Anak TK')
+@if ($report1result->report1_waktu == 1)
+    @section('title', 'Edit Nilai Pagi Siswa Kelas Mengaji Anak TK')
+@else
+    @section('title', 'Edit Nilai Sore Siswa Kelas Mengaji Anak TK')
+@endif
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('report1.index') }}">Kelas Mengaji Anak TK</a></li>
-        <li class="breadcrumb-item active">Edit Daftar Siswa Kelas Mengaji Anak TK</li>
+        <li class="breadcrumb-item"><a href="{{ route('report1result.index') }}">Laporan Kelas Mengaji Anak TK</a></li>
+        <li class="breadcrumb-item active">Edit Nilai Pagi Siswa Kelas Mengaji Anak TK</li>
     </ol>
 @endsection
 
 @section('content')
     <div class="container-fluid">
-        <form id="report1-form" action="{{ route('report1.update', $report1) }}" method="POST" enctype="multipart/form-data">
+        <form id="report1result-form" action="{{ route('report1result.update', $report1result) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="row">
                 <div class="col-lg-12">
                     @include('utils.alerts')
                     <div class="form-group">
-                        <a class="btn btn-warning bi bi-arrow-return-left mr-2" href="{{ route('report1.index') }}"> Kembali</a>
-                        <button class="btn btn-primary">Update Daftar Siswa <i class="bi bi-floppy ml-1"></i></button>
+                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('report1result.index') }}"> Kembali</a>
+                        @if ($report1result->report1_waktu == 1)
+                            <button class="btn btn-primary">Update Nilai Pagi Siswa <i class="bi bi-floppy ml-1"></i></button>
+                        @else
+                            <button class="btn btn-primary">Update Nilai Sore Siswa <i class="bi bi-floppy ml-1"></i></button>
+                        @endif
                     </div>
                 </div>
 
@@ -31,14 +39,8 @@
                             <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="report1task_code">Kode Daftar <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="report1task_code" required value="{{ $report1->report1task_code }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="report1task_date">Tanggal Daftar <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="report1task_date" required value="{{ $report1->report1task_date }}">
+                                        <label for="report1_date">Tanggal Input Nilai <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" name="report1_date" required value="{{ $report1result->report1_date }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -47,11 +49,12 @@
                                 <div class="col-lg-4">
                                     <div class="from-group">
                                         <div class="form-group">
-                                            <label for="report1task_student_id">Nama Siswa <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="report1task_student_id" id="report1task_student_id" required>
-                                                <option value="" selected disabled>Pilih Nama Siswa</option>
+                                            <label for="report1_student_id">Nama Siswa <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="report1_student_id" id="report1_student_id" required readonly>
                                                 @foreach(\Modules\People\Entities\Student::all() as $siswa)
-                                                    <option {{ $report1->report1task_student_id == $siswa->id ? 'selected' : '' }} value="{{ $siswa->id }}">{{ $siswa->student_kode . ' | ' . $siswa->student_name }}</option>
+                                                    @if ($report1result->report1_student_id == $siswa->id)
+                                                        <option {{ $report1result->report1_student_id == $siswa->id ? 'selected' : '' }} value="{{ $siswa->id }}">{{ $siswa->student_kode . ' | ' . $siswa->student_name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -60,11 +63,12 @@
                                 <div class="col-lg-4">
                                     <div class="from-group">
                                         <div class="form-group">
-                                            <label for="report1task_teacher_id">Nama Pengajar <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="report1task_teacher_id" id="report1task_teacher_id" required>
-                                                <option value="" selected disabled>Pilih Nama Pengajar</option>
+                                            <label for="report1_teacher_id">Nama Pengajar <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="report1_teacher_id" id="report1_teacher_id" required readonly>
                                                 @foreach(\Modules\People\Entities\Teacher::all() as $pengajar)
-                                                    <option {{ $report1->report1task_teacher_id == $pengajar->id ? 'selected' : '' }} value="{{ $pengajar->id }}">{{ $pengajar->teacher_kode . ' | ' . $pengajar->teacher_name }}</option>
+                                                    @if ($report1result->report1_teacher_id == $pengajar->id)
+                                                        <option {{ $report1result->report1_teacher_id == $pengajar->id ? 'selected' : '' }} value="{{ $pengajar->id }}">{{ $pengajar->teacher_kode . ' | ' . $pengajar->teacher_name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -73,11 +77,12 @@
                                 <div class="col-lg-4">
                                     <div class="from-group">
                                         <div class="form-group">
-                                            <label for="report1task_studi_id">Nama Pelajaran <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="report1task_studi_id" id="report1task_studi_id" required>
-                                                <option value="" selected disabled>Pilih Nama Pelajaran</option>
+                                            <label for="report1_studi_id">Nama Pelajaran <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="report1_studi_id" id="report1_studi_id" required readonly>
                                                 @foreach(\Modules\Study\Entities\Studie::all() as $studi)
-                                                    <option {{ $report1->report1task_studi_id == $studi->id ? 'selected' : '' }} value="{{ $studi->id }}">{{ $studi->studi_code . ' | ' . $studi->studi_name }}</option>
+                                                    @if ($report1result->report1_studi_id == $studi->id)
+                                                        <option {{ $report1result->report1_studi_id == $studi->id ? 'selected' : '' }} value="{{ $studi->id }}">{{ $studi->studi_code . ' | ' . $studi->studi_name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -88,25 +93,53 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="report1task_active">Status <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="report1task_active" id="report1task_active" required>
-                                            <option value="" selected>Pilih Status</option>
-                                            <option {{ $report1->report1task_active == '1' ? 'selected' : '' }} value="1">Active</option>
-                                            <option {{ $report1->report1task_active == '2' ? 'selected' : '' }} value="2">Completed</option>
-                                            <option {{ $report1->report1task_active == '3' ? 'selected' : '' }} value="3">Non Active</option>
+                                        <label for="report1_book1">Materi <span class="text-danger">*</span></label>
+                                        <select class="form-control" name="report1_book1" id="report1_book1" required>
+                                            <option value="" selected >Pilih Materi</option>
+                                            <option {{ $report1result->report1_book1 == 'IQRA 1' ? 'selected' : '' }} value="IQRA 1">IQRA 1</option>
+                                            <option {{ $report1result->report1_book1 == 'IQRA 2' ? 'selected' : '' }} value="IQRA 2">IQRA 2</option>
+                                            <option {{ $report1result->report1_book1 == 'IQRA 3' ? 'selected' : '' }} value="IQRA 3">IQRA 3</option>
+                                            <option {{ $report1result->report1_book1 == 'IQRA 4' ? 'selected' : '' }} value="IQRA 4">IQRA 4</option>
+                                            <option {{ $report1result->report1_book1 == 'IQRA 5' ? 'selected' : '' }} value="IQRA 5">IQRA 5</option>
+                                            <option {{ $report1result->report1_book1 == 'IQRA 6' ? 'selected' : '' }} value="IQRA 6">IQRA 6</option>
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="report1_book2">Halaman <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" name="report1_book2" value="{{ $report1result->report1_book2 }}">
+                                    </div>
+                                </div>
+                                @if ($report1result->report1_waktu == 1)
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="report1_value1">Nilai Pagi <span class="text-danger"></span></label>
+                                            <input type="text" class="form-control" name="report1_value1" value="{{ $report1result->report1_value1 }}">
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="report1_value3">Nilai Sore <span class="text-danger"></span></label>
+                                            <input type="text" class="form-control" name="report1_value3" value="{{ $report1result->report1_value3 }}">
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="form-row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="report1task_note">Catatan Daftar </label>
-                                        <textarea name="report1task_note" id="report1task_note" rows="3 " class="form-control">{{ $report1->report1task_note }}</textarea>
+                                        <label for="report1_note">Catatan Nilai </label>
+                                        <textarea name="report1_note" id="report1_note" rows="3 " class="form-control">{{ $report1result->report1_note }}</textarea>
                                     </div>
                                 </div>
                             </div>
+
+                            <input type="hidden" value="{{ $report1result->report1_id }}" name="report1_id">
+                            <input type="hidden" value="{{ $report1result->report1_class_id }}" name="report1_class_id">
+                            <input type="hidden" value="{{ $report1result->report1_waktu }}" name="report1_waktu">
 
                         </div>
                     </div>

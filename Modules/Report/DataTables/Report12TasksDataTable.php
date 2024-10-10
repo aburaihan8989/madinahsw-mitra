@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class Report1TasksDataTable extends DataTable
+class Report12TasksDataTable extends DataTable
 {
 
     public function dataTable($query) {
@@ -41,12 +41,12 @@ class Report1TasksDataTable extends DataTable
                 return view('report::report1.partials.actions-sore', compact('data'));
             })
             ->addColumn('action', function ($data) {
-                return view('report::report1.partials.actions', compact('data'));
+                return view('report::report1.partials.actions-riwayat', compact('data'));
             });
     }
 
     public function query(Report1Task $model) {
-        return $model->newQuery()->where('report1task_active', 1);
+        return $model->newQuery()->where('report1task_active', '<>', 1);
         // return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
     }
 

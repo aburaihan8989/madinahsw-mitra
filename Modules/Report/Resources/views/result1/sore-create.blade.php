@@ -121,6 +121,7 @@
 
                             <input type="hidden" value="{{ $report1task->id }}" name="report1_id">
                             <input type="hidden" value="{{ $report1task->report1task_class_id }}" name="report1_class_id">
+                            <input type="hidden" value="3" name="report1_waktu">
 
                         </div>
                     </div>

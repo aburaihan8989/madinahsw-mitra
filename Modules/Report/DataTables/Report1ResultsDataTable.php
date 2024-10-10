@@ -81,15 +81,15 @@ class Report1ResultsDataTable extends DataTable
                 ->title('Tanggal Result')
                 ->className('text-center align-middle'),
 
-            Column::computed('report1_student_id')
+            Column::make('report1_student_name')
                 ->title('Nama Siswa')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_studi_id')
+            Column::make('report1_studi_name')
                 ->title('Nama Pelajaran')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_teacher_id')
+            Column::make('report1_teacher_name')
                 ->title('Nama Pengajar')
                 ->className('text-center align-middle'),
 
@@ -113,10 +113,10 @@ class Report1ResultsDataTable extends DataTable
                 ->title('Nilai Sore')
                 ->className('text-center align-middle'),
 
-            // Column::computed('action')
-            //     ->exportable(false)
-            //     ->printable(false)
-            //     ->className('text-center align-middle'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->className('text-center align-middle'),
 
             Column::make('created_at')
                 ->visible(false)

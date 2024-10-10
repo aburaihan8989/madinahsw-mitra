@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Kelas Mengaji Anak TK')
+@section('title', 'Riwayat Kelas Mengaji Anak TK')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Kelas Mengaji Anak TK</li>
+        <li class="breadcrumb-item active">Riwayat Kelas Mengaji Anak TK</li>
     </ol>
 @endsection
 
@@ -19,14 +19,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('report1.create') }}" class="btn btn-primary">
-                            Daftar Siswa <i class="bi bi-plus"></i>
-                        </a>
-
-                        <a href="{{ route('report12.riwayat') }}" class="btn btn-info text-white" style="float: right;">
-                            Riwayat Siswa <i class="bi bi-clock-history ml-1"></i>
-                        </a>
-
+                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('report1.index') }}"> Kembali</a>
 
                         <hr>
 

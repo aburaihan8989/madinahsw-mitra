@@ -16,6 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('report1', 'Report1TasksController');
     Route::resource('report1result', 'Report1ResultsController');
 
+    Route::get('report12', 'Report1TasksController@riwayat')->name('report12.riwayat');
+
     Route::get('/result1-pagi/{id}', 'Report1ResultsController@pagi_create')->name('report1result.pagi_create');
     Route::post('/result1-pagi/{id}', 'Report1ResultsController@pagi_store')->name('report1result.pagi_store');
 

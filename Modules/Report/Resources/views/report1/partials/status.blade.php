@@ -3,7 +3,7 @@
         Active
     </span>
 @elseif ($data->report1task_active == '2')
-    <span class="badge badge-primary" style="font-size: 14px;">
+    <span class="badge badge-warning" style="font-size: 14px;">
         Completed
     </span>
 @else
