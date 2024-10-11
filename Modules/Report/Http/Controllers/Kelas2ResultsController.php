@@ -77,7 +77,7 @@ class Kelas2ResultsController extends Controller
 
         toast('Input Nilai Pagi Siswa Created!', 'success');
 
-        return redirect()->route('kelas2-result.index');
+        return redirect()->route('kelas2-task.index');
     }
 
 
@@ -132,7 +132,7 @@ class Kelas2ResultsController extends Controller
 
         toast('Input Nilai Siang Siswa Created!', 'success');
 
-        return redirect()->route('kelas2-result.index');
+        return redirect()->route('kelas2-task.index');
     }
 
 
@@ -187,7 +187,7 @@ class Kelas2ResultsController extends Controller
 
         toast('Input Nilai Sore Siswa Created!', 'success');
 
-        return redirect()->route('kelas2-result.index');
+        return redirect()->route('kelas2-task.index');
     }
 
 
