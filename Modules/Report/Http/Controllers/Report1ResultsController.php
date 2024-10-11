@@ -185,7 +185,11 @@ class Report1ResultsController extends Controller
             'report1_note'          => $request->report1_note
         ]);
 
-        toast('Edit Nilai Pagi Siswa Created!', 'success');
+        if ($request->kelas2_result_waktu == 1) {
+            toast('Edit Nilai Pagi Siswa Updated!', 'success');
+        } else {
+            toast('Edit Nilai Siang Siswa Updated!', 'success');
+        }
 
         return redirect()->route('report1result.index');
     }

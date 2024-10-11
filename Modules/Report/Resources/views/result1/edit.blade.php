@@ -29,9 +29,9 @@
                     <div class="form-group">
                         <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('report1result.index') }}"> Kembali</a>
                         @if ($report1result->report1_waktu == 1)
-                            <button class="btn btn-primary">Update Nilai Pagi Siswa <i class="bi bi-floppy ml-1"></i></button>
+                            <button class="btn btn-primary">Update Nilai Pagi <i class="bi bi-floppy ml-1"></i></button>
                         @else
-                            <button class="btn btn-primary">Update Nilai Siang Siswa <i class="bi bi-floppy ml-1"></i></button>
+                            <button class="btn btn-primary">Update Nilai Siang <i class="bi bi-floppy ml-1"></i></button>
                         @endif
                     </div>
                 </div>

@@ -19,7 +19,7 @@
                     @include('utils.alerts')
                     <div class="form-group">
                         <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('report1.index') }}"> Kembali</a>
-                        <button class="btn btn-primary">Simpan Nilai <i class="bi bi-floppy ml-1"></i></button>
+                        <button class="btn btn-primary">Simpan Nilai Pagi <i class="bi bi-floppy ml-1"></i></button>
                     </div>
                 </div>
 
