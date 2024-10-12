@@ -15,5 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Teacher
     Route::resource('studies', 'StudiesController');
+    Route::resource('juzs', 'JuzsController');
+    Route::resource('surats', 'SuratsController');
 
 });

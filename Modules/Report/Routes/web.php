@@ -39,5 +39,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kelas2-sore/{id}', 'Kelas2ResultsController@sore_create')->name('kelas2-result.sore_create');
     Route::post('/kelas2-sore/{id}', 'Kelas2ResultsController@sore_store')->name('kelas2-result.sore_store');
 
+    //Route kelas mengaji al quran
+    Route::resource('kelas3-task', 'Kelas3TasksController');
+    Route::resource('kelas3-result', 'Kelas3ResultsController');
+
+    Route::get('kelas3-riwayat', 'Kelas3TasksController@riwayat')->name('kelas3-task.riwayat');
+
+    Route::get('/kelas3-pagi/{id}', 'Kelas3ResultsController@pagi_create')->name('kelas3-result.pagi_create');
+    Route::post('/kelas3-pagi/{id}', 'Kelas3ResultsController@pagi_store')->name('kelas3-result.pagi_store');
+
+    Route::get('/kelas3-siang/{id}', 'Kelas3ResultsController@siang_create')->name('kelas3-result.siang_create');
+    Route::post('/kelas3-siang/{id}', 'Kelas3ResultsController@siang_store')->name('kelas3-result.siang_store');
+
+    Route::get('/kelas3-sore/{id}', 'Kelas3ResultsController@sore_create')->name('kelas3-result.sore_create');
+    Route::post('/kelas3-sore/{id}', 'Kelas3ResultsController@sore_store')->name('kelas3-result.sore_store');
 
 });

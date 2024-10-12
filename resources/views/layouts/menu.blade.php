@@ -178,7 +178,7 @@
 @endcan
 
 @can('access_currencies|access_settings')
-    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('settings.*') ? 'c-show' : '' }}">
+    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('settings.*') || request()->routeIs('juzs.*') || request()->routeIs('surats.*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
             <i class="c-sidebar-nav-icon bi bi-gear" style="line-height: 1;"></i> Settings
         </a>
@@ -187,6 +187,24 @@
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link {{ request()->routeIs('settings.*') ? 'c-active' : '' }}" href="{{ route('settings.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-sliders" style="line-height: 1;"></i> System Settings
+                </a>
+            </li>
+        </ul>
+        @endcan
+        @can('access_settings')
+        <ul class="c-sidebar-nav-dropdown-items">
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('juzs.*') ? 'c-active' : '' }}" href="{{ route('juzs.index') }}">
+                    <i class="c-sidebar-nav-icon bi bi-database-gear" style="line-height: 1;"></i> Data Juz
+                </a>
+            </li>
+        </ul>
+        @endcan
+        @can('access_settings')
+        <ul class="c-sidebar-nav-dropdown-items">
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('surats.*') ? 'c-active' : '' }}" href="{{ route('surats.index') }}">
+                    <i class="c-sidebar-nav-icon bi bi-database-gear" style="line-height: 1;"></i> Data Surat
                 </a>
             </li>
         </ul>

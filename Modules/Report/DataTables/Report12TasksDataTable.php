@@ -102,14 +102,6 @@ class Report12TasksDataTable extends DataTable
                 ->title('Nama Pengajar')
                 ->className('text-center align-middle'),
 
-            // Column::make('input_pagi')
-            //     ->title('Nilai Pagi')
-            //     ->className('text-center align-middle'),
-
-            // Column::make('input_siang')
-            //     ->title('Nilai Siang')
-            //     ->className('text-center align-middle'),
-
             Column::make('report1task_active')
                 ->title('Status')
                 ->className('text-center align-middle'),
