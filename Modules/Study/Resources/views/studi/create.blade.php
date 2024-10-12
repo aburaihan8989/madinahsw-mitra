@@ -34,6 +34,16 @@
                                         <input type="text" class="form-control" name="studi_name" required>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="studi_category">Kategori Pelajaran <span class="text-danger">*</span></label>
+                                        <select class="form-control" name="studi_category" id="studi_category" required>
+                                            <option value="" selected >Pilih Status</option>
+                                            <option value="1">Kurikulum Sekolah</option>
+                                            <option value="2">Kurikulum Nasional</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

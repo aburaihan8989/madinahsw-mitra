@@ -35,10 +35,23 @@
                                         <input type="text" class="form-control" name="studi_code" required value="{{ $study->studi_code }}" readonly>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="studi_name">Nama Pelajaran <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="studi_name" required value="{{ $study->studi_name }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="studi_category">Kategori Pelajaran <span class="text-danger">*</span></label>
+                                        <select class="form-control" name="studi_category" id="studi_category" required>
+                                            <option value="" selected>Pilih Status</option>
+                                            <option {{ $study->studi_category == '1' ? 'selected' : '' }} value="1">Kurikulum Sekolah</option>
+                                            <option {{ $study->studi_category == '2' ? 'selected' : '' }} value="2">Kurikulum Nasional</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

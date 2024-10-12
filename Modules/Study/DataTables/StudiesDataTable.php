@@ -16,6 +16,9 @@ class StudiesDataTable extends DataTable
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
+            ->addColumn('studi_category', function ($data) {
+                return $data->studi_category == '1' ? 'Kurikulum Sekolah' : 'Kurikulum Nasional';
+            })
             ->addColumn('action', function ($data) {
                 return view('study::studi.partials.actions', compact('data'));
             });
@@ -66,6 +69,10 @@ class StudiesDataTable extends DataTable
 
             Column::make('studi_name')
                 ->title('Nama Pelajaran')
+                ->className('text-center align-middle'),
+
+            Column::make('studi_category')
+                ->title('Kategori Pelajaran')
                 ->className('text-center align-middle'),
 
             Column::computed('action')

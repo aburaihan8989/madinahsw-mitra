@@ -34,13 +34,15 @@ class StudiesController extends Controller
         abort_if(Gate::denies('create_customers'), 403);
 
         $request->validate([
-            // 'studi_code'   => 'required|max:255',
-            // 'studi_name'   => 'required|max:255',
+            // 'studi_code'      => 'required|max:255',
+            // 'studi_name'      => 'required|max:255',
+            // 'studi_category'  => 'required|max:255',
         ]);
 
         $studi = Studie::create([
-            'studi_code'     => $request->studi_code,
-            'studi_name'     => $request->studi_name
+            'studi_code'       => $request->studi_code,
+            'studi_name'       => $request->studi_name,
+            'studi_category'   => $request->studi_category
         ]);
 
         if ($request->has('document')) {
@@ -73,13 +75,15 @@ class StudiesController extends Controller
         abort_if(Gate::denies('update_customers'), 403);
 
         $request->validate([
-            // 'studi_code'   => 'required|max:255',
-            // 'studi_name'   => 'required|max:255',
+            // 'studi_code'      => 'required|max:255',
+            // 'studi_name'      => 'required|max:255',
+            // 'studi_category'  => 'required|max:255',
         ]);
 
         $study->update([
-            'studi_code'     => $request->studi_code,
-            'studi_name'     => $request->studi_name
+            'studi_code'       => $request->studi_code,
+            'studi_name'       => $request->studi_name,
+            'studi_category'   => $request->studi_category
         ]);
 
         if ($request->has('document')) {
