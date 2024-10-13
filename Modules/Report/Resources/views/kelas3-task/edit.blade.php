@@ -90,7 +90,7 @@
                                     <div class="form-group">
                                         <label for="kelas3_task_active">Status <span class="text-danger">*</span></label>
                                         <select class="form-control" name="kelas3_task_active" id="kelas3_task_active" required>
-                                            <option value="" selected>Pilih Status</option>
+                                            <option value="" selected disabled>Pilih Status</option>
                                             <option {{ $kelas3_task->kelas3_task_active == '1' ? 'selected' : '' }} value="1">Active</option>
                                             <option {{ $kelas3_task->kelas3_task_active == '2' ? 'selected' : '' }} value="2">Completed</option>
                                             <option {{ $kelas3_task->kelas3_task_active == '3' ? 'selected' : '' }} value="3">Non Active</option>

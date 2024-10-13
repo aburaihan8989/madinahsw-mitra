@@ -83,7 +83,7 @@
                                     <div class="form-group">
                                         <label for="kelas3_task_active">Status <span class="text-danger">*</span></label>
                                         <select class="form-control" name="kelas3_task_active" id="kelas3_task_active" required>
-                                            <option value="" selected >Pilih Status</option>
+                                            <option value="" selected disabled>Pilih Status</option>
                                             <option value="1">Active</option>
                                             <option value="2">Completed</option>
                                             <option value="3">Non Active</option>

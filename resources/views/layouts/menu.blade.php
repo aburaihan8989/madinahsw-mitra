@@ -62,7 +62,7 @@
     </ul>
 </li>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('report1.*') || request()->routeIs('kelas2-task.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('report1.*') || request()->routeIs('kelas2-task.*') || request()->routeIs('kelas3-task.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
         <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Data Aktifitas
     </a>
@@ -87,7 +87,7 @@
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" style="color:gray;">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas3-task.*') ? 'c-active' : '' }}" href="{{ route('kelas3-task.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Al Quran
                 </a>
             </li>
@@ -95,7 +95,7 @@
     </ul>
 </li>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('report1result.*') || request()->routeIs('kelas2-result.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('report1result.*') || request()->routeIs('kelas2-result.*') || request()->routeIs('kelas3-result.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
         <i class="c-sidebar-nav-icon bi bi-clipboard2-data" style="line-height: 1;"></i> Laporan Aktifitas
     </a>
@@ -120,7 +120,7 @@
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" style="color:gray;">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas3-result.*') ? 'c-active' : '' }}" href="{{ route('kelas3-result.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Laporan Mengaji Al Quran
                 </a>
             </li>

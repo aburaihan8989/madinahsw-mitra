@@ -23,7 +23,11 @@
                             Daftar Siswa <i class="bi bi-plus"></i>
                         </a>
 
-                        <a href="{{ route('kelas3-task.riwayat') }}" class="btn btn-info text-white" style="float: right;">
+                        <a href="{{ route('kelas3-result.index') }}" class="btn btn-warning text-white mr-2" style="float: right;">
+                            Laporan Mengaji Al Quran <i class="bi bi-clock-history ml-1"></i>
+                        </a>
+
+                        <a href="{{ route('kelas3-task.riwayat') }}" class="btn btn-info text-white mr-2" style="float: right;">
                             Riwayat Siswa <i class="bi bi-clock-history ml-1"></i>
                         </a>
 

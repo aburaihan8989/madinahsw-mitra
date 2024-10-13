@@ -204,7 +204,7 @@ class Kelas3ResultsController extends Controller
     }
 
 
-    public function update(Request $request, Kelas2Result $kelas2_result) {
+    public function update(Request $request, Kelas3Result $kelas3_result) {
         // abort_if(Gate::denies('update_report'), 403);
 
         $request->validate([
