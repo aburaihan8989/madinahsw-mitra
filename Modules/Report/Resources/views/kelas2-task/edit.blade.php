@@ -48,7 +48,7 @@
                                     <div class="from-group">
                                         <div class="form-group">
                                             <label for="kelas2_task_student_id">Nama Siswa <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="kelas2_task_student_id" id="kelas2_task_student_id" required>
+                                            <select class="select2 form-control" name="kelas2_task_student_id" id="kelas2_task_student_id" required>
                                                 <option value="" selected disabled>Pilih Nama Siswa</option>
                                                 @foreach(\Modules\People\Entities\Student::all() as $siswa)
                                                     <option {{ $kelas2_task->kelas2_task_student_id == $siswa->id ? 'selected' : '' }} value="{{ $siswa->id }}">{{ $siswa->student_kode . ' | ' . $siswa->student_name }}</option>
@@ -61,7 +61,7 @@
                                     <div class="from-group">
                                         <div class="form-group">
                                             <label for="kelas2_task_teacher_id">Nama Pengajar <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="kelas2_task_teacher_id" id="kelas2_task_teacher_id" required>
+                                            <select class="select2 form-control" name="kelas2_task_teacher_id" id="kelas2_task_teacher_id" required>
                                                 <option value="" selected disabled>Pilih Nama Pengajar</option>
                                                 @foreach(\Modules\People\Entities\Teacher::all() as $pengajar)
                                                     <option {{ $kelas2_task->kelas2_task_teacher_id == $pengajar->id ? 'selected' : '' }} value="{{ $pengajar->id }}">{{ $pengajar->teacher_kode . ' | ' . $pengajar->teacher_name }}</option>
@@ -74,7 +74,7 @@
                                     <div class="from-group">
                                         <div class="form-group">
                                             <label for="kelas2_task_studi_id">Nama Pelajaran <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="kelas2_task_studi_id" id="kelas2_task_studi_id" required>
+                                            <select class="select2 form-control" name="kelas2_task_studi_id" id="kelas2_task_studi_id" required>
                                                 <option value="" selected disabled>Pilih Nama Pelajaran</option>
                                                 @foreach(\Modules\Study\Entities\Studie::all() as $studi)
                                                     <option {{ $kelas2_task->kelas2_task_studi_id == $studi->id ? 'selected' : '' }} value="{{ $studi->id }}">{{ $studi->studi_code . ' | ' . $studi->studi_name }}</option>
@@ -122,6 +122,12 @@
     <script>
         $(document).ready(function () {
 
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+        console.log('');
+        $('.select2').select2();
         });
     </script>
 @endpush

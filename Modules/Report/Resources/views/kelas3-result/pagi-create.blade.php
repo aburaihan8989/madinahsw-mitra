@@ -85,7 +85,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="kelas3_result_book1">Nama Juz <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="kelas3_result_book1" id="kelas3_result_book1" required>
+                                        <select class="select2 form-control" name="kelas3_result_book1" id="kelas3_result_book1" required>
                                             <option value="" selected disabled>Pilih Nama Juz</option>
                                             @foreach(\Modules\Study\Entities\Juz::all() as $juz)
                                                 <option value="{{ $juz->id }}">{{ $juz->juz_name }}</option>
@@ -96,7 +96,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="kelas3_result_book2">Nama Surat <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="kelas3_result_book2" id="kelas3_result_book2" required>
+                                        <select class="select2 form-control" name="kelas3_result_book2" id="kelas3_result_book2" required>
                                             <option value="" selected disabled>Pilih Nama Surat</option>
                                             @foreach(\Modules\Study\Entities\Surat::all() as $surat)
                                                 <option value="{{ $surat->id }}">{{ $surat->surat_name }}</option>
@@ -145,6 +145,12 @@
     <script>
         $(document).ready(function () {
 
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+        console.log('');
+        $('.select2').select2();
         });
     </script>
 @endpush
