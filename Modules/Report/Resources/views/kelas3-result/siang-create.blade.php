@@ -89,7 +89,9 @@
                                         <label for="kelas3_result_book1" class="text-danger">Nama Juz (Kemarin) <span class="text-danger"></span></label>
                                         <select class="form-control" readonly disabled>
                                             @foreach(\Modules\Study\Entities\Juz::all() as $juz)
-                                                <option {{ $result_kemarin->kelas3_result_book1 == $juz->id ? 'selected' : '' }} value="{{ $juz->id }}">{{ $juz->juz_name }}</option>
+                                                @if ($result_kemarin->kelas3_result_book1  ?? '' )
+                                                    <option {{ $result_kemarin->kelas3_result_book1 == $juz->id ? 'selected' : '' }} value="{{ $juz->id }}">{{ $juz->juz_name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -99,7 +101,9 @@
                                         <label for="kelas3_result_book2" class="text-danger">Nama Surat (Kemarin) <span class="text-danger"></span></label>
                                         <select class="form-control" readonly disabled>
                                             @foreach(\Modules\Study\Entities\Surat::all() as $surat)
-                                                <option {{ $result_kemarin->kelas3_result_book2 == $surat->id ? 'selected' : '' }} value="{{ $surat->id }}">{{ $surat->surat_name }}</option>
+                                                @if ($result_kemarin->kelas3_result_book2  ?? '' )
+                                                    <option {{ $result_kemarin->kelas3_result_book2 == $surat->id ? 'selected' : '' }} value="{{ $surat->id }}">{{ $surat->surat_name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
