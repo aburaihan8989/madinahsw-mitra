@@ -7,44 +7,53 @@ use Yajra\DataTables\Html\Column;
 use Modules\Study\Entities\Studie;
 use Modules\People\Entities\Student;
 use Modules\People\Entities\Teacher;
-use Modules\Report\Entities\Report1Result;
+use Modules\Report\Entities\Kelas1Task;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class Report1ResultsDataTable extends DataTable
+class Kelas1TasksDataTable extends DataTable
 {
 
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->editColumn('report1_date', function($model){
-                $formatDate = date('d-m-Y',strtotime($model->report1_date));
+            ->editColumn('kelas1_task_date', function($model){
+                $formatDate = date('d-m-Y',strtotime($model->kelas1_task_date));
                 return $formatDate;
             })
-            ->addColumn('report1_student_id', function ($data) {
-                return Student::findOrFail($data->report1_student_id)->student_kode . ' | ' . Student::findOrFail($data->report1_student_id)->student_name;
+            ->addColumn('kelas1_task_student_id', function ($data) {
+                return Student::findOrFail($data->kelas1_task_student_id)->student_kode . ' | ' . Student::findOrFail($data->kelas1_task_student_id)->student_name;
             })
-            ->addColumn('report1_teacher_id', function ($data) {
-                return Teacher::findOrFail($data->report1_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($data->report1_teacher_id)->teacher_name;
+            ->addColumn('kelas1_task_teacher_id', function ($data) {
+                return Teacher::findOrFail($data->kelas1_task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($data->kelas1_task_teacher_id)->teacher_name;
             })
-            ->addColumn('report1_studi_id', function ($data) {
-                return Studie::findOrFail($data->report1_studi_id)->studi_code . ' | ' . Studie::findOrFail($data->report1_studi_id)->studi_name;
+            ->addColumn('kelas1_task_studi_id', function ($data) {
+                return Studie::findOrFail($data->kelas1_task_studi_id)->studi_code . ' | ' . Studie::findOrFail($data->kelas1_task_studi_id)->studi_name;
+            })
+            ->addColumn('kelas1_task_active', function ($data) {
+                return view('report::kelas1-task.partials.status', compact('data'));
+            })
+            ->addColumn('kelas1_task_input_pagi', function ($data) {
+                return view('report::kelas1-task.partials.actions-pagi', compact('data'));
+            })
+            ->addColumn('kelas1_task_input_siang', function ($data) {
+                return view('report::kelas1-task.partials.actions-siang', compact('data'));
             })
             ->addColumn('action', function ($data) {
-                return view('report::result1.partials.actions', compact('data'));
+                return view('report::kelas1-task.partials.actions', compact('data'));
             });
     }
 
-    public function query(Report1Result $model) {
-        return $model->newQuery();
+    public function query(Kelas1Task $model) {
+        return $model->newQuery()->where('kelas1_task_active', 1);
         // return $model->newQuery()->where('agent_id',  auth()->user()->agent_id);
     }
 
 
     public function html() {
         return $this->builder()
-            ->setTableId('report1-results-table')
+            ->setTableId('kelas1-tasks-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
@@ -73,40 +82,36 @@ class Report1ResultsDataTable extends DataTable
                 ->searchable(false)
                 ->className('text-center align-middle'),
 
-            Column::make('report1_code')
-                ->title('Kode Result')
+            Column::make('kelas1_task_code')
+                ->title('Kode Daftar')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_date')
-                ->title('Tanggal Result')
+            Column::make('kelas1_task_date')
+                ->title('Tanggal Terdaftar')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_student_name')
+            Column::make('kelas1_task_student_name')
                 ->title('Nama Siswa')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_studi_name')
+            Column::make('kelas1_task_studi_name')
                 ->title('Nama Pelajaran')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_teacher_name')
+            Column::make('kelas1_task_teacher_name')
                 ->title('Nama Pengajar')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_book1')
-                ->title('Nama IQRA')
-                ->className('text-center align-middle'),
-
-            Column::make('report1_book2')
-                ->title('Halaman / Baris')
-                ->className('text-center align-middle'),
-
-            Column::make('report1_value1')
+            Column::make('kelas1_task_input_pagi')
                 ->title('Nilai Pagi')
                 ->className('text-center align-middle'),
 
-            Column::make('report1_value2')
+            Column::make('kelas1_task_input_siang')
                 ->title('Nilai Siang')
+                ->className('text-center align-middle'),
+
+            Column::make('kelas1_task_active')
+                ->title('Status')
                 ->className('text-center align-middle'),
 
             Column::computed('action')
@@ -120,6 +125,6 @@ class Report1ResultsDataTable extends DataTable
     }
 
     protected function filename(): string {
-        return 'Report1Results_' . date('YmdHis');
+        return 'Kelas1Tasks_' . date('YmdHis');
     }
 }

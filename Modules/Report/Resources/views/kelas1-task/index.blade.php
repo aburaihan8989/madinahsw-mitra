@@ -19,17 +19,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('report1.create') }}" class="btn btn-primary">
+                        <a href="{{ route('kelas1-task.create') }}" class="btn btn-primary">
                             Daftar Siswa <i class="bi bi-plus"></i>
                         </a>
 
-                        <a href="{{ route('report12.riwayat') }}" class="btn btn-info text-white mr-2" style="float: right;">
+                        <a href="{{ route('kelas1-task.riwayat') }}" class="btn btn-info text-white mr-2" style="float: right;">
                             Riwayat Siswa <i class="bi bi-clock-history ml-1"></i>
                         </a>
 
                         <div class="pt-2"></div>
 
-                        <a href="{{ route('report1result.index') }}" class="btn btn-warning text-white mr-2" style="float: right;">
+                        <a href="{{ route('kelas1-result.index') }}" class="btn btn-warning text-white mr-2" style="float: right;">
                             Laporan Mengaji Anak TK <i class="bi bi-clock-history ml-1"></i>
                         </a>
 

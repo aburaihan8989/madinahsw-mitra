@@ -1,8 +1,8 @@
-@if ($data->report1task_active == '1')
+@if ($data->kelas1_task_active == '1')
     <span class="badge badge-success" style="font-size: 14px;">
         Active
     </span>
-@elseif ($data->report1task_active == '2')
+@elseif ($data->kelas1_task_active == '2')
     <span class="badge badge-success" style="font-size: 14px;">
         Completed
     </span>

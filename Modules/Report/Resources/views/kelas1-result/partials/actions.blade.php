@@ -4,12 +4,12 @@
     </button>
     <div class="dropdown-menu">
         {{-- @can('edit_purchases') --}}
-            <a href="{{ route('report1result.edit', $data->id) }}" class="dropdown-item">
+            <a href="{{ route('kelas1-result.edit', $data->id) }}" class="dropdown-item">
                 <i class="bi bi-pencil mr-2 text-warning" style="line-height: 1;"></i> Edit
             </a>
         {{-- @endcan
         {{-- @can('show_purchases') --}}
-            <a href="{{ route('report1result.show', $data->id) }}" class="dropdown-item">
+            <a href="{{ route('kelas1-result.show', $data->id) }}" class="dropdown-item">
                 <i class="bi bi-eye mr-2 text-primary" style="line-height: 1;"></i> Show
             </a>
         {{-- @endcan --}}

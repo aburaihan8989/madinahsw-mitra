@@ -13,16 +13,16 @@
 
 Route::group(['middleware' => 'auth'], function () {
     //Route kelas mengaji anak tk
-    Route::resource('report1', 'Report1TasksController');
-    Route::resource('report1result', 'Report1ResultsController');
+    Route::resource('kelas1-task', 'Kelas1TasksController');
+    Route::resource('kelas1-result', 'Kelas1ResultsController');
 
-    Route::get('report12', 'Report1TasksController@riwayat')->name('report12.riwayat');
+    Route::get('kelas1-riwayat', 'Kelas1TasksController@riwayat')->name('kelas1-task.riwayat');
 
-    Route::get('/result1-pagi/{id}', 'Report1ResultsController@pagi_create')->name('report1result.pagi_create');
-    Route::post('/result1-pagi/{id}', 'Report1ResultsController@pagi_store')->name('report1result.pagi_store');
+    Route::get('/kelas1-pagi/{id}', 'Kelas1ResultsController@pagi_create')->name('kelas1-result.pagi_create');
+    Route::post('/kelas1-pagi/{id}', 'Kelas1ResultsController@pagi_store')->name('kelas1-result.pagi_store');
 
-    Route::get('/result1-siang/{id}', 'Report1ResultsController@siang_create')->name('report1result.siang_create');
-    Route::post('/result1-siang/{id}', 'Report1ResultsController@siang_store')->name('report1result.siang_store');
+    Route::get('/kelas1-siang/{id}', 'Kelas1ResultsController@siang_create')->name('kelas1-result.siang_create');
+    Route::post('/kelas1-siang/{id}', 'Kelas1ResultsController@siang_store')->name('kelas1-result.siang_store');
 
     //Route kelas mengaji anak sd
     Route::resource('kelas2-task', 'Kelas2TasksController');

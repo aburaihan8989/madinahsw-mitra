@@ -3,11 +3,11 @@
 namespace Modules\Report\Entities;
 
 use Illuminate\Support\Carbon;
-use Modules\Report\Entities\Report1Result;
+use Modules\Report\Entities\Kelas1Task;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Report1Result extends Model
+class Kelas1Task extends Model
 {
     use HasFactory;
 
@@ -17,8 +17,8 @@ class Report1Result extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $number = Report1Result::max('id') + 1;
-            $model->report1_code = make_reference_id('RK1', $number);
+            $number = Kelas1Task::max('id') + 1;
+            $model->kelas1_task_code = make_reference_id('K1', $number);
         });
     }
 

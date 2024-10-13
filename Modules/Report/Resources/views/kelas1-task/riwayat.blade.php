@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('report1.index') }}"> Kembali</a>
+                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('kelas1-task.index') }}"> Kembali</a>
 
                         <hr>
 
