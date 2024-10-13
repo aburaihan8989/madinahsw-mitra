@@ -8,6 +8,9 @@ use Modules\Study\Entities\Studie;
 use Illuminate\Support\Facades\Http;
 use Modules\People\Entities\Student;
 use Modules\People\Entities\Teacher;
+use Modules\Report\Entities\Kelas2Task;
+use Modules\Report\Entities\Kelas3Task;
+use Modules\Report\Entities\Report1Task;
 
 class HomeController extends Controller
 {
@@ -17,13 +20,17 @@ class HomeController extends Controller
         $teachers = Teacher::count();
         $students = Student::count();
         $studies = Studie::count();
-        $kegiatan = 1;
+        $kelas1 = Report1Task::count();
+        $kelas2 = Kelas2Task::count();
+        $kelas3 = Kelas3Task::count();
 
         return view('home', compact(
             'teachers',
             'students',
             'studies',
-            'kegiatan'
+            'kelas1',
+            'kelas2',
+            'kelas3'
             ));
     }
 }

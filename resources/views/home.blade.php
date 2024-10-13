@@ -61,11 +61,37 @@
                     <div class="card border-0">
                         <div class="card-body p-0 d-flex align-items-center shadow-sm">
                             <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-journal-check font-2xl"></i>
+                                <i class="bi bi-person-workspace font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-uppercase font-weight-bold medium">Data Aktifitas</div>
-                                <div class="text-value text-primary">{{ $kegiatan . ' Kegiatan' }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Kelas Mengaji Anak TK</div>
+                                <div class="text-value text-primary">{{ $kelas1 . ' Siswa Aktif' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0">
+                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
+                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
+                                <i class="bi bi-person-workspace font-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-uppercase font-weight-bold medium">Kelas Mengaji Anak SD</div>
+                                <div class="text-value text-primary">{{ $kelas2 . ' Siswa Aktif' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0">
+                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
+                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
+                                <i class="bi bi-person-workspace font-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-uppercase font-weight-bold medium">Kelas Mengaji Al Quran</div>
+                                <div class="text-value text-primary">{{ $kelas3 . ' Siswa Aktif' }}</div>
                             </div>
                         </div>
                     </div>
