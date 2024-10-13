@@ -2,15 +2,17 @@
 
 namespace Modules\Report\DataTables;
 
+use Modules\Study\Entities\Juz;
+use Modules\Study\Entities\Surat;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Modules\Study\Entities\Studie;
 use Modules\People\Entities\Student;
 use Modules\People\Entities\Teacher;
-use Modules\Report\Entities\Kelas3Result;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Modules\Report\Entities\Kelas3Result;
 
 class Kelas3ResultsDataTable extends DataTable
 {
@@ -21,6 +23,12 @@ class Kelas3ResultsDataTable extends DataTable
             ->editColumn('kelas3_result_date', function($model){
                 $formatDate = date('d-m-Y',strtotime($model->kelas3_result_date));
                 return $formatDate;
+            })
+            ->addColumn('kelas3_result_book1', function ($data) {
+                return Juz::findOrFail($data->kelas3_result_book1)->juz_name;
+            })
+            ->addColumn('kelas3_result_book2', function ($data) {
+                return Surat::findOrFail($data->kelas3_result_book2)->surat_name;
             })
             ->addColumn('kelas3_result_student_id', function ($data) {
                 return Student::findOrFail($data->kelas3_result_student_id)->student_kode . ' | ' . Student::findOrFail($data->kelas3_result_student_id)->student_name;
