@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-
+                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('kelas2-task.index') }}"> Kelas Mengaji Anak SD</a>
                         <hr>
 
                         <div class="table-responsive">

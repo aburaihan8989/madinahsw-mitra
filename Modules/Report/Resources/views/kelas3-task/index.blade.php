@@ -31,7 +31,6 @@
                             Riwayat Siswa <i class="bi bi-clock-history ml-1"></i>
                         </a>
 
-
                         <hr>
 
                         <div class="table-responsive">

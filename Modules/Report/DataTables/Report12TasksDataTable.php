@@ -22,6 +22,10 @@ class Report12TasksDataTable extends DataTable
                 $formatDate = date('d-m-Y',strtotime($model->report1task_date));
                 return $formatDate;
             })
+            ->editColumn('report1task_end_date', function($model){
+                $formatDate = date('d-m-Y',strtotime($model->report1task_end_date));
+                return $formatDate;
+            })
             ->addColumn('report1task_student_id', function ($data) {
                 return Student::findOrFail($data->report1task_student_id)->student_kode . ' | ' . Student::findOrFail($data->report1task_student_id)->student_name;
             })
@@ -88,6 +92,10 @@ class Report12TasksDataTable extends DataTable
 
             Column::make('report1task_date')
                 ->title('Tanggal Terdaftar')
+                ->className('text-center align-middle'),
+
+            Column::make('report1task_end_date')
+                ->title('Tanggal Selesai')
                 ->className('text-center align-middle'),
 
             Column::make('report1task_student_name')

@@ -22,6 +22,10 @@ class Kelas2RiwayatTasksDataTable extends DataTable
                 $formatDate = date('d-m-Y',strtotime($model->kelas2_task_date));
                 return $formatDate;
             })
+            ->editColumn('kelas2_task_end_date', function($model){
+                $formatDate = date('d-m-Y',strtotime($model->kelas2_task_end_date));
+                return $formatDate;
+            })
             ->addColumn('kelas2_task_student_id', function ($data) {
                 return Student::findOrFail($data->kelas2_task_student_id)->student_kode . ' | ' . Student::findOrFail($data->kelas2_task_student_id)->student_name;
             })
@@ -91,6 +95,10 @@ class Kelas2RiwayatTasksDataTable extends DataTable
 
             Column::make('kelas2_task_date')
                 ->title('Tanggal Terdaftar')
+                ->className('text-center align-middle'),
+
+            Column::make('kelas2_task_end_date')
+                ->title('Tanggal Selesai')
                 ->className('text-center align-middle'),
 
             Column::make('kelas2_task_student_name')

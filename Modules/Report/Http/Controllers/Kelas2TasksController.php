@@ -2,6 +2,7 @@
 
 namespace Modules\Report\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -13,8 +14,8 @@ use Modules\People\Entities\Teacher;
 use Modules\Report\Entities\Kelas2Task;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Report\DataTables\Kelas2TasksDataTable;
-use Modules\Report\DataTables\Kelas2RiwayatTasksDataTable;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
+use Modules\Report\DataTables\Kelas2RiwayatTasksDataTable;
 
 class Kelas2TasksController extends Controller
 {
@@ -45,6 +46,7 @@ class Kelas2TasksController extends Controller
 
         $request->validate([
             // 'kelas2_task_date'          => 'required',
+            // 'kelas2_task_end_date'      => 'required',
             // 'kelas2_task_student_id'    => 'required',
             // 'kelas2_task_student_name'  => 'required',
             // 'kelas2_task_teacher_id'    => 'required',
@@ -87,6 +89,7 @@ class Kelas2TasksController extends Controller
 
         $request->validate([
             // 'kelas2_task_date'          => 'required',
+            // 'kelas2_task_end_date'      => 'required',
             // 'kelas2_task_student_id'    => 'required',
             // 'kelas2_task_student_name'  => 'required',
             // 'kelas2_task_teacher_id'    => 'required',
@@ -98,18 +101,34 @@ class Kelas2TasksController extends Controller
             // 'kelas2_task_note'          => 'required',
         ]);
 
-        $kelas2_task->update([
-            'kelas2_task_date'          => $request->kelas2_task_date,
-            'kelas2_task_student_id'    => $request->kelas2_task_student_id,
-            'kelas2_task_student_name'  => Student::findOrFail($request->kelas2_task_student_id)->student_kode . ' | ' . Student::findOrFail($request->kelas2_task_student_id)->student_name,
-            'kelas2_task_teacher_id'    => $request->kelas2_task_teacher_id,
-            'kelas2_task_teacher_name'  => Teacher::findOrFail($request->kelas2_task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($request->kelas2_task_teacher_id)->teacher_name,
-            'kelas2_task_studi_id'      => $request->kelas2_task_studi_id,
-            'kelas2_task_studi_name'    => Studie::findOrFail($request->kelas2_task_studi_id)->studi_code . ' | ' . Studie::findOrFail($request->kelas2_task_studi_id)->studi_name,
-            'kelas2_task_class_id'      => '2',
-            'kelas2_task_active'        => $request->kelas2_task_active,
-            'kelas2_task_note'          => $request->kelas2_task_note
-        ]);
+        if ($request->kelas2_task_active == 1) {
+            $kelas2_task->update([
+                'kelas2_task_date'          => $request->kelas2_task_date,
+                'kelas2_task_student_id'    => $request->kelas2_task_student_id,
+                'kelas2_task_student_name'  => Student::findOrFail($request->kelas2_task_student_id)->student_kode . ' | ' . Student::findOrFail($request->kelas2_task_student_id)->student_name,
+                'kelas2_task_teacher_id'    => $request->kelas2_task_teacher_id,
+                'kelas2_task_teacher_name'  => Teacher::findOrFail($request->kelas2_task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($request->kelas2_task_teacher_id)->teacher_name,
+                'kelas2_task_studi_id'      => $request->kelas2_task_studi_id,
+                'kelas2_task_studi_name'    => Studie::findOrFail($request->kelas2_task_studi_id)->studi_code . ' | ' . Studie::findOrFail($request->kelas2_task_studi_id)->studi_name,
+                'kelas2_task_class_id'      => '2',
+                'kelas2_task_active'        => $request->kelas2_task_active,
+                'kelas2_task_note'          => $request->kelas2_task_note
+            ]);
+        } else {
+            $kelas2_task->update([
+                'kelas2_task_date'          => $request->kelas2_task_date,
+                'kelas2_task_end_date'      => Carbon::now()->format('Y-m-d'),
+                'kelas2_task_student_id'    => $request->kelas2_task_student_id,
+                'kelas2_task_student_name'  => Student::findOrFail($request->kelas2_task_student_id)->student_kode . ' | ' . Student::findOrFail($request->kelas2_task_student_id)->student_name,
+                'kelas2_task_teacher_id'    => $request->kelas2_task_teacher_id,
+                'kelas2_task_teacher_name'  => Teacher::findOrFail($request->kelas2_task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($request->kelas2_task_teacher_id)->teacher_name,
+                'kelas2_task_studi_id'      => $request->kelas2_task_studi_id,
+                'kelas2_task_studi_name'    => Studie::findOrFail($request->kelas2_task_studi_id)->studi_code . ' | ' . Studie::findOrFail($request->kelas2_task_studi_id)->studi_name,
+                'kelas2_task_class_id'      => '2',
+                'kelas2_task_active'        => $request->kelas2_task_active,
+                'kelas2_task_note'          => $request->kelas2_task_note
+            ]);
+        }
 
         toast('Daftar Kelas Siswa Updated!', 'info');
 

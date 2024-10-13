@@ -2,6 +2,7 @@
 
 namespace Modules\Report\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -45,6 +46,7 @@ class Report1TasksController extends Controller
 
         $request->validate([
             // 'report1task_date'          => 'required',
+            // 'report1task_end_date'      => 'required',
             // 'report1task_student_id'    => 'required',
             // 'report1task_student_name'  => 'required',
             // 'report1task_teacher_id'    => 'required',
@@ -87,6 +89,7 @@ class Report1TasksController extends Controller
 
         $request->validate([
             // 'report1task_date'          => 'required',
+            // 'report1task_end_date'      => 'required',
             // 'report1task_student_id'    => 'required',
             // 'report1task_student_name'  => 'required',
             // 'report1task_teacher_id'    => 'required',
@@ -110,6 +113,36 @@ class Report1TasksController extends Controller
             'report1task_active'        => $request->report1task_active,
             'report1task_note'          => $request->report1task_note
         ]);
+
+
+        if ($request->report1task_active == 1) {
+            $report1->update([
+                'report1task_date'          => $request->report1task_date,
+                'report1task_student_id'    => $request->report1task_student_id,
+                'report1task_student_name'  => Student::findOrFail($request->report1task_student_id)->student_kode . ' | ' . Student::findOrFail($request->report1task_student_id)->student_name,
+                'report1task_teacher_id'    => $request->report1task_teacher_id,
+                'report1task_teacher_name'  => Teacher::findOrFail($request->report1task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($request->report1task_teacher_id)->teacher_name,
+                'report1task_studi_id'      => $request->report1task_studi_id,
+                'report1task_studi_name'    => Studie::findOrFail($request->report1task_studi_id)->studi_code . ' | ' . Studie::findOrFail($request->report1task_studi_id)->studi_name,
+                'report1task_class_id'      => '1',
+                'report1task_active'        => $request->report1task_active,
+                'report1task_note'          => $request->report1task_note
+            ]);
+        } else {
+            $report1->update([
+                'report1task_date'          => $request->report1task_date,
+                'report1task_end_date'      => Carbon::now()->format('Y-m-d'),
+                'report1task_student_id'    => $request->report1task_student_id,
+                'report1task_student_name'  => Student::findOrFail($request->report1task_student_id)->student_kode . ' | ' . Student::findOrFail($request->report1task_student_id)->student_name,
+                'report1task_teacher_id'    => $request->report1task_teacher_id,
+                'report1task_teacher_name'  => Teacher::findOrFail($request->report1task_teacher_id)->teacher_kode . ' | ' . Teacher::findOrFail($request->report1task_teacher_id)->teacher_name,
+                'report1task_studi_id'      => $request->report1task_studi_id,
+                'report1task_studi_name'    => Studie::findOrFail($request->report1task_studi_id)->studi_code . ' | ' . Studie::findOrFail($request->report1task_studi_id)->studi_name,
+                'report1task_class_id'      => '1',
+                'report1task_active'        => $request->report1task_active,
+                'report1task_note'          => $request->report1task_note
+            ]);
+        }
 
         toast('Daftar Kelas Siswa Updated!', 'info');
 

@@ -23,10 +23,13 @@
                             Daftar Siswa <i class="bi bi-plus"></i>
                         </a>
 
-                        <a href="{{ route('report12.riwayat') }}" class="btn btn-info text-white" style="float: right;">
-                            Riwayat Siswa <i class="bi bi-clock-history ml-1"></i>
+                        <a href="{{ route('report1result.index') }}" class="btn btn-warning text-white mr-2" style="float: right;">
+                            Laporan Mengaji Anak TK <i class="bi bi-clock-history ml-1"></i>
                         </a>
 
+                        <a href="{{ route('report12.riwayat') }}" class="btn btn-info text-white mr-2" style="float: right;">
+                            Riwayat Siswa <i class="bi bi-clock-history ml-1"></i>
+                        </a>
 
                         <hr>
 

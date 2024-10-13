@@ -94,7 +94,7 @@ class Kelas2ResultsDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('kelas2_result_book1')
-                ->title('Materi')
+                ->title('Nama IQRA')
                 ->className('text-center align-middle'),
 
             Column::make('kelas2_result_book2')

@@ -84,9 +84,9 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="report1_book1">Materi <span class="text-danger">*</span></label>
+                                        <label for="report1_book1">Nama IQRA <span class="text-danger">*</span></label>
                                         <select class="form-control" name="report1_book1" id="report1_book1" required>
-                                            <option value="" selected >Pilih Materi</option>
+                                            <option value="" selected >Pilih Nama IQRA</option>
                                             <option value="IQRA 1">IQRA 1</option>
                                             <option value="IQRA 2">IQRA 2</option>
                                             <option value="IQRA 3">IQRA 3</option>
