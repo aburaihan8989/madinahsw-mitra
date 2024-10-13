@@ -73,6 +73,7 @@ class Kelas2ResultsController extends Controller
             'kelas2_result_book2'         => $request->kelas2_result_book2,
             'kelas2_result_value1'        => $request->kelas2_result_value1,
             'kelas2_result_waktu'         => $request->kelas2_result_waktu,
+            'user_name'                   => auth()->user()->name,
             'kelas2_result_note'          => $request->kelas2_result_note
         ]);
 
@@ -129,6 +130,7 @@ class Kelas2ResultsController extends Controller
             'kelas2_result_book2'         => $request->kelas2_result_book2,
             'kelas2_result_value2'        => $request->kelas2_result_value2,
             'kelas2_result_waktu'         => $request->kelas2_result_waktu,
+            'user_name'                   => auth()->user()->name,
             'kelas2_result_note'          => $request->kelas2_result_note
         ]);
 
@@ -185,6 +187,7 @@ class Kelas2ResultsController extends Controller
             'kelas2_result_book2'         => $request->kelas2_result_book2,
             'kelas2_result_value3'        => $request->kelas2_result_value3,
             'kelas2_result_waktu'         => $request->kelas2_result_waktu,
+            'user_name'                   => auth()->user()->name,
             'kelas2_result_note'          => $request->kelas2_result_note
         ]);
 
@@ -241,6 +244,7 @@ class Kelas2ResultsController extends Controller
             'kelas2_result_value2'        => $request->kelas2_result_value2,
             'kelas2_result_value3'        => $request->kelas2_result_value3,
             'kelas2_result_waktu'         => $request->kelas2_result_waktu,
+            'user_name'                   => auth()->user()->name,
             'kelas2_result_note'          => $request->kelas2_result_note
         ]);
 
