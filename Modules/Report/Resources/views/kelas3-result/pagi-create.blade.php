@@ -104,6 +104,9 @@
                                     </select>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="kelas3_result_book3">Halaman <span class="text-danger"></span></label>
