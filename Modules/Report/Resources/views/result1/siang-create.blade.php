@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="report1_book2">Halaman <span class="text-danger"></span></label>
+                                        <label for="report1_book2">Halaman / Baris <span class="text-danger"></span></label>
                                         <input type="text" class="form-control" name="report1_book2">
                                     </div>
                                 </div>
