@@ -100,7 +100,7 @@
                                         @foreach(\Modules\Study\Entities\Juz::all() as $juz)
                                             <option {{ $kelas3_result->kelas3_result_book1 == $juz->id ? 'selected' : '' }} value="{{ $juz->id }}">{{ $juz->juz_name }}</option>
                                         @endforeach
-                                </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -111,7 +111,7 @@
                                         @foreach(\Modules\Study\Entities\Surat::all() as $surat)
                                             <option {{ $kelas3_result->kelas3_result_book2 == $surat->id ? 'selected' : '' }} value="{{ $surat->id }}">{{ $surat->surat_name }}</option>
                                         @endforeach
-                                </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-4">

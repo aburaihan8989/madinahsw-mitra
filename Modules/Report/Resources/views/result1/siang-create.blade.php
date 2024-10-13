@@ -81,6 +81,31 @@
                                 </div>
                             </div>
 
+                            <hr>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="report1_book1" class="text-danger">Nama IQRA (Kemarin) <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" value="{{ $result_kemarin->report1_book1 ?? '' }}" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="report1_book2" class="text-danger">Halaman / Baris (Kemarin) <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" value="{{ $result_kemarin->report1_book2 ?? '' }}" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="report1_value2" class="text-danger">Nilai Siang (Kemarin) <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" value="{{ $result_kemarin->report1_value2 ?? '' }}" readonly disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">

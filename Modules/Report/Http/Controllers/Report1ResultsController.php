@@ -29,8 +29,9 @@ class Report1ResultsController extends Controller
     public function pagi_create($id) {
         // abort_if(Gate::denies('create_report'), 403);
         $report1task = Report1Task::findOrFail($id);
+        $result_kemarin = Report1Result::where('report1_student_id', '=', $report1task->report1task_student_id)->where('report1_waktu', '=', 1)->latest()->first();
 
-        return view('report::result1.pagi-create', compact('report1task'));
+        return view('report::result1.pagi-create', compact('report1task','result_kemarin'));
     }
 
 
@@ -84,8 +85,9 @@ class Report1ResultsController extends Controller
     public function siang_create($id) {
         // abort_if(Gate::denies('create_report'), 403);
         $report1task = Report1Task::findOrFail($id);
+        $result_kemarin = Report1Result::where('report1_student_id', '=', $report1task->report1task_student_id)->where('report1_waktu', '=', 2)->latest()->first();
 
-        return view('report::result1.siang-create', compact('report1task'));
+        return view('report::result1.siang-create', compact('report1task','result_kemarin'));
     }
 
 

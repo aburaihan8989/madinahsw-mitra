@@ -81,6 +81,48 @@
                                 </div>
                             </div>
 
+                            <hr>
+
+                            <div class="form-row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="kelas3_result_book1" class="text-danger">Nama Juz (Kemarin) <span class="text-danger"></span></label>
+                                        <select class="form-control" readonly disabled>
+                                            @foreach(\Modules\Study\Entities\Juz::all() as $juz)
+                                                <option {{ $result_kemarin->kelas3_result_book1 == $juz->id ? 'selected' : '' }} value="{{ $juz->id }}">{{ $juz->juz_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="kelas3_result_book2" class="text-danger">Nama Surat (Kemarin) <span class="text-danger"></span></label>
+                                        <select class="form-control" readonly disabled>
+                                            @foreach(\Modules\Study\Entities\Surat::all() as $surat)
+                                                <option {{ $result_kemarin->kelas3_result_book2 == $surat->id ? 'selected' : '' }} value="{{ $surat->id }}">{{ $surat->surat_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="kelas3_result_book3" class="text-danger">Halaman (Kemarin) <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" value="{{ $result_kemarin->kelas3_result_book3 ?? '' }}" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="kelas3_result_value1" class="text-danger">Nilai Pagi (Kemarin) <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" value="{{ $result_kemarin->kelas3_result_value1 ?? '' }}" readonly disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -90,7 +132,7 @@
                                             @foreach(\Modules\Study\Entities\Juz::all() as $juz)
                                                 <option value="{{ $juz->id }}">{{ $juz->juz_name }}</option>
                                             @endforeach
-                                    </select>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -101,7 +143,7 @@
                                             @foreach(\Modules\Study\Entities\Surat::all() as $surat)
                                                 <option value="{{ $surat->id }}">{{ $surat->surat_name }}</option>
                                             @endforeach
-                                    </select>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

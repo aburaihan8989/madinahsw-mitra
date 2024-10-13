@@ -29,8 +29,9 @@ class Kelas3ResultsController extends Controller
     public function pagi_create($id) {
         // abort_if(Gate::denies('create_report'), 403);
         $kelas3_result = Kelas3Task::findOrFail($id);
+        $result_kemarin = Kelas3Result::where('kelas3_result_student_id', '=', $kelas3_result->kelas3_task_student_id)->where('kelas3_result_waktu', '=', 1)->latest()->first();
 
-        return view('report::kelas3-result.pagi-create', compact('kelas3_result'));
+        return view('report::kelas3-result.pagi-create', compact('kelas3_result','result_kemarin'));
     }
 
 
@@ -86,8 +87,9 @@ class Kelas3ResultsController extends Controller
     public function siang_create($id) {
         // abort_if(Gate::denies('create_report'), 403);
         $kelas3_result = Kelas3Task::findOrFail($id);
+        $result_kemarin = Kelas3Result::where('kelas3_result_student_id', '=', $kelas3_result->kelas3_task_student_id)->where('kelas3_result_waktu', '=', 2)->latest()->first();
 
-        return view('report::kelas3-result.siang-create', compact('kelas3_result'));
+        return view('report::kelas3-result.siang-create', compact('kelas3_result','result_kemarin'));
     }
 
 
@@ -143,8 +145,9 @@ class Kelas3ResultsController extends Controller
     public function sore_create($id) {
         // abort_if(Gate::denies('create_report'), 403);
         $kelas3_result = Kelas3Task::findOrFail($id);
+        $result_kemarin = Kelas3Result::where('kelas3_result_student_id', '=', $kelas3_result->kelas3_task_student_id)->where('kelas3_result_waktu', '=', 3)->latest()->first();
 
-        return view('report::kelas3-result.sore-create', compact('kelas3_result'));
+        return view('report::kelas3-result.sore-create', compact('kelas3_result','result_kemarin'));
     }
 
 
