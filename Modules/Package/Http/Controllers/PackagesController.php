@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Study\Http\Controllers;
+namespace Modules\Package\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\DB;
 use Modules\Upload\Entities\Upload;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
-use Modules\Study\Entities\Studie;
+use Modules\Package\Entities\Package;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\Renderable;
-use Modules\Study\DataTables\StudiesDataTable;
+use Modules\Package\DataTables\PackagesDataTable;
 
-class StudiesController extends Controller
+class PackagesController extends Controller
 {
 
-    public function index(StudiesDataTable $dataTable) {
+    public function index(PackagesDataTable $dataTable) {
         abort_if(Gate::denies('access_customers'), 403);
 
         return $dataTable->render('study::studi.index');

@@ -22,50 +22,8 @@
                                 <i class="bi bi-people font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-uppercase font-weight-bold medium">Data Pengajar</div>
-                                <div class="text-value text-primary">{{ $teachers . ' Pengajar' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-people font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-uppercase font-weight-bold medium">Data Siswa</div>
-                                <div class="text-value text-primary">{{ $students . ' Siswa' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-book font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-uppercase font-weight-bold medium">Data Pelajaran</div>
-                                <div class="text-value text-primary">{{ $studies . ' Pelajaran' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-person-workspace font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-uppercase font-weight-bold medium">Kelas Mengaji Anak TK</div>
-                                <div class="text-value text-primary">{{ $kelas1 . ' Siswa Aktif' }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Data Jamaah</div>
+                                <div class="text-value text-primary">{{ $customers . ' Jamaah' }}</div>
                             </div>
                         </div>
                     </div>
@@ -77,21 +35,8 @@
                                 <i class="bi bi-person-workspace font-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-uppercase font-weight-bold medium">Kelas Mengaji Anak SD</div>
-                                <div class="text-value text-primary">{{ $kelas2 . ' Siswa Aktif' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0">
-                        <div class="card-body p-0 d-flex align-items-center shadow-sm">
-                            <div class="bg-gradient-primary p-4 mfe-3 rounded-left">
-                                <i class="bi bi-person-workspace font-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-uppercase font-weight-bold medium">Kelas Mengaji Al Quran</div>
-                                <div class="text-value text-primary">{{ $kelas3 . ' Siswa Aktif' }}</div>
+                                <div class="text-uppercase font-weight-bold medium">Data Keberangkatan</div>
+                                <div class="text-value text-primary">{{ $packages . ' Keberangkatan' }}</div>
                             </div>
                         </div>
                     </div>
@@ -110,8 +55,3 @@
             integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
-
-{{-- @push('page_scripts')
-    @vite('resources/js/chart-config.js')
-    {!! $dataTable->scripts() !!}
-@endpush --}}
