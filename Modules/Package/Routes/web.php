@@ -13,6 +13,6 @@
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::resource('customers', 'CustomersController');
+    Route::resource('packages', 'PackagesController');
 
 });

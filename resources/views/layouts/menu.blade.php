@@ -17,15 +17,15 @@
     <a class="c-sidebar-brand-minimized" style="font-size:15px;"><strong><i></i></strong></a>
 </div>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('teachers.*') ? 'c-show' : '' }}">
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('customers.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> Data Pengajar
+        <i class="c-sidebar-nav-icon bi bi-person-vcard" style="line-height: 1;"></i> Data Jamaah
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('teachers.*') ? 'c-active' : '' }}" href="{{ route('teachers.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Data Pengajar
+                <a class="c-sidebar-nav-link {{ request()->routeIs('customers.*') ? 'c-active' : '' }}" href="{{ route('customers.index') }}">
+                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Data Jamaah
                 </a>
             </li>
         {{-- @endcan --}}
@@ -34,13 +34,13 @@
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('students.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> Data Siswa
+        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> Data Keberangkatan
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link {{ request()->routeIs('students.*') ? 'c-active' : '' }}" href="{{ route('students.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Data Siswa
+                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Data Keberangkatan
                 </a>
             </li>
         {{-- @endcan --}}
@@ -62,107 +62,12 @@
     </ul>
 </li>
 
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('kelas1-task.*') || request()->routeIs('kelas2-task.*') || request()->routeIs('kelas3-task.*') ? 'c-show' : '' }}">
-    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Data Aktifitas
-    </a>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('report1.*') ? 'c-active' : '' }}" href="{{ route('kelas1-task.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Anak TK
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas2-task.*') ? 'c-active' : '' }}" href="{{ route('kelas2-task.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Anak SD
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas3-task.*') ? 'c-active' : '' }}" href="{{ route('kelas3-task.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-journal-check" style="line-height: 1;"></i> Kelas Mengaji Al Quran
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-</li>
-
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('kelas1-result.*') || request()->routeIs('kelas2-result.*') || request()->routeIs('kelas3-result.*') ? 'c-show' : '' }}">
-    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-clipboard2-data" style="line-height: 1;"></i> Laporan Aktifitas
-    </a>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas1-result.*') ? 'c-active' : '' }}" href="{{ route('kelas1-result.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Laporan Mengaji Anak TK
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas2-result.*') ? 'c-active' : '' }}" href="{{ route('kelas2-result.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Laporan Mengaji Anak SD
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('kelas3-result.*') ? 'c-active' : '' }}" href="{{ route('kelas3-result.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Laporan Mengaji Al Quran
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-</li>
-
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-printer" style="line-height: 1;"></i> Cetak Laporan
-    </a>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" style="color:gray;">
-                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Cetak By Siswa
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" style="color:gray;">
-                    <i class="c-sidebar-nav-icon bi bi-file-earmark-bar-graph" style="line-height: 1;"></i> Cetak By Kelas
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-</li>
-
 @can('access_user_management')
-    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('roles*') ? 'c-show' : '' }}">
+    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('roles*') || request()->routeIs('users*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
             <i class="c-sidebar-nav-icon bi bi-people" style="line-height: 1;"></i> Access System
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('users.create') ? 'c-active' : '' }}" href="{{ route('users.create') }}">
-                    <i class="c-sidebar-nav-icon bi bi-person-plus" style="line-height: 1;"></i> Create User
-                </a>
-            </li>
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link {{ request()->routeIs('users*') ? 'c-active' : '' }}" href="{{ route('users.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-person-lines-fill" style="line-height: 1;"></i> All Users
@@ -177,8 +82,8 @@
     </li>
 @endcan
 
-@can('access_currencies|access_settings')
-    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('settings.*') || request()->routeIs('juzs.*') || request()->routeIs('surats.*') ? 'c-show' : '' }}">
+@can('access_settings')
+    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('settings.*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
             <i class="c-sidebar-nav-icon bi bi-gear" style="line-height: 1;"></i> Settings
         </a>
@@ -187,24 +92,6 @@
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link {{ request()->routeIs('settings.*') ? 'c-active' : '' }}" href="{{ route('settings.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-sliders" style="line-height: 1;"></i> System Settings
-                </a>
-            </li>
-        </ul>
-        @endcan
-        @can('access_settings')
-        <ul class="c-sidebar-nav-dropdown-items">
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('juzs.*') ? 'c-active' : '' }}" href="{{ route('juzs.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-database-gear" style="line-height: 1;"></i> Data Juz
-                </a>
-            </li>
-        </ul>
-        @endcan
-        @can('access_settings')
-        <ul class="c-sidebar-nav-dropdown-items">
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('surats.*') ? 'c-active' : '' }}" href="{{ route('surats.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-database-gear" style="line-height: 1;"></i> Data Surat
                 </a>
             </li>
         </ul>
