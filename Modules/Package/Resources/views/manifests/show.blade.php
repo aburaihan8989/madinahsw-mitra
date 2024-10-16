@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'View Data Jamaah')
+@section('title', 'View Data Manifest Jamaah')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('customers.index') }}">Data Jamaah</a></li>
-        <li class="breadcrumb-item active">View Data Jamaah</li>
+        <li class="breadcrumb-item"><a href="{{ route('packages.index') }}">{{ $package->package_code }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('manifests.index', $package->id) }}">Data Manifest Jamaah</a></li>
+        <li class="breadcrumb-item active">View Data Manifest Jamaah</li>
     </ol>
 @endsection
 
@@ -17,7 +18,7 @@
             <div class="col-lg-12">
                 {{-- @include('utils.alerts') --}}
                 <div class="form-group">
-                    <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('customers.index') }}"> Kembali</a>
+                    <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('manifests.index', $package->id) }}"> Kembali</a>
                 </div>
             </div>
 
@@ -48,7 +49,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="customer_ktp_name">Nama Jamaah <span class="text-danger">*</span></label>
+                                    <label for="customer_ktp_name">Nama Jamaah (KTP) <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="customer_ktp_name" value="{{ $customer->customer_ktp_name }}" required readonly disabled>
                                 </div>
                             </div>
@@ -83,7 +84,6 @@
                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                         <option {{ $customer->customer_ktp_gender == 'L' ? 'selected' : '' }} value="L">Laki-Laki</option>
                                         <option {{ $customer->customer_ktp_gender == 'P' ? 'selected' : '' }} value="P">Perempuan</option>
-
                                     </select>
                                 </div>
                             </div>
@@ -109,10 +109,37 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+
+                        <div class="col-lg-4 btn btn-info">
+                            Data Paspor Jamaah
+                        </div>
+                        <hr>
+
+                        <div class="form-row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_name">Nama Jamaah (PASPOR) <span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" name="customer_paspor_name" value="{{ $customer->customer_paspor_name }}" readonly disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_number">Nomor Paspor <span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" name="customer_paspor_number" value="{{ $customer->customer_paspor_number }}" readonly disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_tgl_habis">Expired Paspor <span class="text-danger"></span></label>
+                                    <input type="date" class="form-control" name="customer_paspor_tgl_habis" value="{{ $customer->customer_paspor_tgl_habis }}" readonly disabled>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-        </div>
+            </div>
 
             <div class="col-lg-3">
                 <div class="card">

@@ -1,26 +1,27 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Data Jamaah')
+@section('title', 'Edit Data Manifest Jamaah')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('customers.index') }}">Data Jamaah</a></li>
-        <li class="breadcrumb-item active">Edit Data Jamaah</li>
+        <li class="breadcrumb-item"><a href="{{ route('packages.index') }}">{{ $package->package_code }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('manifests.index', $package->id) }}">Data Manifest Jamaah</a></li>
+        <li class="breadcrumb-item active">Edit Data Manifest Jamaah</li>
     </ol>
 @endsection
 
 @section('content')
     <div class="container-fluid">
-        <form id="customer-form" action="{{ route('customers.update', $customer) }}" method="POST" enctype="multipart/form-data">
+        <form id="manifest-form" action="{{ route('manifests.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="row">
                 <div class="col-lg-12">
                     @include('utils.alerts')
                     <div class="form-group">
-                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('customers.index') }}"> Kembali</a>
-                        <button class="btn btn-primary">Update Jamaah <i class="bi bi-floppy ml-1"></i></button>
+                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('manifests.index', $package->id) }}"> Kembali</a>
+                        <button class="btn btn-primary">Update Manifest Jamaah <i class="bi bi-floppy ml-1"></i></button>
                     </div>
                 </div>
 
@@ -51,7 +52,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="customer_ktp_name">Nama Jamaah <span class="text-danger">*</span></label>
+                                        <label for="customer_ktp_name">Nama Jamaah (KTP) <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="customer_ktp_name" value="{{ $customer->customer_ktp_name }}" required>
                                     </div>
                                 </div>
@@ -86,7 +87,6 @@
                                             <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                             <option {{ $customer->customer_ktp_gender == 'L' ? 'selected' : '' }} value="L">Laki-Laki</option>
                                             <option {{ $customer->customer_ktp_gender == 'P' ? 'selected' : '' }} value="P">Perempuan</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -112,8 +112,39 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
 
-                            <input type="hidden" value="{{ $customer->mitra_id }}" name="mitra_id">
+                            <div class="col-lg-4 btn btn-info">
+                                Data Paspor Jamaah
+                            </div>
+                            <hr>
+
+                            <div class="form-row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="customer_paspor_name">Nama Jamaah (PASPOR) <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" name="customer_paspor_name" value="{{ $customer->customer_paspor_name }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="customer_paspor_number">Nomor Paspor <span class="text-danger"></span></label>
+                                        <input type="text" class="form-control" name="customer_paspor_number" value="{{ $customer->customer_paspor_number }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="customer_paspor_tgl_habis">Expired Paspor <span class="text-danger"></span></label>
+                                        <input type="date" class="form-control" name="customer_paspor_tgl_habis" value="{{ $customer->customer_paspor_tgl_habis }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" value="{{ $manifest->id }}" name="id">
+                            <input type="hidden" value="{{ $manifest->mitra_id }}" name="mitra_id">
+                            <input type="hidden" value="{{ $customer->id }}" name="customer_id">
+                            <input type="hidden" value="{{ $customer->customer_kode }}" name="customer_kode">
+                            <input type="hidden" value="{{ $package->id }}" name="package_id">
 
                         </div>
                     </div>

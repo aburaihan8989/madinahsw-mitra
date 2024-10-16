@@ -1,100 +1,69 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Data Jamaah')
+@section('title', 'Edit Data Keberangkatan')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('customers.index') }}">Data Jamaah</a></li>
-        <li class="breadcrumb-item active">Edit Data Jamaah</li>
+        <li class="breadcrumb-item"><a href="{{ route('packages.index') }}">Data Keberangkatan</a></li>
+        <li class="breadcrumb-item active">Edit Data Keberangkatan</li>
     </ol>
 @endsection
 
 @section('content')
     <div class="container-fluid">
-        <form id="customer-form" action="{{ route('customers.update', $customer) }}" method="POST" enctype="multipart/form-data">
+        <form id="package-form" action="{{ route('packages.update', $package) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="row">
                 <div class="col-lg-12">
                     @include('utils.alerts')
                     <div class="form-group">
-                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('customers.index') }}"> Kembali</a>
-                        <button class="btn btn-primary">Update Jamaah <i class="bi bi-floppy ml-1"></i></button>
+                        <a class="btn btn-warning text-white bi bi-arrow-return-left mr-2" href="{{ route('packages.index') }}"> Kembali</a>
+                        <button class="btn btn-primary">Update Keberangkatan <i class="bi bi-floppy ml-1"></i></button>
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="card">
                         <div class="card-body">
 
                             <div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="customer_kode">Kode Jamaah <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_kode" value="{{ $customer->customer_kode }}" readonly disabled>
+                                        <label for="package_code">Kode Keberangkatan <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="package_code" value="{{ $package->package_code }}" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="package_name">Nama Keberangkatan <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="package_name" value="{{ $package->package_name }}" required>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="col-lg-4">
+                               <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="customer_ktp_nik">NIK Jamaah <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_nik" value="{{ $customer->customer_ktp_nik }}" required>
+                                        <label for="package_date">Tanggal Keberangkatan <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" name="package_date" value="{{ $package->package_date }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="customer_ktp_name">Nama Jamaah <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_name" value="{{ $customer->customer_ktp_name }}" required>
+                                        <label for="package_day">Jumlah Hari <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="package_day" value="{{ $package->package_date }}" required>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_phone">Kontak Jamaah <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_phone" value="{{ $customer->customer_phone }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_email">Email Jamaah <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="customer_email" value="{{ $customer->customer_email }}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_city">Kota / Kabupaten <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_city" value="{{ $customer->customer_ktp_city }}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="customer_ktp_gender">Jenis Kelamin <span class="text-danger"></span>*</label>
-                                        <select class="form-control" name="customer_ktp_gender" id="customer_ktp_gender" required>
-                                            <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                            <option {{ $customer->customer_ktp_gender == 'L' ? 'selected' : '' }} value="L">Laki-Laki</option>
-                                            <option {{ $customer->customer_ktp_gender == 'P' ? 'selected' : '' }} value="P">Perempuan</option>
-
+                                        <label for="package_status">Status <span class="text-danger"></span>*</label>
+                                        <select class="form-control" name="package_status" id="package_status" required>
+                                            <option value="" selected disabled>Pilih Status</option>
+                                            <option {{ $package->package_status == '1' ? 'selected' : '' }} value="1">Active</option>
+                                            <option {{ $package->package_status == '2' ? 'selected' : '' }} value="2">Completed</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_tmp_lahir">Tempat Lahir <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_tmp_lahir" value="{{ $customer->customer_ktp_tmp_lahir }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_tgl_lahir">Tanggal Lahir <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="customer_ktp_tgl_lahir" value="{{ $customer->customer_ktp_tgl_lahir }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -102,26 +71,8 @@
                             <div class="form-row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="customer_ktp_alamat">Alamat Jamaah </label>
-                                        <textarea name="customer_ktp_alamat" id="customer_ktp_alamat" rows="3 " class="form-control">{{ $customer->customer_ktp_alamat }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <input type="hidden" value="{{ $customer->mitra_id }}" name="mitra_id">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="customers">Photo Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
-                                <div class="dropzone d-flex flex-wrap align-items-center justify-content-center" id="document-dropzone">
-                                    <div class="dz-message" data-dz-message>
-                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <label for="package_note">Catatan Keberangkatan </label>
+                                        <textarea name="package_note" id="package_note" rows="3 " class="form-control">{{ $package->package_date }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -137,54 +88,3 @@
 @section('third_party_scripts')
     <script src="{{ asset('js/dropzone.js') }}"></script>
 @endsection
-
-@push('page_scripts')
-    <script>
-        var uploadedDocumentMap = {}
-        Dropzone.options.documentDropzone = {
-            url: '{{ route('dropzone.upload') }}',
-            maxFilesize: 1,
-            acceptedFiles: '.jpg, .jpeg, .png',
-            maxFiles: 1,
-            addRemoveLinks: true,
-            dictRemoveFile: "<i class='bi bi-x-circle text-danger'></i> remove",
-            headers: {
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            success: function (file, response) {
-                $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">');
-                uploadedDocumentMap[file.name] = response.name;
-            },
-            removedfile: function (file) {
-                file.previewElement.remove();
-                var name = '';
-                if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name;
-                } else {
-                    name = uploadedDocumentMap[file.name];
-                }
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('dropzone.delete') }}",
-                    data: {
-                        '_token': "{{ csrf_token() }}",
-                        'file_name': `${name}`
-                    },
-                });
-                $('form').find('input[name="document[]"][value="' + name + '"]').remove();
-            },
-            init: function () {
-                @if(isset($customer) && $customer->getMedia('customers'))
-                var files = {!! json_encode($customer->getMedia('customers')) !!};
-                for (var i in files) {
-                    var file = files[i];
-                    this.options.addedfile.call(this, file);
-                    this.options.thumbnail.call(this, file, file.original_url);
-                    file.previewElement.classList.add('dz-complete');
-                    $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">');
-                }
-                @endif
-            }
-        }
-    </script>
-@endpush

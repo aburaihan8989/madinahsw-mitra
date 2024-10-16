@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="card">
                         <div class="card-body">
 
@@ -37,10 +37,10 @@
                             </div>
 
                             <div class="form-row">
-*                               <div class="col-lg-4">
+                               <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="package_date">Tanggal Keberangkatan <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="package_date" required value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                        <input type="date" class="form-control" name="package_date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">

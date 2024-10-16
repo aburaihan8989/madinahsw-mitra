@@ -23,9 +23,14 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="card">
                         <div class="card-body">
+
+                            <div class="col-lg-4 btn btn-info">
+                                Data Kartu Tanda Penduduk
+                            </div>
+                            <hr>
 
                             <div class="form-row">
                                 <div class="col-lg-4">
@@ -100,11 +105,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-3">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="customers">Photo Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                                <label for="customers">Photo Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 4, Max File Size: 1MB, Image Size: 400x400"></i></label>
                                 <div class="dropzone d-flex flex-wrap align-items-center justify-content-center" id="document-dropzone">
                                     <div class="dz-message" data-dz-message>
                                         <i class="bi bi-cloud-arrow-up"></i>
@@ -131,7 +136,7 @@
             url: '{{ route('dropzone.upload') }}',
             maxFilesize: 1,
             acceptedFiles: '.jpg, .jpeg, .png',
-            maxFiles: 1,
+            maxFiles: 4,
             addRemoveLinks: true,
             dictRemoveFile: "<i class='bi bi-x-circle text-danger'></i> remove",
             headers: {
