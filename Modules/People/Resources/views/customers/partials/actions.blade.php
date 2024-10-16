@@ -1,10 +1,10 @@
 @can('edit_customers')
-    <a href="{{ route('students.edit', $data->id) }}" class="btn btn-warning btn-sm text-white">
+    <a href="{{ route('customers.edit', $data->id) }}" class="btn btn-warning btn-sm text-white">
         <i class="bi bi-pencil"></i>
     </a>
 @endcan
 @can('show_customers')
-    <a href="{{ route('students.show', $data->id) }}" class="btn btn-primary btn-sm">
+    <a href="{{ route('customers.show', $data->id) }}" class="btn btn-primary btn-sm">
         <i class="bi bi-eye"></i>
     </a>
 @endcan
@@ -16,7 +16,7 @@
         }
         ">
         <i class="bi bi-trash"></i>
-        <form id="destroy{{ $data->id }}" class="d-none" action="{{ route('students.destroy', $data->id) }}" method="POST">
+        <form id="destroy{{ $data->id }}" class="d-none" action="{{ route('customers.destroy', $data->id) }}" method="POST">
             @csrf
             @method('delete')
         </form>

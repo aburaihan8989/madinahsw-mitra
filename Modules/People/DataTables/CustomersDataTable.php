@@ -16,11 +16,8 @@ class CustomersDataTable extends DataTable
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->addColumn('customer_gender', function ($data) {
-                return $data->customer_gender == 'L' ? 'Laki-Laki' : 'Perempuan';
-            })
-            ->addColumn('customer_active', function ($data) {
-                return view('people::customers.partials.status', compact('data'));
+            ->addColumn('customer_ktp_gender', function ($data) {
+                return $data->customer_ktp_gender == 'L' ? 'Laki-Laki' : 'Perempuan';
             })
             ->addColumn('action', function ($data) {
                 return view('people::customers.partials.actions', compact('data'));
@@ -78,12 +75,12 @@ class CustomersDataTable extends DataTable
                 ->title('Kontak Jamaah')
                 ->className('text-center align-middle'),
 
-            Column::make('customer_gender')
-                ->title('Gender')
+            Column::make('customer_ktp_gender')
+                ->title('Jenis Kelamin')
                 ->className('text-center align-middle'),
 
-            Column::make('customer_city')
-                ->title('Kota/Kabupaten')
+            Column::make('customer_ktp_city')
+                ->title('Kota / Kabupaten')
                 ->className('text-center align-middle'),
 
             Column::computed('action')

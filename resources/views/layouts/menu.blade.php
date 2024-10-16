@@ -34,28 +34,13 @@
 
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('customers.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-person-badge" style="line-height: 1;"></i> Data Keberangkatan
+        <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Data Keberangkatan
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         {{-- @can('access_customers') --}}
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link {{ request()->routeIs('customers.*') ? 'c-active' : '' }}" href="{{ route('customers.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-people-fill" style="line-height: 1;"></i> Data Keberangkatan
-                </a>
-            </li>
-        {{-- @endcan --}}
-    </ul>
-</li>
-
-<li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('customers.*') ? 'c-show' : '' }}">
-    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
-        <i class="c-sidebar-nav-icon bi bi-book" style="line-height: 1;"></i> Data Pelajaran
-    </a>
-    <ul class="c-sidebar-nav-dropdown-items">
-        {{-- @can('access_customers') --}}
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('customers.*') ? 'c-active' : '' }}" href="{{ route('customers.index') }}">
-                    <i class="c-sidebar-nav-icon bi bi-journal-text" style="line-height: 1;"></i> Data Pelajaran
+                    <i class="c-sidebar-nav-icon bi bi-journal-text" style="line-height: 1;"></i> Data Keberangkatan
                 </a>
             </li>
         {{-- @endcan --}}

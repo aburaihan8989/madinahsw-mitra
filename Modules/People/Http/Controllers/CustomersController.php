@@ -26,7 +26,7 @@ class CustomersController extends Controller
     public function create() {
         abort_if(Gate::denies('create_customers'), 403);
 
-        return view('people::students.create');
+        return view('people::customers.create');
     }
 
 
@@ -34,146 +34,116 @@ class CustomersController extends Controller
         abort_if(Gate::denies('create_customers'), 403);
 
         $request->validate([
-            // 'student_nis'        => 'required|max:255',
-            // 'student_nisn'       => 'required|max:255',
-            // 'student_nik'        => 'required|max:255',
-            // 'student_name'       => 'required|max:255',
-            // 'student_gender'     => 'required',
-            // 'student_place'      => 'required|max:255',
-            // 'student_birth'      => 'required',
-            // 'student_join'       => 'required',
-            // 'student_level'      => 'required',
-            // 'student_phone'      => 'required',
-            // 'student_email'      => 'required|email|max:255',
-            // 'student_city'       => 'required|max:255',
-            // 'student_address'    => 'required',
-            // 'student_active'     => 'required',
-            // 'student_wali1'      => 'required|max:255',
-            // 'student_wali2'      => 'required|max:255',
-            // 'class_id'           => 'required',
+            // 'customer_ktp_nik'         => 'required|max:255',
+            // 'customer_ktp_name'        => 'required|max:255',
+            // 'customer_phone'           => 'required',
+            // 'customer_email'           => 'required|email|max:255',
+            // 'customer_ktp_city'        => 'required|max:255',
+            // 'customer_ktp_gender'      => 'required',
+            // 'customer_ktp_tmp_lahir'   => 'required|max:255',
+            // 'customer_ktp_tgl_lahir'   => 'required',
+            // 'customer_ktp_alamat'      => 'required',
         ]);
 
-        $student = Student::create([
-            'student_nis'     => $request->student_nis,
-            'student_nisn'    => $request->student_nisn,
-            'student_nik'     => $request->student_nik,
-            'student_name'    => $request->student_name,
-            'student_gender'  => $request->student_gender,
-            'student_place'   => $request->student_place,
-            'student_birth'   => $request->student_birth,
-            'student_join'    => $request->student_join,
-            'student_level'   => $request->student_level,
-            'student_phone'   => $request->student_phone,
-            'student_email'   => $request->student_email,
-            'student_city'    => $request->student_city,
-            'student_address' => $request->student_address,
-            'student_active'  => $request->student_active,
-            'student_wali1'   => $request->student_wali1,
-            'student_wali2'   => $request->student_wali2,
-            'class_id'        => $request->class_id
+        $customer = Customer::create([
+            'mitra_id'                  => auth()->user()->id,
+            'customer_ktp_nik'          => $request->customer_ktp_nik,
+            'customer_ktp_name'         => $request->customer_ktp_name,
+            'customer_phone'            => $request->customer_phone,
+            'customer_email'            => $request->customer_email,
+            'customer_ktp_city'         => $request->customer_ktp_city,
+            'customer_ktp_gender'       => $request->customer_ktp_gender,
+            'customer_ktp_tmp_lahir'    => $request->customer_ktp_tmp_lahir,
+            'customer_ktp_tgl_lahir'    => $request->customer_ktp_tgl_lahir,
+            'customer_ktp_alamat'       => $request->customer_ktp_alamat
         ]);
 
         if ($request->has('document')) {
             foreach ($request->input('document') as $file) {
-                $student->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('students');
+                $customer->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('customers');
             }
         }
 
-        toast('Data Siswa Created!', 'success');
+        toast('Data Jamaah Created!', 'success');
 
-        return redirect()->route('students.index');
+        return redirect()->route('customers.index');
     }
 
 
-    public function show(Student $student) {
+    public function show(Customer $customer) {
         abort_if(Gate::denies('show_customers'), 403);
 
-        return view('people::students.show', compact('student'));
+        return view('people::customers.show', compact('customer'));
     }
 
 
-    public function edit(Student $student) {
+    public function edit(Customer $customer) {
         abort_if(Gate::denies('edit_customers'), 403);
 
-        return view('people::students.edit', compact('student'));
+        return view('people::customers.edit', compact('customer'));
     }
 
 
-    public function update(Request $request, Student $student) {
+    public function update(Request $request, Customer $customer) {
         abort_if(Gate::denies('update_customers'), 403);
 
         $request->validate([
-            // 'student_nis'        => 'required|max:255',
-            // 'student_nisn'       => 'required|max:255',
-            // 'student_nik'        => 'required|max:255',
-            // 'student_name'       => 'required|max:255',
-            // 'student_gender'     => 'required',
-            // 'student_place'      => 'required|max:255',
-            // 'student_birth'      => 'required',
-            // 'student_join'       => 'required',
-            // 'student_level'      => 'required',
-            // 'student_phone'      => 'required',
-            // 'student_email'      => 'required|email|max:255',
-            // 'student_city'       => 'required|max:255',
-            // 'student_address'    => 'required',
-            // 'student_active'     => 'required',
-            // 'student_wali1'      => 'required|max:255',
-            // 'student_wali2'      => 'required|max:255',
-            // 'class_id'           => 'required',
+            // 'customer_ktp_nik'         => 'required|max:255',
+            // 'customer_ktp_name'        => 'required|max:255',
+            // 'customer_phone'           => 'required',
+            // 'customer_email'           => 'required|email|max:255',
+            // 'customer_ktp_city'        => 'required|max:255',
+            // 'customer_ktp_gender'      => 'required',
+            // 'customer_ktp_tmp_lahir'   => 'required|max:255',
+            // 'customer_ktp_tgl_lahir'   => 'required',
+            // 'customer_ktp_alamat'      => 'required',
         ]);
 
-        $student->update([
-            'student_nis'     => $request->student_nis,
-            'student_nisn'    => $request->student_nisn,
-            'student_nik'     => $request->student_nik,
-            'student_name'    => $request->student_name,
-            'student_gender'  => $request->student_gender,
-            'student_place'   => $request->student_place,
-            'student_birth'   => $request->student_birth,
-            'student_join'    => $request->student_join,
-            'student_level'   => $request->student_level,
-            'student_phone'   => $request->student_phone,
-            'student_email'   => $request->student_email,
-            'student_city'    => $request->student_city,
-            'student_address' => $request->student_address,
-            'student_active'  => $request->student_active,
-            'student_wali1'   => $request->student_wali1,
-            'student_wali2'   => $request->student_wali2,
-            'class_id'        => $request->class_id
+        $customer->update([
+            'mitra_id'                  => $request->mitra_id,
+            'customer_ktp_nik'          => $request->customer_ktp_nik,
+            'customer_ktp_name'         => $request->customer_ktp_name,
+            'customer_phone'            => $request->customer_phone,
+            'customer_email'            => $request->customer_email,
+            'customer_ktp_city'         => $request->customer_ktp_city,
+            'customer_ktp_gender'       => $request->customer_ktp_gender,
+            'customer_ktp_tmp_lahir'    => $request->customer_ktp_tmp_lahir,
+            'customer_ktp_tgl_lahir'    => $request->customer_ktp_tgl_lahir,
+            'customer_ktp_alamat'      => $request->customer_ktp_alamat
         ]);
 
         if ($request->has('document')) {
-            if (count($student->getMedia('students')) > 0) {
-                foreach ($student->getMedia('students') as $media) {
+            if (count($customer->getMedia('customers')) > 0) {
+                foreach ($customer->getMedia('customers') as $media) {
                     if (!in_array($media->file_name, $request->input('document', []))) {
                         $media->delete();
                     }
                 }
             }
 
-            $media = $student->getMedia('students')->pluck('file_name')->toArray();
+            $media = $customer->getMedia('customers')->pluck('file_name')->toArray();
 
             foreach ($request->input('document', []) as $file) {
                 if (count($media) === 0 || !in_array($file, $media)) {
-                    $student->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('students');
+                    $customer->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('customers');
                 }
             }
         }
 
-        toast('Data Siswa Updated!', 'info');
+        toast('Data Jamaah Updated!', 'info');
 
-        return redirect()->route('students.index');
+        return redirect()->route('customers.index');
     }
 
 
-    public function destroy(Student $student) {
+    public function destroy(Customer $customer) {
         abort_if(Gate::denies('delete_customers'), 403);
 
-        $student->delete();
+        $customer->delete();
 
-        toast('Data Siswa Deleted!', 'warning');
+        toast('Data Jamaah Deleted!', 'warning');
 
-        return redirect()->route('students.index');
+        return redirect()->route('customers.index');
     }
 
 
