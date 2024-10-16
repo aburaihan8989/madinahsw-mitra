@@ -23,7 +23,7 @@ class Package extends Model implements HasMedia
 
         static::creating(function ($model) {
             $number = Package::max('id') + 1;
-            $model->package_code = make_reference_id('P', $number);
+            $model->package_code = make_reference_id('K', $number);
         });
     }
 

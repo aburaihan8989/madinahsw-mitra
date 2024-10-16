@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Pelajaran')
+@section('title', 'Data Keberangkatan')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Data Pelajaran</li>
+        <li class="breadcrumb-item active">Data Keberangkatan</li>
     </ol>
 @endsection
 
@@ -19,8 +19,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('studies.create') }}" class="btn btn-primary">
-                            Tambah Pelajaran <i class="bi bi-plus"></i>
+                        <a href="{{ route('packages.create') }}" class="btn btn-primary">
+                            Tambah Keberangkatan <i class="bi bi-plus"></i>
                         </a>
 
                         <hr>

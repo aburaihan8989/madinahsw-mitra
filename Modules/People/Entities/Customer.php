@@ -23,7 +23,7 @@ class Customer extends Model implements HasMedia
 
         static::creating(function ($model) {
             $number = Customer::max('id') + 1;
-            $model->customer_kode = make_reference_id('C', $number);
+            $model->customer_kode = make_reference_id('J', $number);
         });
     }
 

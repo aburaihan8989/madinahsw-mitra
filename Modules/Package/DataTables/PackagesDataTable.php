@@ -16,11 +16,22 @@ class PackagesDataTable extends DataTable
     public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->addColumn('studi_category', function ($data) {
-                return $data->studi_category == '1' ? 'Kurikulum Sekolah' : 'Kurikulum Nasional';
+            ->editColumn('package_date', function($data){
+                $formatDate = date('d-m-Y',strtotime($data->package_date));
+                return $formatDate;
+            })
+            ->editColumn('package_day', function($data){
+                $formatData = $data->package_day . ' Hari';
+                return $formatData;
+            })
+            ->addColumn('tambah_jamaah', function ($data) {
+                return view('package::packages.partials.actions-customer', compact('data'));
+            })
+            ->addColumn('package_status', function ($data) {
+                return view('package::packages.partials.status', compact('data'));
             })
             ->addColumn('action', function ($data) {
-                return view('study::studi.partials.actions', compact('data'));
+                return view('package::packages.partials.actions', compact('data'));
             });
     }
 
@@ -30,7 +41,7 @@ class PackagesDataTable extends DataTable
 
     public function html() {
         return $this->builder()
-            ->setTableId('studies-table')
+            ->setTableId('packages-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
@@ -62,23 +73,39 @@ class PackagesDataTable extends DataTable
                 ->searchable(false)
                 ->className('text-center align-middle'),
 
-            Column::make('studi_code')
-                ->title('Kode Pelajaran')
-                ->width(300)
+            Column::make('package_code')
+                ->title('Kode Keberangkatan')
+                ->width(120)
                 ->className('text-center align-middle'),
 
-            Column::make('studi_name')
-                ->title('Nama Pelajaran')
+            Column::make('package_name')
+                ->title('Nama Keberangkatan')
                 ->className('text-center align-middle'),
 
-            Column::make('studi_category')
-                ->title('Kategori Pelajaran')
+            Column::make('package_date')
+                ->title('Tanggal Keberangkatan')
+                ->width(120)
+                ->className('text-center align-middle'),
+
+            Column::make('package_day')
+                ->title('Jumlah Hari')
+                ->width(120)
+                ->className('text-center align-middle'),
+
+            Column::make('package_status')
+                ->title('Status')
+                ->width(100)
+                ->className('text-center align-middle'),
+
+            Column::make('tambah_jamaah')
+                ->title('Data Manifest')
+                ->width(150)
                 ->className('text-center align-middle'),
 
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(300)
+                ->width(60)
                 ->className('text-center align-middle'),
 
             Column::make('created_at')
@@ -87,6 +114,6 @@ class PackagesDataTable extends DataTable
     }
 
     protected function filename(): string {
-        return 'Studies_' . date('YmdHis');
+        return 'Packages_' . date('YmdHis');
     }
 }
