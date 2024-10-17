@@ -13,8 +13,8 @@ class HomeController extends Controller
 
     public function index() {
 
-        $customers = Customer::count();
-        $packages = Package::count();
+        $customers = Customer::where('mitra_id', auth()->user()->id)->count();
+        $packages = Package::where('mitra_id', auth()->user()->id)->count();
 
         return view('home', compact(
             'customers',

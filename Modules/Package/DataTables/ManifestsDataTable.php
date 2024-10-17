@@ -39,7 +39,11 @@ class ManifestsDataTable extends DataTable
     }
 
     public function query(Manifest $model) {
-        return $model->newQuery();
+        if (auth()->user()->id == 1) {
+            return $model->newQuery();
+        } else {
+            return $model->newQuery()->where('mitra_id', auth()->user()->id);
+        }
     }
 
     public function html() {
