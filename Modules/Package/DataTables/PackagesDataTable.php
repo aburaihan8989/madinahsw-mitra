@@ -101,13 +101,13 @@ class PackagesDataTable extends DataTable
                 ->width(100)
                 ->className('text-center align-middle'),
 
-            Column::make('mitra_name')
-                ->title('Nama Mitra')
-                ->className('text-center align-middle'),
-
             Column::make('tambah_jamaah')
                 ->title('Data Manifest')
                 ->width(150)
+                ->className('text-center align-middle'),
+
+            Column::make('mitra_name')
+                ->title('Register By')
                 ->className('text-center align-middle'),
 
             Column::computed('action')

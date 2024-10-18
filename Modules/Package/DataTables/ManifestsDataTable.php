@@ -100,7 +100,7 @@ class ManifestsDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('mitra_name')
-                ->title('Nama Mitra')
+                ->title('Register By')
                 ->className('text-center align-middle'),
 
             Column::computed('action')
