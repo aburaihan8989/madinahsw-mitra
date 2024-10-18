@@ -114,6 +114,7 @@
                             </div>
 
                             <input type="hidden" value="{{ $customer->mitra_id }}" name="mitra_id">
+                            <input type="hidden" value="{{ $customer->mitra_name }}" name="mitra_name">
 
                         </div>
                     </div>

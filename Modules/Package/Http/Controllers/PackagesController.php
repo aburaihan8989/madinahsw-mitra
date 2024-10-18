@@ -43,6 +43,7 @@ class PackagesController extends Controller
 
         $package = Package::create([
             'mitra_id'           => auth()->user()->id,
+            'mitra_name'         => auth()->user()->name,
             'package_name'       => $request->package_name,
             'package_date'       => $request->package_date,
             'package_day'        => $request->package_day,
@@ -89,6 +90,7 @@ class PackagesController extends Controller
 
         $package->update([
             'mitra_id'           => $request->mitra_id,
+            'mitra_name'         => $request->mitra_name,
             'package_name'       => $request->package_name,
             'package_date'       => $request->package_date,
             'package_day'        => $request->package_day,

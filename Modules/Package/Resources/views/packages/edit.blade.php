@@ -76,6 +76,10 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <input type="hidden" value="{{ $package->mitra_id }}" name="mitra_id">
+                            <input type="hidden" value="{{ $package->mitra_name }}" name="mitra_name">
+
                         </div>
                     </div>
                 </div>

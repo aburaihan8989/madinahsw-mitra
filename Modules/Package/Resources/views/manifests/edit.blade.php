@@ -142,6 +142,7 @@
 
                             <input type="hidden" value="{{ $manifest->id }}" name="id">
                             <input type="hidden" value="{{ $manifest->mitra_id }}" name="mitra_id">
+                            <input type="hidden" value="{{ $manifest->mitra_name }}" name="mitra_name">
                             <input type="hidden" value="{{ $customer->id }}" name="customer_id">
                             <input type="hidden" value="{{ $customer->customer_kode }}" name="customer_kode">
                             <input type="hidden" value="{{ $package->id }}" name="package_id">

@@ -56,6 +56,7 @@ class ManifestsController extends Controller
 
         $customer = Customer::create([
             'mitra_id'                     => auth()->user()->id,
+            'mitra_name'                   => auth()->user()->name,
             'customer_ktp_nik'             => $request->customer_ktp_nik,
             'customer_ktp_name'            => $request->customer_ktp_name,
             'customer_phone'               => $request->customer_phone,
@@ -78,6 +79,7 @@ class ManifestsController extends Controller
 
         $manifest = Manifest::create([
             'mitra_id'                   => auth()->user()->id,
+            'mitra_name'                 => auth()->user()->name,
             'package_id'                 => $request->package_id,
             'customer_id'                => $customer->id,
             'customer_kode'              => $customer->customer_kode,
@@ -137,6 +139,7 @@ class ManifestsController extends Controller
 
         $customer->update([
             'mitra_id'                     => $request->mitra_id,
+            'mitra_name'                   => $request->mitra_name,
             'customer_ktp_nik'             => $request->customer_ktp_nik,
             'customer_ktp_name'            => $request->customer_ktp_name,
             'customer_phone'               => $request->customer_phone,
@@ -171,6 +174,7 @@ class ManifestsController extends Controller
 
         $manifest->update([
             'mitra_id'                   => $request->mitra_id,
+            'mitra_name'                 => $request->mitra_name,
             'package_id'                 => $request->package_id,
             'customer_id'                => $request->customer_id,
             'customer_kode'              => $request->customer_kode,
@@ -186,14 +190,14 @@ class ManifestsController extends Controller
     }
 
 
-    public function destroy(Customer $customer) {
+    public function destroy(Manifest $manifest) {
         abort_if(Gate::denies('delete_customers'), 403);
 
-        $customer->delete();
+        $manifest->delete();
 
-        toast('Data Jamaah Deleted!', 'warning');
+        toast('Data Manifest Jamaah Deleted!', 'warning');
 
-        return redirect()->route('customers.index');
+        return redirect()->route('manifests.index', $request->package_id);
     }
 
 }

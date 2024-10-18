@@ -47,6 +47,7 @@ class CustomersController extends Controller
 
         $customer = Customer::create([
             'mitra_id'                  => auth()->user()->id,
+            'mitra_name'                => auth()->user()->name,
             'customer_ktp_nik'          => $request->customer_ktp_nik,
             'customer_ktp_name'         => $request->customer_ktp_name,
             'customer_phone'            => $request->customer_phone,
@@ -101,6 +102,7 @@ class CustomersController extends Controller
 
         $customer->update([
             'mitra_id'                  => $request->mitra_id,
+            'mitra_name'                => $request->mitra_name,
             'customer_ktp_nik'          => $request->customer_ktp_nik,
             'customer_ktp_name'         => $request->customer_ktp_name,
             'customer_phone'            => $request->customer_phone,
@@ -109,7 +111,7 @@ class CustomersController extends Controller
             'customer_ktp_gender'       => $request->customer_ktp_gender,
             'customer_ktp_tmp_lahir'    => $request->customer_ktp_tmp_lahir,
             'customer_ktp_tgl_lahir'    => $request->customer_ktp_tgl_lahir,
-            'customer_ktp_alamat'      => $request->customer_ktp_alamat
+            'customer_ktp_alamat'       => $request->customer_ktp_alamat
         ]);
 
         if ($request->has('document')) {
