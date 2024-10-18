@@ -69,7 +69,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="package_note">Catatan Keberangkatan </label>
-                                    <textarea name="package_note" id="package_note" rows="3 " class="form-control" readonly disabled>{{ $package->package_date }}</textarea>
+                                    <textarea name="package_note" id="package_note" rows="3 " class="form-control" readonly disabled>{{ $package->package_note }}</textarea>
                                 </div>
                             </div>
                         </div>
