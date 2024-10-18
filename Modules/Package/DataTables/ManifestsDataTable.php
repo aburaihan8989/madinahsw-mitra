@@ -39,11 +39,7 @@ class ManifestsDataTable extends DataTable
     }
 
     public function query(Manifest $model) {
-        if (auth()->user()->id == 1) {
-            return $model->newQuery();
-        } else {
-            return $model->newQuery()->where('mitra_id', auth()->user()->id);
-        }
+        return $model->newQuery()->where('package_id', request()->route('id'));
     }
 
     public function html() {
@@ -101,6 +97,10 @@ class ManifestsDataTable extends DataTable
             Column::make('customer_paspor_expired')
                 ->title('Expired Paspor')
                 ->width(120)
+                ->className('text-center align-middle'),
+
+            Column::make('mitra_name')
+                ->title('Nama Mitra')
                 ->className('text-center align-middle'),
 
             Column::computed('action')

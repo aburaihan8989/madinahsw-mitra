@@ -87,6 +87,10 @@ class CustomersDataTable extends DataTable
                 ->title('Kota / Kabupaten')
                 ->className('text-center align-middle'),
 
+            Column::make('mitra_name')
+                ->title('Nama Mitra')
+                ->className('text-center align-middle'),
+
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
