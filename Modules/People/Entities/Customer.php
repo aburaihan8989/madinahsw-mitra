@@ -30,6 +30,19 @@ class Customer extends Model implements HasMedia
     public function registerMediaCollections(): void {
         $this->addMediaCollection('customers')
             ->useFallbackUrl('/images/fallback_profile_image.png');
+
+        $this->addMediaCollection('ktp')
+            ->useFallbackUrl('/images/fallback_profile_image.png');
+
+        $this->addMediaCollection('kk')
+            ->useFallbackUrl('/images/fallback_profile_image.png');
+
+        $this->addMediaCollection('paspor')
+            ->useFallbackUrl('/images/fallback_profile_image.png');
+
+        $this->addMediaCollection('vaksin')
+            ->useFallbackUrl('/images/fallback_profile_image.png');
+
     }
 
 }

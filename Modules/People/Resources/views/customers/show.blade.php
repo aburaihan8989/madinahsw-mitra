@@ -78,7 +78,7 @@
                         <div class="form-row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="customer_ktp_gender">Jenis Kelamin <span class="text-danger"></span>*</label>
+                                    <label for="customer_ktp_gender">Jenis Kelamin <span class="text-danger">*</span></label>
                                     <select class="form-control" name="customer_ktp_gender" id="customer_ktp_gender" required readonly disabled>
                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                         <option {{ $customer->customer_ktp_gender == 'L' ? 'selected' : '' }} value="L">Laki-Laki</option>
@@ -110,25 +110,136 @@
                             </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="customer_note">Catatan Jamaah </label>
+                                    <textarea name="customer_note" id="customer_note" rows="3 " class="form-control" readonly disabled>{{ $customer->customer_note }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="col-lg-4 btn btn-info">
+                            Data Paspor Jamaah
+                        </div>
+                        <hr>
+
+                        <div class="form-row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_name">Nama Jamaah (PASPOR) <span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" name="customer_paspor_name" value="{{ $customer->customer_paspor_name }}" readonly disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_number">Nomor Paspor <span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" name="customer_paspor_number" value="{{ $customer->customer_paspor_number }}" readonly disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_imigrasi">Kantor Imigrasi <span class="text-danger"></span></label>
+                                    <input type="text" class="form-control" name="customer_paspor_imigrasi" value="{{ $customer->customer_paspor_imigrasi }}" readonly disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_tgl_aktif">Paspor Aktif <span class="text-danger"></span></label>
+                                    <input type="date" class="form-control" name="customer_paspor_tgl_aktif" value="{{ $customer->customer_paspor_tgl_aktif }}" readonly disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="customer_paspor_tgl_habis">Paspor Expired <span class="text-danger"></span></label>
+                                    <input type="date" class="form-control" name="customer_paspor_tgl_habis" value="{{ $customer->customer_paspor_tgl_habis }}" readonly disabled>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-        </div>
+            </div>
 
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <label for="customers">Photo Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 4, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                        <label for="customers">Foto Profile Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
                         <br>
-                        @forelse($customer->getMedia('customers') as $media)
+                        {{-- @forelse($customer->getMedia('customers') as $media)
                             <img src="{{ $media->getUrl() }}" alt="Photo Jamaah" class="img-fluid img-thumbnail mb-2">
-                        @empty
-                            <img src="{{ $customer->getFirstMediaUrl('customers') }}" alt="Photo Jamaah" class="img-fluid img-thumbnail mb-2">
-                        @endforelse
+                        @empty --}}
+                            <a href="{{ $customer->getFirstMediaUrl('customers') }}"><img src="{{ $customer->getFirstMediaUrl('customers') }}" alt="Foto Profile Jamaah" class="img-fluid img-thumbnail mb-2"></a>
+                        {{-- @endforelse --}}
                     </div>
                 </div>
             </div>
 
         </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <label for="ktp">Foto KTP Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                        <br>
+                        {{-- @forelse($customer->getMedia('customers') as $media) --}}
+                            {{-- <img src="{{ $media[0]->getUrl() }}" alt="Photo Jamaah" class="img-fluid img-thumbnail mb-2"> --}}
+                        {{-- @empty --}}
+                            <a href="{{ $customer->getFirstMediaUrl('ktp') }}"><img src="{{ $customer->getFirstMediaUrl('ktp') }}" alt="Foto KTP Jamaah" class="img-fluid img-thumbnail mb-2"></a>
+                        {{-- @endforelse --}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <label for="kk">Foto KK Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                        <br>
+                        {{-- @forelse($customer->getMedia('customers') as $media) --}}
+                            {{-- <img src="{{ $media[0]->getUrl() }}" alt="Photo Jamaah" class="img-fluid img-thumbnail mb-2"> --}}
+                        {{-- @empty --}}
+                            <a href="{{ $customer->getFirstMediaUrl('kk') }}"><img src="{{ $customer->getFirstMediaUrl('kk') }}" alt="Foto KK Jamaah" class="img-fluid img-thumbnail mb-2"></a>
+                        {{-- @endforelse --}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <label for="paspor">Foto Paspor Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                        <br>
+                        {{-- @forelse($customer->getMedia('customers') as $media) --}}
+                            {{-- <img src="{{ $media[0]->getUrl() }}" alt="Photo Jamaah" class="img-fluid img-thumbnail mb-2"> --}}
+                        {{-- @empty --}}
+                            <a href="{{ $customer->getFirstMediaUrl('paspor') }}"><img src="{{ $customer->getFirstMediaUrl('paspor') }}" alt="Foto Paspor Jamaah" class="img-fluid img-thumbnail mb-2"></a>
+                        {{-- @endforelse --}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <label for="vaksin">Foto Meningitis Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 1, Max File Size: 1MB, Image Size: 400x400"></i></label>
+                        <br>
+                        {{-- @forelse($customer->getMedia('customers') as $media) --}}
+                            {{-- <img src="{{ $media[0]->getUrl() }}" alt="Photo Jamaah" class="img-fluid img-thumbnail mb-2"> --}}
+                        {{-- @empty --}}
+                            <a href="{{ $customer->getFirstMediaUrl('vaksin') }}"><img src="{{ $customer->getFirstMediaUrl('vaksin') }}" alt="Foto Meningitis Jamaah" class="img-fluid img-thumbnail mb-2"></a>
+                        {{-- @endforelse --}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 @endsection
 

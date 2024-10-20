@@ -29,106 +29,65 @@
                         <div class="card-body">
 
                             <div class="col-lg-4 btn btn-info">
-                                Data Kartu Tanda Penduduk
+                                Database Jamaah
                             </div>
                             <hr>
 
                             <div class="form-row">
                                 <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_nik">NIK Jamaah <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_nik" required>
+                                    <div class="from-group">
+                                        <div class="form-group">
+                                            <label for="customer_id">Nama Jamaah <span class="text-danger">*</span></label>
+                                            <select class="select2 form-control" name="customer_id" id="customer_id" required>
+                                                <option value="" selected disabled>Pilih Nama Jamaah</option>
+                                                @foreach(\Modules\People\Entities\Customer::all() as $customer)
+                                                    <option value="{{ $customer->id }}">{{ $customer->customer_kode . ' | ' . $customer->customer_ktp_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_name">Nama Jamaah (KTP) <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_name" required>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="form-row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_phone">Kontak Jamaah <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_phone" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_email">Email Jamaah <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="customer_email">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_city">Kota / Kabupaten <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_city">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_gender">Jenis Kelamin <span class="text-danger"></span>*</label>
-                                        <select class="form-control" name="customer_ktp_gender" id="customer_ktp_gender" required>
-                                            <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                            <option value="L">Laki-Laki</option>
-                                            <option value="P">Perempuan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_tmp_lahir">Tempat Lahir <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="customer_ktp_tmp_lahir" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_tgl_lahir">Tanggal Lahir <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="customer_ktp_tgl_lahir" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="customer_ktp_alamat">Alamat Jamaah </label>
-                                        <textarea name="customer_ktp_alamat" id="customer_ktp_alamat" rows="3 " class="form-control"></textarea>
-                                    </div>
-                                </div>
                             </div>
                             <br>
 
                             <div class="col-lg-4 btn btn-info">
-                                Data Paspor Jamaah
+                                Data Layanan Jamaah
                             </div>
                             <hr>
 
                             <div class="form-row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_paspor_name">Nama Jamaah (PASPOR) <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="customer_paspor_name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_paspor_number">Nomor Paspor <span class="text-danger"></span></label>
-                                        <input type="text" class="form-control" name="customer_paspor_number">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="customer_paspor_tgl_habis">Expired Paspor <span class="text-danger"></span></label>
-                                        <input type="date" class="form-control" name="customer_paspor_tgl_habis" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                <legend class="col-form-label col-sm-2 pt-0">Proses Visa</legend>
+                                <div class="col-lg-2">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="visa" name="visa" value="1">
+                                      <label class="form-check-label" for="visa">Visa</label>
                                     </div>
                                 </div>
                             </div>
+                            <hr>
+
+                            <div class="form-row">
+                                <legend class="col-form-label col-sm-2 pt-0">Proses Siskopatuh</legend>
+                                <div class="col-lg-2">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="siskopatuh" name="siskopatuh" value="1">
+                                      <label class="form-check-label" for="siskopatuh">Siskopatuh</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="form-row">
+                                <legend class="col-form-label col-sm-2 pt-0">Proses Hotel</legend>
+                                <div class="col-lg-2">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="hotel" name="hotel" value="1">
+                                      <label class="form-check-label" for="hotel">Hotel</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
 
                             <input type="hidden" value="{{ $package->id }}" name="package_id">
 
@@ -136,22 +95,8 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="customers">Photo Jamaah <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="Max Files: 4, Max File Size: 1MB, Image Size: 400x400"></i></label>
-                                <div class="dropzone d-flex flex-wrap align-items-center justify-content-center" id="document-dropzone">
-                                    <div class="dz-message" data-dz-message>
-                                        <i class="bi bi-cloud-arrow-up"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
         </form>
     </div>
 @endsection
@@ -162,51 +107,9 @@
 
 @push('page_scripts')
     <script>
-        var uploadedDocumentMap = {}
-        Dropzone.options.documentDropzone = {
-            url: '{{ route('dropzone.upload') }}',
-            maxFilesize: 1,
-            acceptedFiles: '.jpg, .jpeg, .png',
-            maxFiles: 4,
-            addRemoveLinks: true,
-            dictRemoveFile: "<i class='bi bi-x-circle text-danger'></i> remove",
-            headers: {
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            success: function (file, response) {
-                $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">');
-                uploadedDocumentMap[file.name] = response.name;
-            },
-            removedfile: function (file) {
-                file.previewElement.remove();
-                var name = '';
-                if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name;
-                } else {
-                    name = uploadedDocumentMap[file.name];
-                }
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('dropzone.delete') }}",
-                    data: {
-                        '_token': "{{ csrf_token() }}",
-                        'file_name': `${name}`
-                    },
-                });
-                $('form').find('input[name="document[]"][value="' + name + '"]').remove();
-            },
-            init: function () {
-                @if(isset($customer) && $customer->getMedia('customers'))
-                var files = {!! json_encode($customer->getMedia('customers')) !!};
-                for (var i in files) {
-                    var file = files[i];
-                    this.options.addedfile.call(this, file);
-                    this.options.thumbnail.call(this, file, file.original_url);
-                    file.previewElement.classList.add('dz-complete');
-                    $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">');
-                }
-                @endif
-            }
-        }
-    </script>
+        $(document).ready(function() {
+        console.log('');
+        $('.select2').select2();
+        });
+   </script>
 @endpush
