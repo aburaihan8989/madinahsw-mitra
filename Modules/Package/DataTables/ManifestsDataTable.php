@@ -33,6 +33,15 @@ class ManifestsDataTable extends DataTable
                 $formatDate = date('d-m-Y',strtotime(Customer::findOrFail($model->customer_id)->customer_paspor_tgl_habis));
                 return $formatDate;
             })
+            ->addColumn('visa', function ($data) {
+                return view('package::manifests.partials.status-visa', compact('data'));
+            })
+            ->addColumn('siskopatuh', function ($data) {
+                return view('package::manifests.partials.status-siskopatuh', compact('data'));
+            })
+            ->addColumn('hotel', function ($data) {
+                return view('package::manifests.partials.status-hotel', compact('data'));
+            })
             ->addColumn('action', function ($data) {
                 return view('package::manifests.partials.actions', compact('data'));
             });
@@ -98,6 +107,18 @@ class ManifestsDataTable extends DataTable
                 ->title('Expired Paspor')
                 ->width(120)
                 ->className('text-center align-middle'),
+
+            Column::computed('visa')
+                ->title('Visa')
+                ->className('text-center'),
+
+            Column::computed('siskopatuh')
+                ->title('Siskopatuh')
+                ->className('text-center'),
+
+            Column::computed('hotel')
+                ->title('Hotel')
+                ->className('text-center'),
 
             Column::make('mitra_name')
                 ->title('Register By')
