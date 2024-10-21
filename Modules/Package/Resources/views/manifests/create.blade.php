@@ -40,7 +40,7 @@
                                             <label for="customer_id">Nama Jamaah <span class="text-danger">*</span></label>
                                             <select class="select2 form-control" name="customer_id" id="customer_id" required>
                                                 <option value="" selected disabled>Pilih Nama Jamaah</option>
-                                                @foreach(\Modules\People\Entities\Customer::all() as $customer)
+                                                @foreach(\Modules\People\Entities\Customer::where('mitra_id', '=', auth()->user()->id)->get() as $customer)
                                                     <option value="{{ $customer->id }}">{{ $customer->customer_kode . ' | ' . $customer->customer_ktp_name }}</option>
                                                 @endforeach
                                             </select>

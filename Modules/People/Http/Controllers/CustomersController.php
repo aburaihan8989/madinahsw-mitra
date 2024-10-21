@@ -114,7 +114,7 @@ class CustomersController extends Controller
 
 
     public function update(Request $request, Customer $customer) {
-        abort_if(Gate::denies('update_customers'), 403);
+        abort_if(Gate::denies('edit_customers'), 403);
 
         $request->validate([
             // 'customer_ktp_nik'         => 'required|max:255',

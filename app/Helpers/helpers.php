@@ -32,6 +32,28 @@ if (!function_exists('format_currency')) {
     }
 }
 
+if (!function_exists('format_currency2')) {
+    function format_currency2($value, $format = true) {
+        if (!$format) {
+            return $value;
+        }
+
+        $settings = settings();
+        $position = $settings->default_currency_position_2;
+        $symbol = $settings->currency2->symbol;
+        $decimal_separator = $settings->currency2->decimal_separator;
+        $thousand_separator = $settings->currency2->thousand_separator;
+
+        if ($position == 'prefix') {
+            $formatted_value = $symbol .' '. number_format((float) $value, 1, $decimal_separator, $thousand_separator);
+        } else {
+            $formatted_value = number_format((float) $value, 1, $decimal_separator, $thousand_separator) .' '. $symbol;
+        }
+
+        return $formatted_value;
+    }
+}
+
 if (!function_exists('make_reference_id')) {
     function make_reference_id($prefix, $number) {
         $padded_text = $prefix . '-' . str_pad($number, 5, 0, STR_PAD_LEFT);

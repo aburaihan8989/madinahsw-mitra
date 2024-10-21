@@ -78,7 +78,7 @@ class PackagesController extends Controller
 
 
     public function update(Request $request, Package $package) {
-        abort_if(Gate::denies('update_customers'), 403);
+        abort_if(Gate::denies('edit_customers'), 403);
 
         $request->validate([
             // 'package_name'      => 'required|max:255',

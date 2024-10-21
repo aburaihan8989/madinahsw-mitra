@@ -72,6 +72,28 @@
                             </div>
 
                             <div class="form-row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="default_currency_id_2">Default Currency 2 <span class="text-danger">*</span></label>
+                                        <select name="default_currency_id_2" id="default_currency_id_2" class="form-control" required>
+                                            @foreach(\Modules\Currency\Entities\Currency::all() as $currency)
+                                                <option {{ $settings->default_currency_id_2 == $currency->id ? 'selected' : '' }} value="{{ $currency->id }}">{{ $currency->currency_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="default_currency_position_2">Default Currency Position 2 <span class="text-danger">*</span></label>
+                                        <select name="default_currency_position_2" id="default_currency_position_2" class="form-control" required>
+                                            <option {{ $settings->default_currency_position_2 == 'prefix' ? 'selected' : '' }} value="prefix">Prefix</option>
+                                            <option {{ $settings->default_currency_position_2 == 'suffix' ? 'selected' : '' }} value="suffix">Suffix</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="company_address">Company Address <span class="text-danger">*</span></label>

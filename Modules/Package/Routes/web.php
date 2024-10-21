@@ -14,6 +14,8 @@
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('packages', 'PackagesController');
+    Route::resource('products', 'ProductsController');
+
     Route::get('manifests/{id}', 'ManifestsController@index')->name('manifests.index');
     Route::get('manifests/create/{id}', 'ManifestsController@create')->name('manifests.create');
     Route::post('manifests/create', 'ManifestsController@store')->name('manifests.store');
