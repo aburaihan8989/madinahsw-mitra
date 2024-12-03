@@ -47,20 +47,14 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="product_price1">Harga < 20 Pax <span class="text-danger">*</span></label>
+                                        <label for="product_price1">Harga < 35 Pax <span class="text-danger">*</span></label>
                                         <input id="product_price1" type="text" class="form-control" name="product_price1" value="{{ old('product_price1') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="product_price2">Harga 20 ~ 35 Pax <span class="text-danger"></span></label>
+                                        <label for="product_price2">Harga > 35 Pax <span class="text-danger"></span></label>
                                         <input id="product_price2" type="text" class="form-control" name="product_price2" value="{{ old('product_price2') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_price3">Harga > 36 Pax <span class="text-danger"></span></label>
-                                        <input id="product_price3" type="text" class="form-control" name="product_price3" value="{{ old('product_price3') }}">
                                     </div>
                                 </div>
                             </div>

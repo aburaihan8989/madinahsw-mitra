@@ -144,9 +144,8 @@
                                             <th>No</th>
                                             <th>Kode Layanan</th>
                                             <th>Nama Layanan</th>
-                                            <th>Harga < 20 Pax</th>
-                                            <th>Harga 20 ~ 35 Pax</th>
-                                            <th>Harga > 36 Pax</th>
+                                            <th>Harga < 35 Pax</th>
+                                            <th>Harga > 35 Pax</th>
                                             <th>Kategori</th>
                                             <th>Status</th>
                                         </tr>
@@ -155,12 +154,11 @@
                                         @forelse($products as $product)
                                             <tr>
                                                 <td style="width:80px">{{ $loop->iteration }}</td>
-                                                <td style="width:150px">{{ $product['product_code'] }}</td>
+                                                <td style="width:160px">{{ $product['product_code'] }}</td>
                                                 <td>{{ $product['product_name'] }}</td>
-                                                <td style="width:170px">{{ format_currency2($product['product_price1']) }}</td>
-                                                <td style="width:170px">{{ format_currency2($product['product_price2']) }}</td>
-                                                <td style="width:170px">{{ format_currency2($product['product_price3']) }}</td>
-                                                <td style="width:170px">{{ $product['product_category'] == '1' ? 'Visa' : ($product['product_category'] == '2' ? 'Hotel' : 'Siskopatuh') }}</td>
+                                                <td style="width:190px">{{ format_currency2($product['product_price1']) }}</td>
+                                                <td style="width:190px">{{ format_currency2($product['product_price2']) }}</td>
+                                                <td style="width:190px">{{ $product['product_category'] == '1' ? 'Visa' : ($product['product_category'] == '2' ? 'Hotel' : 'Siskopatuh') }}</td>
                                                 <td style="width:170px">
                                                     @if ($product['product_active'] == 1)
                                                         <span class="badge badge-success" style="font-size: 14px;">

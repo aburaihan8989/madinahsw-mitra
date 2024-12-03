@@ -25,9 +25,9 @@ class ProductsDataTable extends DataTable
             ->addColumn('product_price2', function ($data) {
                 return format_currency2($data->product_price2);
             })
-            ->addColumn('product_price3', function ($data) {
-                return format_currency2($data->product_price3);
-            })
+            // ->addColumn('product_price3', function ($data) {
+            //     return format_currency2($data->product_price3);
+            // })
             ->addColumn('product_category', function ($data) {
                 return $data->product_category == '1' ? 'Visa' : ($data->product_category == '2' ? 'Hotel' : 'Siskopatuh');
             })
@@ -92,17 +92,12 @@ class ProductsDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::computed('product_price1')
-                ->title('Harga < 20 Pax')
+                ->title('Harga < 35 Pax')
                 ->width(130)
                 ->className('text-center align-middle'),
 
             Column::computed('product_price2')
-                ->title('Harga 20 ~ 35 Pax')
-                ->width(130)
-                ->className('text-center align-middle'),
-
-            Column::computed('product_price3')
-                ->title('Harga > 36 Pax')
+                ->title('Harga > 35 Pax')
                 ->width(130)
                 ->className('text-center align-middle'),
 
